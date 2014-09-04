@@ -445,6 +445,14 @@ function ffvcoop_new_user_menu() {
     'access arguments' => array('mass mailing with views_send'),
     'type' => MENU_NORMAL_ITEM,
    );
+
+  $items['admin/reports/php-errors'] = array (
+    'title' => 'PHP Error Log',
+    'description' => 'PHP Error Log',
+    'page callback' => '_get_php_errors',
+    'access arguments' => array('mass mailing with views_send'),
+    'type' => MENU_NORMAL_ITEM,
+  );
   return $items;
 }
 
@@ -632,3 +640,17 @@ if (isset($_GET['field_picked_up_value']) && $_GET['field_picked_up_value'] != '
 	}
 	return $content;
  }
+
+
+/*
+ * Function to display the php error log for easy access by admins
+ */
+function _get_php_errors(){
+  echo "<h1>PHP Errors</h1>";
+  $dir=getcwd();
+  $myFile = $dir . "/error_log";
+  $fh = fopen($myFile, 'r');
+  $theData = fread($fh, filesize($myFile));
+  fclose($fh);
+  echo '<pre>' . $theData . '</pre>';
+}
