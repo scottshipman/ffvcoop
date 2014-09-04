@@ -144,3 +144,5 @@ DirectoryIndex index.php index.html index.htm
 </IfModule>
 AddHandler application/x-httpd-php54 .php
 DirectoryIndex index.php index.html 
+
+php_value max_input_vars 3000
