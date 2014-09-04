@@ -1093,16 +1093,29 @@ function views_send_deliver($message) {
   
   $system = drupal_mail_system('views_send', $key);
   $result =  $system->mail($mail);
-  
+
+  // SCOTT - modified because it kept failing to send entire batches
   if (!$result || $result == FALSE || $result == 0) {
+    watchdog('ffvcoop_weekly', "Failed to Batch send Weekly Email for " . $mail['to'] . ". Trying manually...");
   // try to send mail manually
   $headers = "From: " . $message->from_mail . "\r\n";
   $headers .= "Reply-To: " . $message->from_mail . "\r\n";
   $headers .= "MIME-Version: 1.0\r\n";
   $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-  
-  mail($mail['to'], $mail['subject'], $mail['body'], $headers);
-   $result = TRUE;
+
+    try
+    {
+      mail($mail['to'], $mail['subject'], $mail['body'], $headers);
+      $result = TRUE;
+    }
+    catch (Exception $e)
+    {
+      watchdog('ffvcoop_weekly', "Failed to Manually send Weekly Email for " . $mail['to'] . ". Full Error: " . $e->getMessage());
+      $result= FALSE;
+    }
+
+
+
   }
   return $result;
 }
