@@ -1,0 +1,8 @@
+;$Id$
+
+name = FFVCOOP New User Form
+description = The New User Form on the Order Now Page, plus all processing
+package = FFVCOOP
+core = 7.x
+files[] = ffvcoop_new_user.module
+

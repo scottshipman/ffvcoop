@@ -1,0 +1,634 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * A module for adding new users and orders for FFVCOOP.
+ *
+ * This module provides two forms, and creates a user node
+ * and generates reports of new users, email confirmations, admin page, and bulk email delivery
+ *  API use for Drupal 7.
+ */
+
+/**
+ * ********** Create Administrative Settings Page   ****************
+ */ 
+ //TODO  use only one order form, if email already exists set is_new to false, 
+ // and continue...prepopulate fields with values from email link lookup
+
+
+/**
+ * Implements hook_permission().
+ */
+function ffvcoop_new_user_permission() {
+  return array(
+    'ffvcoop_admin' => array(
+      'title' => t('manage settings for FFVCOOP'),
+    )
+  );
+}
+
+/**
+ * ********** Create Form Blocks   ****************
+ */ 
+
+function ffvcoop_new_user_block_info() {
+  $blocks['new_user_form'] = array(
+    'info' => t('New User Order Form'), 
+  );
+  
+   $blocks['weekly_order_summary'] = array(
+    'info' => t('Weekly Order Summary'), 
+  );
+
+  return $blocks;
+}
+ 
+ 
+function ffvcoop_new_user_block_view($delta='') {
+     $block = array();
+     switch($delta) {
+        case 'new_user_form':
+          $block['subject'] = t("New User Form Block"); 
+          $block['content'] = drupal_get_form('ffvcoop_new_user_new_user_form');
+          break;
+	  
+	  case 'weekly_order_summary':
+          $block['subject'] = t("Weekly Order Summary"); 
+          $block['content'] = ffvcoop_new_user_weekly_summary();
+          break;
+	  }
+     return $block;
+}
+
+/**
+ * ********** New User Order Form   ****************
+ */ 
+function ffvcoop_new_user_new_user_form($form_state) {
+
+$baskets = _get_basket_list();
+	$fname= NULL;
+	$lname=NULL;
+	$email = NULL;
+	$phone = NULL;
+// get name, email and phone from the url arguments(email addr).
+$customer_nid = !empty($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
+if(!empty($customer_nid)){
+	$customer = node_load($customer_nid);
+	if($customer){
+	$fname = $customer->title;
+	$lname = isset($customer->field_customer_last_name['und']['0']['value']) ? $customer->field_customer_last_name['und']['0']['value'] : NULL;
+	$email = isset($customer->field_customer_email['und']['0']['email']) ? trim($customer->field_customer_email['und']['0']['email']) : NULL ;
+	$phone = isset($customer->field_customer_phone['und']['0']['value']) ? trim($customer->field_customer_phone['und']['0']['value']) : NULL;
+	}
+} 
+
+
+  $form['first_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First Name'),
+    '#required' => TRUE,
+    '#size' => 30,
+    '#maxlength' => 30,
+    '#default_value' => isset($fname) ? $fname : '',
+    //'#disabled' => isset($fname) ? TRUE : FALSE,
+    '#size' => 32,
+  );
+  
+    $form['last_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last Name'),
+    '#required' => TRUE,
+    '#size' => 30,
+    '#maxlength' => 30,
+    '#default_value' => isset($lname) ? $lname : '',
+    //'#disabled' => isset($lname) ? TRUE : FALSE,
+    '#size' => 32,
+  );
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => "Email Address",
+    '#default_value' => isset($email) ? $email : '',
+    //'#disabled' => isset($email) ? TRUE : FALSE,
+    '#size' => 25,
+  );
+  
+    $form['phone'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => "Phone Number",
+    '#default_value' => isset($phone) ? $phone : '',
+    //'#disabled' => isset($phone) ? TRUE : FALSE,
+    '#size' => 13,
+  );
+  
+    $form['order_notes'] = array(
+    '#type' => 'textarea',
+    '#required' => FALSE,
+    '#title' => "Comments or Special Instructions",
+    '#wysiwyg' => false,
+    '#rows' => 4,
+  	'#cols' => 32,
+  );
+  	
+  	$form['baskets'] = array(
+  		'#type' => 'fieldset',
+  		'#description' => '<h3>Select Basket Quantity</h3>',
+  		
+  	);
+  
+  foreach($baskets as $basket){
+	$title = str_replace(' ', '_', $basket->title);
+  	$form['baskets'][$title . '_qty'] = array(
+  		'#type' => 'textfield',
+  		'#default_value' => 0,
+  		'#title' => t($basket->title . ' - $' . $basket->field_basket_price['und'][0]['value']),
+  		'#maxlength'=> 1,
+        '#size'=> 1,
+      //  '#description' => t($basket->title . ' - $' . $basket->field_basket_price['und'][0]['value']),
+  		
+  	);
+  
+  }
+  
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Place Order',
+  );
+  return $form;
+}
+
+
+
+/**
+ * ********** Validate New User Form   ***************
+ */
+function ffvcoop_new_user_new_user_form_validate($form, &$form_state) {
+$count=0;
+	if (!valid_email_address(trim($form_state['values']['email']))) {
+	  form_set_error('email', t('Please enter a valid e-mail address.'));
+	}
+	$regex = "/^(\d[\s-]?)?[\(\[\s-]{0,2}?\d{3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i";
+	if(!preg_match( $regex, $form_state['values']['phone'] )) {
+		form_set_error('phone', t('Please enter a valid phone number.'));
+	}
+	
+	//loop through qty fields and verify numbers
+	foreach($form_state['input'] as $field =>$value) {
+		if(strpos($field, '_qty') !== FALSE){
+			$label = str_replace('_', ' ', $field);
+			$label = str_replace('qty', 'Quantity', $label);
+			if (!is_numeric($value)) {	
+   			form_set_error($field, t('%name must be a positive number.', array('%name' => $label)));
+			}
+			if($value>9){
+				form_set_error($field, t('%name: We limit basket purchases to no more than 9. Please choose a quantity between 1 and 5.', array('%name' => $label)));
+			}
+			if($value>0) {
+				$count=$count+$value;
+			}
+		}
+	}
+	if($count === 0){
+	form_set_error('baskets', 'Please select at least 1 basket quantity.');
+	}
+	
+	//check if email address already exists
+	$exists=FALSE;
+	$sql = "SELECT field_customer_email_email, entity_id  FROM field_data_field_customer_email WHERE field_customer_email_email = :email";
+    $result = db_query($sql, array(':email' => trim($form_state['values']['email'])));
+    if ($result) {
+      while ($row = $result->fetchAssoc()) {
+       $exists = TRUE;
+    	}
+       if($exists===TRUE){
+       		$form_state['storage']['is_new'] = 0;
+       } else {
+       	$form_state['storage']['is_new'] = 1;
+       }	
+  	}
+}
+
+
+
+/**
+ * ********** Submit NEW user order   ***************
+ */
+function ffvcoop_new_user_new_user_form_submit($form, &$form_state) {
+    
+    // create order entity and user node
+    if($form_state['storage']['is_new'] === 1) {;$customer = _create_new_customer_node($form_state);}
+    $line_items = _create_line_items($form_state);
+    drupal_set_message(t($line_items));
+    _send_confirm_email($line_items, $form_state['values']['email'], $form_state['storage']['is_new']);
+    drupal_goto('<front>');
+    //TODO: send confirm email to email address using $line_items
+}
+
+
+/**
+ * ********** HELPER FUNCTIONS   ***************
+ */
+function _get_basket_list(){
+ 	// Return all nids of nodes of type "baskets".
+	$nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->fields('n', array('type'))
+    ->condition('n.type', 'basket')
+    ->condition('n.status', 1)
+    ->execute()
+    ->fetchCol(); // returns an indexed array
+// Now return the node objects.
+$nodes = node_load_multiple($nids);
+ return $nodes;
+ }
+
+/**
+ * ********** create new customer   ***************
+ */
+function _create_new_customer_node($form_state){
+$node = new stdClass();
+  $node->type = 'customer';
+  node_object_prepare($node);
+  
+  $node->title    = $form_state['values']['first_name'];
+  $node->field_customer_last_name['und'][0]['value'] = $form_state['values']['last_name'];
+  $node->language = LANGUAGE_NONE;
+
+  $node->body[$node->language][0]['value']   = '';
+  $node->body[$node->language][0]['summary'] = '';
+  $node->body[$node->language][0]['format']  = 'full_html';
+  
+  $node->field_customer_phone[$node->language][0]['value'] = $form_state['values']['phone'];
+  $node->field_customer_email[$node->language][0]['email'] = trim($form_state['values']['email']);
+  
+  $path = 'customer/' . $form_state['values']['first_name'] . '/' . $form_state['values']['last_name']; 
+  $node->path = array('alias' => $path);
+  
+$node = node_submit($node);
+  node_save($node);
+
+}
+
+/**
+ * ********** create order and line items   ***************
+ */
+function _create_line_items($form_state){
+	$o_price = 0;
+	$li_msg='';
+	$msg='';
+	$is_new=$form_state['storage']['is_new'];
+	$order_notes = $form_state['values']['order_notes'];
+	$li = array();
+	$created = strtotime(date('Y-m-d'));
+	$row = db_query(
+		"SELECT entity_id FROM field_data_field_customer_email WHERE field_customer_email_email = :email" ,
+		 array(':email' => trim($form_state['values']['email'])))
+		 ->fetchAssoc();
+	//$c=node_load($row['entity_id']);
+	$customer = $row['entity_id'];
+
+//create line items array for order
+	foreach($form_state['values'] as $field =>$value) {
+		if(strpos($field, '_qty') !== FALSE && $value > 0){
+			$field = str_replace('_qty', '', $field);
+			$field = str_replace('_', ' ', $field);
+			$row = db_query('SELECT nid FROM node WHERE title = :title', array(':title' => $field))->fetchAssoc();
+ 			if(!isset($row['nid'])) {
+    			//cant find title
+ 			} else {
+    			//create array of basket nids
+    			$node=node_load($row['nid']);
+    			$li_price = $node->field_basket_price['und'][0]['value'];
+    			$subtotal = $li_price * $value;
+    			$o_price = $o_price + $subtotal;
+    			$li[]=array(
+    			'product' => $node->nid,
+    			'product_name' => $node->title,
+    			'qty' => $value,
+    			'price' => $subtotal,
+    			);
+ 			 }		
+		  } 
+	  } 
+
+// create order instance
+  $entity_type = "customer_order";
+  $entity = entity_create($entity_type, array('type' => "customer_order"));
+  $wrapper = entity_metadata_wrapper($entity_type, $entity);
+  
+  $wrapper->field_order_date->set($created);
+  $wrapper->field_order_customer->set($customer);
+  $wrapper->field_picked_up->set(0);
+  $wrapper->field_order_price->set($o_price);
+  $wrapper->field_order_is_new->set($is_new);
+  $wrapper->field_order_notes->set($order_notes);
+  
+  $instance = $wrapper->save();
+
+
+//create each line item from line item array
+  foreach($li as $i){
+	  $entity_type = "customer_order";
+	  $entity = entity_create($entity_type, array('type' => "order_line_item"));
+	  $wrapper = entity_metadata_wrapper($entity_type, $entity);
+	  $instance_id=$instance->value()->id;
+	  $wrapper->field_lineitem_product->set($i['product']);
+	  $wrapper->field_order_instance->set($instance_id);
+	  $wrapper->field_lineitem_quantity->set($i['qty']);
+	  $wrapper->field_line_item_price->set($i['price']);
+	  $li_msg .= $i['product_name'] . ' ('. $i['qty'] . ')<br/>';
+	  $wrapper->save();
+  }
+  
+// create confirmation message
+  $welcome_msg = $is_new===1 ? variable_get('welcome_message') : "" ;
+  $msg .= $form_state['values']['first_name'] . ' ' . $form_state['values']['last_name'] . ', <br/>';
+  $msg .= variable_get('order_message');
+  $msg .=  "<p><strong>Your Order:</strong> <br/>";
+  $msg .= $li_msg;
+  $msg .= "<br/>Total Price: $" . $o_price . "<p/>";
+  $msg .= $welcome_msg;
+  $msg .= "<p>Mark, Kathy and Steven Born <br /> 
+			FFV Co-op, LLC<br/>
+			727-488-0858<br/>
+			www.ffvcoop.com<br/>
+			https://www.facebook.com/ffvcoop";
+  return $msg;
+}
+
+/**
+ * ********** send confirmation email   ***************
+ */
+function _send_confirm_email($msg, $to, $is_new){
+
+	$from = variable_get('site_mail', '');
+	$headers = 'From: '. $from . "\r\n" .
+	'MIME-Version: 1.0' . "\r\n" . 
+	'Content-type: text/html; charset=iso-8859-1' . "\r\n" . 
+    'Reply-To: '. $from . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+	$subject = $is_new===1 ? variable_get('welcome_subject') : variable_get('order_subject');
+	try
+	{
+		mail($to, $subject ,$msg, $headers);
+	}
+	catch (Exception $e)
+	{
+		watchdog('ffvcoop_confirm', "Failed to send Confirmation for " . $to . ". Full Error: " . $e->getMessage()); 
+	}
+}
+
+/**
+ * *************** Admin form to edit confirm messages  **********
+ */
+ 
+ function ffvcoop_admin_form() {
+  $form = array();
+  $form['#prefix'] = '<div id="order-admin-form">The final email message will be constructed as follow:'
+  					. ' <ul><li> If its a new customer, use the Welcome Subject</li>'
+  					. '</li>If its a returning customer, use the Returning Customer Subject Line</li>'
+  					. '<li> Construct a final message in this order:'
+  					. '<ol><li>New and Returning Order Confirmation text</li>'
+  					. '<li> A summary of the Order</li>'
+  					. '<li> If its a new customer only - The Welcome Message</li></ol></li></ul></div>';
+  $form['welcome_subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Welcome Subject Line'),
+    '#default_value' => variable_get('welcome_subject', 'Welcome to Fresh Fruit and Vegetable Co-op'),
+    '#size' => 60,
+    '#maxlength' => 60,
+    '#description' => t("The email subject line when new customers place a first order."),
+    '#required' => TRUE,
+  );
+    $form['welcome_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Welcome Message'),
+    '#default_value' => variable_get('welcome_message', 'Welcome to Fresh Fruit and Vegetable Co-op'),
+    '#rows' => 5,
+    '#cols' => 60,
+    '#description' => t("The email message portion when new customers place their first order."),
+    '#required' => TRUE,
+  );
+  
+    $form['order_subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Returning Customer Subject Line'),
+    '#default_value' => variable_get('order_subject', 'Thank you for your order at ffvcoop.com'),
+    '#size' => 60,
+    '#maxlength' => 60,
+    '#description' => t("The email subject line when returning customers place an order."),
+    '#required' => TRUE,
+  );
+  
+    $form['order_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('New and Returning Order Confirmation'),
+    '#default_value' => variable_get('order_message', 'Thank you for your order at ffvcoop.com'),
+    '#rows' => 5,
+    '#cols' => 60,
+    '#description' => t("The email message portion when returning customers place an order."),
+    '#required' => TRUE,
+  );
+  return system_settings_form($form);
+}
+
+function ffvcoop_new_user_menu() {
+  $items = array();
+  $items['admin/order-email-settings'] = array(
+    'title' => 'Order Confirmation and New User email settings',
+    'description' => 'Order Confirmation and New User email settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ffvcoop_admin_form'),
+    'access arguments' => array('mass mailing with views_send'),
+    'type' => MENU_NORMAL_ITEM,
+   );
+  return $items;
+}
+
+/**
+ * Add Delete Button to Entity (Order) form 
+ * Add Line Items fields to Entoty (Order) form
+ */
+
+function ffvcoop_new_user_form_eck__entity__form_edit_customer_order_customer_order_alter(&$form, &$form_state){
+	
+	$form['delete'] = array(
+      '#type' => 'submit',
+      '#weight' => 10001,
+      '#submit' => array('ffvcoop_new_user_eck__entity__delete__fromform'),
+      '#value' => t('Delete'),
+    );
+    
+    // Display each product type as a line item form element
+    
+     $query = new EntityFieldQuery();
+  	 $entities = $query->entityCondition('entity_type', 'node')
+    	->entityCondition('bundle', 'basket')
+    	->propertyCondition('status', 1)
+    	->execute();        
+  	 $nodes = node_load_multiple(array_keys($entities['node'])); 
+    
+    $query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'customer_order')
+	  ->entityCondition('bundle', 'order_line_item')
+	 // ->propertyCondition('status', 1)
+	  ->fieldCondition('field_order_instance', 'target_id', $form['entity']['#value']->id, '=')
+	  //->fieldCondition('field_photo', 'fid', 'NULL', '!=')
+	  //->fieldCondition('field_faculty_tag', 'tid', $value)
+	  //->fieldCondition('field_news_publishdate', 'value', $year . '%', 'like')
+	  //->fieldOrderBy('field_photo', 'fid', 'DESC')
+	  //->range(0, 10)
+	  ->addMetaData('account', user_load(1)); // Run the query as user 1.
+	$result = $query->execute();
+	if (isset($result['customer_order'])) {		
+	  $line_items_nids = array_keys($result['customer_order']);
+	  $line_items = entity_load('customer_order', $line_items_nids);
+	}  
+		foreach($nodes as $node){
+		$quantity = 0;
+			// generate a form element showing product as label, quantity as input
+			// 1. get product name from target reference
+			//$product = node_load($item->field_lineitem_product['und'][0]['target_id']);
+			$product_title = $node->title;
+			foreach($line_items as $item) {
+			// if item product reference = node id then use the quantity field, else 0 for quantity
+				if($item->field_lineitem_product['und'][0]['target_id'] === $node->nid ) {
+					$quantity = $item->field_lineitem_quantity['und'][0]['value'];
+				} 
+			
+			}
+			
+			$form['line_items'][$product_title] = array(
+				'#type' => 'textfield',
+				'#default_value' => $quantity,
+				'#title' => t($product_title),
+				'#size' => 1,
+    			'#maxlength' => 1,
+    			'#weight' => 5,
+			);
+		}
+	
+
+    
+    
+    
+    return $form;
+}
+
+/**
+ * Process the Entity Delete
+ */
+ 
+ function ffvcoop_new_user_eck__entity__delete__fromform(&$form, &$state) {
+  $entity = $form['#entity'];
+  $entity_type = $entity->entityType();
+  $bundle = $entity->type;
+  $id = $entity->id;
+  $crud_info = get_bundle_crud_info($entity_type, $bundle);
+  //Check that the user has permissions to delete:
+  if( eck__multiple_access_check(
+    array( 'eck administer entities',
+           'eck delete entities',
+           "eck administer {$entity_type} {$bundle} entities",
+           "eck delete {$entity_type} {$bundle} entities"
+          ), FALSE /* TODO: should also check user ownership perms. */ )
+  ){
+    $delete_path = str_replace('%', $id, $crud_info['delete']['path']);
+    $destination = ($_GET['destination']);
+    unset($_GET['destination']);
+    drupal_static_reset('drupal_get_destination');
+    return drupal_goto("/" . $delete_path, array('query'=>array('destination'=>$destination)));
+  }
+  else {
+    return drupal_goto(drupal_get_destination());
+  }
+}
+
+
+/**
+ * Weekly Order Summary Block because Views aggregation sucks
+ */
+ 
+function ffvcoop_new_user_weekly_summary() {
+	 	//dsm ($_SESSION);
+	 	$content='';
+	 	
+if (!isset($_SESSION['views']['weekly_orders_all_']['default']['field_order_date_value']['min']) || !isset($_SESSION['views']['weekly_orders_all_']['default']['field_order_date_value']['max'])) {
+	return "Please select a date range to display a weekly order summary.";
+}	 	
+$product=array();
+$total = 0;
+if (isset($_GET['field_picked_up_value']) && $_GET['field_picked_up_value'] != 'All') {
+	$picked_up = $_GET['field_picked_up_value'];
+}  
+ // get basket types
+ 	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'node')
+  	->entityCondition('bundle', 'basket')
+  	->propertyCondition('status', 1)
+  	->addMetaData('account', user_load(1)); // Run the query as user 1.
+	$result = $query->execute();
+	$baskets = entity_load('node', array_keys($result['node']));
+ 	foreach($baskets as $basket) {
+ 		$product[$basket->nid]['title'] = $basket->title;
+ 	}
+ 
+	 //get date range from view
+	 $date_min = $_SESSION['views']['weekly_orders_all_']['default']['field_order_date_value']['min'];
+	 $date_max = $_SESSION['views']['weekly_orders_all_']['default']['field_order_date_value']['max'];
+	// dsm ($date_min . '  ' . $date_max);
+
+	// get list of orders
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'customer_order')
+	  ->entityCondition('bundle', 'customer_order')
+	  ->fieldCondition('field_order_date', 'value', $date_min, '>=')
+	  ->fieldCondition('field_order_date', 'value', $date_max, '<=')
+	  ->addMetaData('account', user_load(1)); // Run the query as user 1.
+	if(isset($picked_up)) {
+		$query->fieldCondition('field_picked_up', 'value', $picked_up, '=');
+	
+	}  
+	  
+	$result = $query->execute();
+	if($result) {
+		$orders = array_keys($result['customer_order']); 	
+ 
+		// get line items by orders
+		$query = new EntityFieldQuery();
+		$query->entityCondition('entity_type', 'customer_order')
+		  ->entityCondition('bundle', 'order_line_item')
+		  ->fieldCondition('field_order_instance', 'target_id', $orders, 'in')
+		  ->addMetaData('account', user_load(1)); // Run the query as user 1.
+		$items = $query->execute();
+		//dsm(array_keys($items['customer_order']));
+		$line_items = entity_load('customer_order', array_keys($items['customer_order']));
+
+		foreach ($line_items as $line_item) {
+			$id = $line_item->field_lineitem_product['und'][0]['target_id'];
+			if(isset($product[$id]['quantity'])){
+				$product[$id]['quantity'] = $product[$id]['quantity'] + $line_item->field_lineitem_quantity['und'][0]['value'];
+				} else {
+				$product[$id]['quantity'] = $line_item->field_lineitem_quantity['und'][0]['value'];
+				}
+			$total = $total + $line_item->field_lineitem_quantity['und'][0]['value'];
+
+		} 
+	
+	
+		$content =  "Totals: <strong>$total</strong> for date range $date_min - $date_max";
+		if (isset($picked_up) && $picked_up == 1) {$content .= "  Filtered for Baskets that are Picked Up.";}
+		if (isset($picked_up) && $picked_up == 0) {$content .= "  Filtered for Baskets that are NOT Picked Up.";}
+		$content .= " <ul style='list-style:none'>";
+		foreach ($product as $summary) {
+			$quantity = isset($summary['quantity']) ? $summary['quantity'] : 0;
+			$content .= '<li style="display:inline; padding:8px;">' . $summary['title'] . ':<strong> ' . $quantity . '</strong></li>';
+	
+		}
+		$content .="</ul>";
+	}
+	return $content;
+ }
