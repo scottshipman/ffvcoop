@@ -69,7 +69,7 @@ function _views_send_get_field($view) {
 
 /**
  * Gets the raw field value from a result row in a view.
- *
+ * 
  * @return
  *  An array with raw values from the field.
  */
@@ -77,9 +77,9 @@ function _views_send_get_raw_field_from_views_row($view, $row_id, $field_id) {
   $result = array();
   $raw_value = $view->style_plugin->get_field_value($row_id, $field_id);
   if (!is_array($raw_value)) {
-    $result[] = trim($raw_value);
-  }
-  else {
+      $result[] = trim($raw_value);
+  } 
+  else { 
     foreach ($raw_value as $arr) {
       if (isset($arr['value'])) {
         $value = $arr['value'];
@@ -195,7 +195,7 @@ function views_send_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Multistep form callback for the "configure" step.
  *
-@TODO: Hide "Sender" (from) if Mandrill is used.
+ @TODO: Hide "Sender" (from) if Mandrill is used.
  */
 function views_send_config_form($form, &$form_state, $view, $output) {
   $display = $view->name . ':' . $view->current_display;
@@ -974,7 +974,7 @@ function _views_send_format_address($mail, $name, $encode = TRUE) {
  * Returns a mime-encoded string for strings that contain UTF-8.
  *
  * Simplified and correct version of mime_header_decode.
- */
+ */ 
 function _views_send_mime_header_encode($string) {
   if (preg_match('/[^\x20-\x7E]/', $string)) {
     $string = '=?UTF-8?B?' . base64_encode($string) . '?=';
@@ -1081,7 +1081,7 @@ function views_send_deliver($message) {
     'body' => $message->body,
     'headers' => $headers,
   );
-
+  
 
   if (VIEWS_SEND_MIMEMAIL) {
     _views_send_mailsystem_set($key);
@@ -1090,15 +1090,15 @@ function views_send_deliver($message) {
   // Mime encode the subject before passing to the mail function 
   // to work around a bug in Drupal's mime_header_encode.
   $mail['subject'] = _views_send_mime_header_encode($message->subject);
-
+  
   $system = drupal_mail_system('views_send', $key);
-
+  
   try {
-    $result =  $system->mail($mail);
-  }
+  	$result =  $system->mail($mail); 
+  } 
   catch (Exception $e) {
     watchdog('ffvcoop_weekly', $e->getMessage());
-  }
+	}
 
 
   /* SCOTT - modified because it kept failing to send entire batches

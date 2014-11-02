@@ -1,0 +1,1 @@
+[22-Oct-2014 14:16:20 America/Denver] PHP Fatal error:  Namespace declaration statement has to be the very first statement in the script in /home1/ffvcoopc/public_html/modules/simpletest/tests/psr_0_test/lib/Drupal/psr_0_test/Tests/Nested/NestedExampleTest.php on line 3

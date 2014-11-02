@@ -1,5 +1,4 @@
 <?php
-
 namespace Drupal\psr_0_test\Tests\Nested;
 
 class NestedExampleTest extends \DrupalWebTestCase {

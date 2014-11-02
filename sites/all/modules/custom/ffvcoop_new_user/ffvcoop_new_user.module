@@ -354,8 +354,8 @@ function _create_line_items($form_state){
   $msg .= "<p>Mark, Kathy and Steven Born <br /> 
 			FFV Co-op, LLC<br/>
 			727-488-0858<br/>
-			www.ffvcoop.com<br/>
-			https://www.facebook.com/ffvcoop";
+			<a href='http://www.ffvcoop.com'>www.ffvcoop.com</a><br/>
+			<a href='https://www.facebook.com/ffvcoop'>https://www.facebook.com/ffvcoop</a>";
   return $msg;
 }
 

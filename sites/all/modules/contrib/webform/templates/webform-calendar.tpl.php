@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * @file
  * Theme the button for the date component date popup.
