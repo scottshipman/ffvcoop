@@ -1,1 +1,0 @@
-[22-Oct-2014 14:16:19 America/Denver] PHP Fatal error:  Call to undefined function db_create_table() in /home1/ffvcoopc/public_html/modules/simpletest/tests/upgrade/drupal-6.filled.database.php on line 26
