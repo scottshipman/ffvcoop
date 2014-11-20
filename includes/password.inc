@@ -150,6 +150,10 @@ function _password_enforce_log2_boundaries($count_log2) {
  *   The return string will be truncated at DRUPAL_HASH_LENGTH characters max.
  */
 function _password_crypt($algo, $password, $setting) {
+    // Prevent DoS attacks by refusing to hash large passwords.
+    if (strlen($password) > 512) {
+        return FALSE;
+    }
   // The first 12 characters of an existing hash are its setting string.
   $setting = substr($setting, 0, 12);
 
