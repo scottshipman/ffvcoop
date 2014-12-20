@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the FFVCOOP Commerce Init feature.
+ */
+
+include_once 'ffvcoop_commerce_init.features.inc';
