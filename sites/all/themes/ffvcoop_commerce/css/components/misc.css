@@ -64,7 +64,7 @@
  * The skip-link link will be completely hidden until a user tabs to the link.
  */
 #skip-link {
-  margin: 0;
+  margin: -25px;
 }
 #skip-link a,
 #skip-link a:visited {

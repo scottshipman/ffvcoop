@@ -7,6 +7,7 @@
  
  body{
      background-color: #0D504E;
+     margin-top:-30px;
  }
 
 div#main{
@@ -33,7 +34,6 @@ div#main{
      color:#0D504E;
  }
  #page {
-
  }
  #header {
 	color:rgb(255,255,255);
@@ -82,7 +82,7 @@ div#main{
  div#email-header {
 	color: white;
 	padding: 6px;
-     background-color:#629833;
+     background-color:#1A2D2C;
  }
  
   div#email-header a{
