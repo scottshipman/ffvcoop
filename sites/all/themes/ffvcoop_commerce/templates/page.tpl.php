@@ -11,20 +11,20 @@
 <div id="page">
   <header class="header" id="header" role="banner">
 
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="header__logo" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
-    <?php endif; ?>
+
 
     <?php if ($site_name || $site_slogan): ?>
       <div class="header__name-and-slogan" id="name-and-slogan">
-        <?php if ($site_name): ?>
+          <?php if ($site_name): ?>
           <h1 class="header__site-name" id="site-name">
-            <a href="<?php print $front_page; ?>" title="<?php print $site_name . t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
+            <a href="<?php print $front_page; ?>" title="<?php print $site_name . t('Home'); ?>" class="header__site-link" rel="home">
+              <?php if ($logo): ?><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /> <?php endif; ?>
+                <span><?php //print $site_name; ?></span></a>
           </h1>
         <?php endif; ?>
 
         <?php if ($site_slogan): ?>
-          <div class="header__site-slogan" id="site-slogan"><?php print $site_slogan; ?></div>
+          <div class="header__site-slogan" id="site-slogan"><span class="opacity"><?php print $site_slogan; ?></span></div>
         <?php endif; ?>
       </div>
     <?php endif; ?>
@@ -44,10 +44,9 @@
         )); ?>
       </nav>
     <?php endif; ?>
-      <div id="cta-menu-wrapper">
           <div id="cta">
             <div id="email-header" class="order-now"><a href="product-list">Order Now</a></div>
-              <span id="phone-nav">Phone (727) 488-0858</span>
+              <span id="phone-nav" class="opacity">Phone (727) 488-0858</span>
           </div>
 
         <?php print render($page['header']); ?>
@@ -75,7 +74,6 @@
                  <!-- <a href="http://www.facebook.com/ffvcoop" target="_blank"><img alt="Follow Us On Facebook" src="/sites/default/files/socialnetworking_facebook_icon_116x24.gif" title="Follow Us On Facebook" /></a> -->
               </nav>
           <?php endif; ?>
-      </div>
       </div>
   </header>
 

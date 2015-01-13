@@ -10,6 +10,358 @@
 function ffvcoop_commerce_init_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'commerce_cardonfile-commerce_cardonfile-commerce_cardonfile_profile'
+  $field_instances['commerce_cardonfile-commerce_cardonfile-commerce_cardonfile_profile'] = array(
+    'bundle' => 'commerce_cardonfile',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'administrator' => array(
+        'label' => 'above',
+        'module' => 'commerce_customer',
+        'settings' => array(),
+        'type' => 'commerce_customer_profile_reference_display',
+        'weight' => -5,
+      ),
+      'customer' => array(
+        'label' => 'above',
+        'module' => 'commerce_customer',
+        'settings' => array(),
+        'type' => 'commerce_customer_profile_reference_display',
+        'weight' => -5,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'commerce_customer',
+        'settings' => array(),
+        'type' => 'commerce_customer_profile_reference_display',
+        'weight' => -5,
+      ),
+    ),
+    'entity_type' => 'commerce_cardonfile',
+    'field_name' => 'commerce_cardonfile_profile',
+    'label' => 'Billing Profile',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_customer',
+      'settings' => array(),
+      'type' => 'commerce_customer_profile_manager',
+      'weight' => -5,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_code'
+  $field_instances['commerce_coupon-commerce_coupon_fixed-commerce_coupon_code'] = array(
+    'bundle' => 'commerce_coupon_fixed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_code',
+    'label' => 'Coupon Code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_fixed_amount'
+  $field_instances['commerce_coupon-commerce_coupon_fixed-commerce_coupon_fixed_amount'] = array(
+    'bundle' => 'commerce_coupon_fixed',
+    'default_value' => array(
+      0 => array(
+        'amount' => 0,
+        'currency_code' => 'USD',
+        'data' => array(
+          'components' => array(),
+        ),
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_fixed_amount',
+    'label' => 'Fixed Amount',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_number_of_uses'
+  $field_instances['commerce_coupon-commerce_coupon_fixed-commerce_coupon_number_of_uses'] = array(
+    'bundle' => 'commerce_coupon_fixed',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Number of times that coupon code can be used by any customer on the site, before it is set to inactive',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_number_of_uses',
+    'label' => 'Maximum number of Uses',
+    'required' => FALSE,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-commerce_coupon_pct-commerce_coupon_code'
+  $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_code'] = array(
+    'bundle' => 'commerce_coupon_pct',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_code',
+    'label' => 'Coupon Code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-commerce_coupon_pct-commerce_coupon_number_of_uses'
+  $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_number_of_uses'] = array(
+    'bundle' => 'commerce_coupon_pct',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Number of times that coupon code can be used by any customer on the site, before it is set to inactive',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_number_of_uses',
+    'label' => 'Maximum number of Uses',
+    'required' => FALSE,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-commerce_coupon_pct-commerce_coupon_percent_amount'
+  $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_percent_amount'] = array(
+    'bundle' => 'commerce_coupon_pct',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_percent_amount',
+    'label' => 'Percentage Amount',
+    'required' => TRUE,
+    'settings' => array(
+      'max' => 100,
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '%',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-new_user_coupon-commerce_coupon_code'
+  $field_instances['commerce_coupon-new_user_coupon-commerce_coupon_code'] = array(
+    'bundle' => 'new_user_coupon',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_code',
+    'label' => 'Coupon Code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-new_user_coupon-commerce_coupon_number_of_uses'
+  $field_instances['commerce_coupon-new_user_coupon-commerce_coupon_number_of_uses'] = array(
+    'bundle' => 'new_user_coupon',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Number of times that coupon code can be used by any customer on the site, before it is set to inactive',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_number_of_uses',
+    'label' => 'Maximum number of Uses',
+    'required' => FALSE,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
@@ -72,6 +424,164 @@ function ffvcoop_commerce_init_field_default_field_instances() {
       ),
       'type' => 'addressfield_standard',
       'weight' => -10,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_line_item-commerce_coupon-commerce_coupon_reference'
+  $field_instances['commerce_line_item-commerce_coupon-commerce_coupon_reference'] = array(
+    'bundle' => 'commerce_coupon',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'commerce_line_item',
+    'field_name' => 'commerce_coupon_reference',
+    'label' => 'Coupon',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_line_item-commerce_coupon-commerce_total'
+  $field_instances['commerce_line_item-commerce_coupon-commerce_total'] = array(
+    'bundle' => 'commerce_coupon',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 1,
+      ),
+      'display' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 1,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 1,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'commerce_line_item',
+    'field_name' => 'commerce_total',
+    'label' => 'Total',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_line_item-commerce_coupon-commerce_unit_price'
+  $field_instances['commerce_line_item-commerce_coupon-commerce_unit_price'] = array(
+    'bundle' => 'commerce_coupon',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'display' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_line_item',
+    'field_name' => 'commerce_unit_price',
+    'label' => 'Unit price',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
     ),
   );
 
@@ -289,6 +799,51 @@ function ffvcoop_commerce_init_field_default_field_instances() {
       ),
       'type' => 'commerce_price_full',
       'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_order-commerce_order-commerce_coupon_order_reference'
+  $field_instances['commerce_order-commerce_order-commerce_coupon_order_reference'] = array(
+    'bundle' => 'commerce_order',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'administrator' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => -4,
+      ),
+      'customer' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => -4,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => -4,
+      ),
+    ),
+    'entity_type' => 'commerce_order',
+    'field_name' => 'commerce_coupon_order_reference',
+    'label' => 'Coupon',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 11,
     ),
   );
 
@@ -633,6 +1188,518 @@ function ffvcoop_commerce_init_field_default_field_instances() {
       ),
       'type' => 'image_image',
       'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-recurring-commerce_price'
+  $field_instances['commerce_product-recurring-commerce_price'] = array(
+    'bundle' => 'recurring',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_line_item_display' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'commerce_line_item_token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'line_item' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_price',
+    'label' => 'Price',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-recurring-commerce_recurring_end_period'
+  $field_instances['commerce_product-recurring-commerce_recurring_end_period'] = array(
+    'bundle' => 'recurring',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'interval',
+        'settings' => array(),
+        'type' => 'interval_default',
+        'weight' => 3,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_recurring_end_period',
+    'label' => 'End period',
+    'required' => FALSE,
+    'settings' => array(
+      'allowed_periods' => array(
+        'day' => 'day',
+        'month' => 'month',
+        'week' => 'week',
+        'year' => 'year',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'weight' => 0,
+    'widget' => array(
+      'module' => 'interval',
+      'settings' => array(),
+      'type' => 'interval_default',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-recurring-commerce_recurring_ini_period'
+  $field_instances['commerce_product-recurring-commerce_recurring_ini_period'] = array(
+    'bundle' => 'recurring',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'interval',
+        'settings' => array(),
+        'type' => 'interval_default',
+        'weight' => 1,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_recurring_ini_period',
+    'label' => 'Initial period',
+    'required' => FALSE,
+    'settings' => array(
+      'allowed_periods' => array(
+        'day' => 'day',
+        'month' => 'month',
+        'week' => 'week',
+        'year' => 'year',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'weight' => 0,
+    'widget' => array(
+      'module' => 'interval',
+      'settings' => array(),
+      'type' => 'interval_default',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-recurring-commerce_recurring_ini_price'
+  $field_instances['commerce_product-recurring-commerce_recurring_ini_price'] = array(
+    'bundle' => 'recurring',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_line_item_display' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'commerce_line_item_token' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'line_item' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_recurring_ini_price',
+    'label' => 'Initial price',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-recurring-commerce_recurring_rec_period'
+  $field_instances['commerce_product-recurring-commerce_recurring_rec_period'] = array(
+    'bundle' => 'recurring',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'interval',
+        'settings' => array(),
+        'type' => 'interval_default',
+        'weight' => 2,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_recurring_rec_period',
+    'label' => 'Recurring period',
+    'required' => FALSE,
+    'settings' => array(
+      'allowed_periods' => array(
+        'day' => 'day',
+        'month' => 'month',
+        'week' => 'week',
+        'year' => 'year',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'weight' => 0,
+    'widget' => array(
+      'module' => 'interval',
+      'settings' => array(),
+      'type' => 'interval_default',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-recurring-commerce_recurring_rec_price'
+  $field_instances['commerce_product-recurring-commerce_recurring_rec_price'] = array(
+    'bundle' => 'recurring',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_line_item_display' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'commerce_line_item_token' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'line_item' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_recurring_rec_price',
+    'label' => 'Recurring price',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_recurring-product-commerce_recurring_fixed_price'
+  $field_instances['commerce_recurring-product-commerce_recurring_fixed_price'] = array(
+    'bundle' => 'product',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_recurring',
+    'field_name' => 'commerce_recurring_fixed_price',
+    'label' => 'Fixed price',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_recurring-product-commerce_recurring_order'
+  $field_instances['commerce_recurring-product-commerce_recurring_order'] = array(
+    'bundle' => 'product',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'commerce_recurring',
+    'field_name' => 'commerce_recurring_order',
+    'label' => 'Referenced orders',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_recurring-product-commerce_recurring_ref_product'
+  $field_instances['commerce_recurring-product-commerce_recurring_ref_product'] = array(
+    'bundle' => 'product',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'commerce_recurring',
+    'field_name' => 'commerce_recurring_ref_product',
+    'label' => 'Referenced product',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 11,
     ),
   );
 
@@ -1515,28 +2582,43 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Active');
   t('Address');
+  t('Billing Profile');
   t('Billing information');
   t('Body');
+  t('Coupon');
+  t('Coupon Code');
   t('Delivery Address');
   t('Description');
   t('Display path');
   t('Email');
+  t('End period');
   t('Fee Paid');
+  t('Fixed Amount');
+  t('Fixed price');
   t('Image');
+  t('Initial period');
+  t('Initial price');
   t('Is New');
   t('Last Name');
   t('Line Item Price');
   t('Line items');
+  t('Maximum number of Uses');
   t('Notes');
+  t('Number of times that coupon code can be used by any customer on the site, before it is set to inactive');
   t('Order Instance');
   t('Order Notes');
   t('Order total');
+  t('Percentage Amount');
   t('Phone');
   t('Picked Up');
   t('Price');
   t('Product');
   t('Product Image');
   t('Quantity');
+  t('Recurring period');
+  t('Recurring price');
+  t('Referenced orders');
+  t('Referenced product');
   t('Total');
   t('Unit price');
   t('customer');

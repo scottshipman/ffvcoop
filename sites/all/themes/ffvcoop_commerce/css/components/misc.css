@@ -60,20 +60,7 @@
   overflow: auto;
 }
 
-/*
- * The skip-link link will be completely hidden until a user tabs to the link.
- */
-#skip-link {
-  margin: -25px;
-}
-#skip-link a,
-#skip-link a:visited {
-  display: block;
-  width: 100%;
-  padding: 2px 0 3px 0;
-  text-align: center;
-  color: #fff;
-}
+
 
 /**
  * Branding header.
@@ -88,7 +75,7 @@
 
 /* Logo image. */
 .header__logo-image {
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 /* Wrapper for website name and slogan. */
@@ -117,7 +104,9 @@
 
 /* The slogan (or tagline) of a website. */
 .header__site-slogan {
-  margin: 0;
+    margin-left:0%;
+    margin-top:0;
+    font-size:.75em;
 }
 
 /* The secondary menu (login, etc.) */

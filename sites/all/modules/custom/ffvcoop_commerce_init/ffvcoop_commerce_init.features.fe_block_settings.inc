@@ -145,6 +145,52 @@ cart',
     'visibility' => 0,
   );
 
+  $export['views-bf5ee37bd60ea98abcb761c967f50021'] = array(
+    'cache' => -1,
+    'delta' => 'bf5ee37bd60ea98abcb761c967f50021',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  $export['views-c117238b5c55f571b4e7a454037d5f6e'] = array(
+    'cache' => -1,
+    'delta' => 'c117238b5c55f571b4e7a454037d5f6e',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   $export['views-e0ce370f87eccc5cbf57e40b475accac'] = array(
     'cache' => -1,
     'custom' => 0,
