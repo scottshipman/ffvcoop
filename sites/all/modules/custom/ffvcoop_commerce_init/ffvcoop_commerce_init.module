@@ -5,3 +5,9 @@
  */
 
 include_once 'ffvcoop_commerce_init.features.inc';
+
+function ffvcoop_commerce_init_commerce_checkout_complete($order){
+  $existingUser = user_load($order->uid);
+  $existingUser->field_order_count['und'][0]['value'] = intval($existingUser->field_order_count['und'][0]['value']) +1;
+  user_save((object) array('uid' => $existingUser->uid), (array) $existingUser);
+}

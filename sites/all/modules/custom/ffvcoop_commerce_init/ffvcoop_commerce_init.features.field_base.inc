@@ -154,7 +154,14 @@ function ffvcoop_commerce_init_field_default_field_bases() {
       1 => 'commerce_line_item',
     ),
     'field_name' => 'commerce_coupon_order_reference',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'commerce_coupon' => array(
+        'columns' => array(
+          'target_id' => 'coupon_id',
+        ),
+        'table' => 'commerce_coupon',
+      ),
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -204,7 +211,14 @@ function ffvcoop_commerce_init_field_default_field_bases() {
       1 => 'commerce_line_item',
     ),
     'field_name' => 'commerce_coupon_reference',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'commerce_coupon' => array(
+        'columns' => array(
+          'target_id' => 'coupon_id',
+        ),
+        'table' => 'commerce_coupon',
+      ),
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -986,6 +1000,22 @@ function ffvcoop_commerce_init_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_order_count'
+  $field_bases['field_order_count'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_order_count',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_order_customer'
   $field_bases['field_order_customer'] = array(
     'active' => 1,
@@ -1066,7 +1096,14 @@ function ffvcoop_commerce_init_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_order_instance',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'eck_customer_order' => array(
+        'columns' => array(
+          'target_id' => 'id',
+        ),
+        'table' => 'eck_customer_order',
+      ),
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

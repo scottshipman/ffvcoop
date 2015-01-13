@@ -1,0 +1,20 @@
+USERS
+
+
+CART
+Authorize.net rule was set to inactive. Find way to export settings in feature.
+checkout pane configuration not exported, may need manual configuration
+
+PRODUCTS
+export the Product List view
+generate final products export list and import
+export product fields from entity field manager
+change menu to show new product-list + order now page
+change Order Now link button to correct Product order page.
+Product images need to be added manually
+
+MISC
+export non-commerce site settings into feature
+
+Coupons:
+Need to export coupons and coupons types (features entities module?)

@@ -115,7 +115,7 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_coupon_checkout_pane_view';
-  $strongarm->value = 'none';
+  $strongarm->value = 'commerce_coupon_review_pane|checkout';
   $export['commerce_coupon_checkout_pane_view'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -180,6 +180,19 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->name = 'commerce_order_simulate_checkout_link';
   $strongarm->value = 1;
   $export['commerce_order_simulate_checkout_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_commerce_coupon__new_user_fixed';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_commerce_coupon__new_user_fixed'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -357,6 +370,63 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_user__user';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'ckeditor' => array(
+          'weight' => '10',
+        ),
+        'metatags' => array(
+          'weight' => '10',
+        ),
+        'mimemail' => array(
+          'weight' => '0',
+        ),
+        'account' => array(
+          'weight' => '-10',
+        ),
+        'timezone' => array(
+          'weight' => '6',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_user__user'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_compression_type';
+  $strongarm->value = 'min';
+  $export['jquery_update_compression_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_jquery_admin_version';
+  $strongarm->value = '1.5';
+  $export['jquery_update_jquery_admin_version'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_jquery_cdn';
+  $strongarm->value = 'none';
+  $export['jquery_update_jquery_cdn'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_jquery_version';
+  $strongarm->value = '1.7';
+  $export['jquery_update_jquery_version'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_basket';
   $strongarm->value = array(
     0 => 'status',
@@ -376,7 +446,7 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'order_message';
-  $strongarm->value = 'Thank you for your order at ffvcoop.com.  Your basket will be ready for pick up on Thursday, December 18th.';
+  $strongarm->value = 'Thank you for your order at ffvcoop.com.  Your basket will be ready for pick up on Tuesday, December 23rd.';
   $export['order_message'] = $strongarm;
 
   $strongarm = new stdClass();

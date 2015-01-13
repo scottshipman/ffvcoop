@@ -362,6 +362,117 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_coupon-new_user_fixed-commerce_coupon_code'
+  $field_instances['commerce_coupon-new_user_fixed-commerce_coupon_code'] = array(
+    'bundle' => 'new_user_fixed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_code',
+    'label' => 'Coupon Code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-new_user_fixed-commerce_coupon_fixed_amount'
+  $field_instances['commerce_coupon-new_user_fixed-commerce_coupon_fixed_amount'] = array(
+    'bundle' => 'new_user_fixed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_fixed_amount',
+    'label' => 'New User Fixed Amount',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'USD',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_coupon-new_user_fixed-commerce_coupon_number_of_uses'
+  $field_instances['commerce_coupon-new_user_fixed-commerce_coupon_number_of_uses'] = array(
+    'bundle' => 'new_user_fixed',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Number of times that coupon code can be used by any customer on the site, before it is set to inactive',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_number_of_uses',
+    'label' => 'Maximum number of Uses',
+    'required' => FALSE,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
@@ -2578,6 +2689,50 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_order_count'
+  $field_instances['user-user-field_order_count'] = array(
+    'bundle' => 'user',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_order_count',
+    'label' => 'Order Count',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 11,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Active');
@@ -2603,8 +2758,10 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   t('Line Item Price');
   t('Line items');
   t('Maximum number of Uses');
+  t('New User Fixed Amount');
   t('Notes');
   t('Number of times that coupon code can be used by any customer on the site, before it is set to inactive');
+  t('Order Count');
   t('Order Instance');
   t('Order Notes');
   t('Order total');
