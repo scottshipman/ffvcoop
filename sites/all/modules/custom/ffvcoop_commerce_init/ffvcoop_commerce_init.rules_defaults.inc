@@ -62,45 +62,5 @@ function ffvcoop_commerce_init_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_add_to_user_order_count_on_checkout_completion'] = entity_import('rules_config', '{ "rules_add_to_user_order_count_on_checkout_completion" : {
-      "LABEL" : "Add to User Order Count on Checkout Completion",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "TAGS" : [ "commerce checkout" ],
-      "REQUIRES" : [ "rules", "commerce_checkout" ],
-      "ON" : { "commerce_checkout_complete" : [] },
-      "IF" : [
-        { "NOT data_is" : { "data" : [ "commerce-order:uid" ], "value" : "0" } },
-        { "entity_has_field" : { "entity" : [ "site:current-user" ], "field" : "field_order_count" } }
-      ],
-      "DO" : [
-        { "entity_query" : {
-            "USING" : {
-              "type" : "user",
-              "property" : "uid",
-              "value" : [ "commerce-order:uid" ]
-            },
-            "PROVIDE" : { "entity_fetched" : { "entity_fetched" : "Fetched entity" } }
-          }
-        },
-        { "LOOP" : {
-            "USING" : { "list" : [ "entity-fetched" ] },
-            "ITEM" : { "list_item" : "Current uid list item" },
-            "DO" : [
-              { "data_calc" : {
-                  "USING" : {
-                    "input_1" : [ "list-item:field-order-count" ],
-                    "op" : "+",
-                    "input_2" : "1"
-                  },
-                  "PROVIDE" : { "result" : { "result" : "Calculation result" } }
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-  }');
   return $items;
 }

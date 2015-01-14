@@ -45,7 +45,7 @@
         )); ?>
       </nav>
     <?php endif; ?>
-	<div id="email-header"><a href="order-now">Order Now</a></div>
+	<div id="email-header"><a href="product-list">Order Now</a></div>
     <?php print render($page['header']); ?>
 
   </header>

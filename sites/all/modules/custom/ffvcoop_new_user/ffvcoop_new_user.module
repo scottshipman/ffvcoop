@@ -453,9 +453,24 @@ function ffvcoop_new_user_menu() {
     'access arguments' => array('mass mailing with views_send'),
     'type' => MENU_NORMAL_ITEM,
   );
+  $items['user/new-user'] = array (
+    'title' => 'Register for a new account',
+    'description' => 'Register for a new account',
+    'page callback' => 'ffvcoop_new_user_register',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
   return $items;
 }
 
+
+function ffvcoop_new_user_register(){
+    $content['raw_markup'] = array(
+        '#type' => 'markup',
+    );
+
+    return $content;
+}
 /**
  * Add Delete Button to Entity (Order) form 
  * Add Line Items fields to Entoty (Order) form
@@ -654,3 +669,4 @@ function _get_php_errors(){
   fclose($fh);
   echo '<pre>' . $theData . '</pre>';
 }
+
