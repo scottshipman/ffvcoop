@@ -27,7 +27,7 @@ customer-list',
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => 0,
+        'weight' => -23,
       ),
       'ffvcoop_commerce' => array(
         'region' => 'sidebar_second',
@@ -38,6 +38,32 @@ customer-list',
     ),
     'title' => 'My Shopping Cart',
     'visibility' => 0,
+  );
+
+  $export['formblock-user_password_request'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'user_password_request',
+    'module' => 'formblock',
+    'node_types' => array(),
+    'pages' => 'user/current-user/login',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Request New Password',
+    'visibility' => 1,
   );
 
   $export['views-bf5ee37bd60ea98abcb761c967f50021'] = array(

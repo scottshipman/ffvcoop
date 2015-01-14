@@ -16,7 +16,7 @@ function ffvcoop_commerce_init_default_rules_configuration() {
       "REQUIRES" : [ "rules", "commerce_coupon" ],
       "ON" : { "commerce_coupon_redeem" : [] },
       "IF" : [
-        { "data_is" : { "data" : [ "coupon:type" ], "value" : "new_user_fixed" } },
+        { "data_is" : { "data" : [ "coupon:type" ], "value" : "new_user_coupon" } },
         { "entity_has_field" : { "entity" : [ "coupon" ], "field" : "commerce_coupon_fixed_amount" } },
         { "entity_has_field" : {
             "entity" : [ "commerce_order" ],

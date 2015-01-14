@@ -134,4 +134,7 @@ function ffvcoop_preprocess_page(&$vars) {
     if(arg(0) == "user" && arg(1) == "register") {
         drupal_goto("");
     }
+    if(arg(0) == "user" && arg(1) == "login") {
+        drupal_goto("");
+    }
 }

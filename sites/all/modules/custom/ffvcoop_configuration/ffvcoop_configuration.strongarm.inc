@@ -13,6 +13,22 @@ function ffvcoop_configuration_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'content_access_administration_page';
+  $strongarm->value = array(
+    'view_own' => array(
+      0 => 2,
+      1 => 3,
+    ),
+    'view' => array(
+      0 => 2,
+      1 => 3,
+    ),
+  );
+  $export['content_access_administration_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_customer_order__customer_order';
   $strongarm->value = array(
     'view_modes' => array(
@@ -301,6 +317,13 @@ function ffvcoop_configuration_strongarm() {
     'zen_wireframes' => 0,
   );
   $export['theme_ffvcoop_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'views_send_debug';
+  $strongarm->value = 1;
+  $export['views_send_debug'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

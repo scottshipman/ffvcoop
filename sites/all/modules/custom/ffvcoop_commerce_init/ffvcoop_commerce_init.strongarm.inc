@@ -56,14 +56,14 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_checkout_redirect_message';
-  $strongarm->value = 'We request that you be logged in to checkout so that we can ensure the privacy and security of your information. If this is your first time ordering with us, you may create a new account here. If you need help with your existing account, please click the "Request new password" tab.';
+  $strongarm->value = '<p>We request that you be logged in to checkout so that we can ensure the privacy and security of your information. </p><p>If this is your first time ordering with us, you may create a new account <a href="/user/new-user">here</a>.</p><p> If you need help with your existing account, please click the "forgot password" link.</p>';
   $export['commerce_checkout_redirect_message'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_checkout_redirect_path';
-  $strongarm->value = '';
+  $strongarm->value = 'user/current-user/login';
   $export['commerce_checkout_redirect_path'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -180,6 +180,19 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->name = 'commerce_order_simulate_checkout_link';
   $strongarm->value = 1;
   $export['commerce_order_simulate_checkout_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_commerce_coupon__new_user_coupon';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_commerce_coupon__new_user_coupon'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

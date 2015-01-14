@@ -460,6 +460,13 @@ function ffvcoop_new_user_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
   );
+    $items['user/current-user/login'] = array (
+        'title' => 'Login',
+        'description' => 'Login to your account',
+        'page callback' => 'ffvcoop_new_user_login',
+        'access arguments' => array('access content'),
+        'type' => MENU_NORMAL_ITEM,
+    );
   return $items;
 }
 
@@ -469,6 +476,44 @@ function ffvcoop_new_user_register(){
         '#type' => 'markup',
     );
 
+    return $content;
+}
+
+function ffvcoop_new_user_login(){
+    module_load_include('inc', 'user', 'user.pages');
+    $login_form = drupal_render(drupal_get_form('user_login'));
+    $requestpw_form = drupal_render(drupal_get_form('user_pass'));
+    $markup = '<div class="login_form"><h2>Login</h2>' . $login_form;
+    $markup.= '<span class="login_page forgotpw"><a href="">forgot password?</a></span><span class="login_page"><a href="/user/new-user">Create a new account</a></span></div>';
+    $markup.= '<div class="forgotpw_wrapper" style="display:none;"><h2>Request new password</h2>' . $requestpw_form;
+    $markup.= '<span class="return_login"><a href="">Return to Login form</a></span>';
+    $markup.= '</div>';
+
+    $content['raw_markup'] = array(
+        '#type' => 'markup',
+        '#markup' => $markup,
+    );
+    drupal_add_js(
+        'jQuery(document).ready(
+          function ($) {
+            $(".forgotpw a").click(
+              function(event) {
+                event.preventDefault();
+                $("div.login_form").hide(1000);
+                $("div.forgotpw_wrapper").show(1000);
+              }
+            );
+            $(".return_login a").click(
+              function(event) {
+                event.preventDefault();
+                $("div.forgotpw_wrapper").hide(1000);
+                $("div.login_form").show(1000);
+              }
+            );
+          }
+        );',
+        array('type' => 'inline', 'scope' => 'footer', 'weight' => 1)
+    );
     return $content;
 }
 /**

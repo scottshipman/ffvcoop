@@ -319,6 +319,41 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_coupon-new_user_coupon-commerce_coupon_fixed_amount'
+  $field_instances['commerce_coupon-new_user_coupon-commerce_coupon_fixed_amount'] = array(
+    'bundle' => 'new_user_coupon',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => FALSE,
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'commerce_coupon_fixed_amount',
+    'label' => 'New User Fixed Amount',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'commerce_coupon-new_user_coupon-commerce_coupon_number_of_uses'
   $field_instances['commerce_coupon-new_user_coupon-commerce_coupon_number_of_uses'] = array(
     'bundle' => 'new_user_coupon',

@@ -407,3 +407,7 @@ form#views-form-weekly-email-block-1 div.form-actions.form-wrapper{
 #edit-submit-weekly-orders-all- {
 	background-color:rgb(63,156,45);
 }
+
+.login_page {
+    margin:8px;
+}
