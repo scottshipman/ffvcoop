@@ -5,6 +5,13 @@
  */
 
 /**
+ * Implements hook_views_api().
+ */
+function ffvcoop_calendar_feature_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_eck_bundle_info().
  */
 function ffvcoop_calendar_feature_eck_bundle_info() {
@@ -27,18 +34,7 @@ function ffvcoop_calendar_feature_eck_entity_type_info() {
     'pickup_date' => array(
       'name' => 'pickup_date',
       'label' => 'Pickup Date',
-      'properties' => array(
-        'pdid' => array(
-          'label' => 'PDID',
-          'type' => 'integer',
-          'behavior' => '',
-        ),
-        'week_date' => array(
-          'label' => 'Week Date',
-          'type' => 'integer',
-          'behavior' => '',
-        ),
-      ),
+      'properties' => array(),
     ),
   );
   return $items;

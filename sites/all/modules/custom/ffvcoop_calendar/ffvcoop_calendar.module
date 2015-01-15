@@ -151,7 +151,7 @@ function calendar_dates_by_year_form_submit($form, &$form_state) {
         $pickup = ffvcoop_calendar_create_pickup_dates($form_state['values']['year']); //check field value structure here
         ffvcoop_calendar_save_pickup_date($pickup);
         drupal_set_message("Pickup Dates automatically generated for " . $form_state['values']['year'] . ".");
-        Drupal_goto('admin/config/calendar/' . $form_state['values']['year']); //set this to the view page that shows results, pass in Year argument
+        Drupal_goto('configuration/calendar/'); //set this to the view page that shows results, pass in Year argument
     }
 }
 
@@ -176,15 +176,13 @@ function get_year_list() {
  */
 
 function ffvcoop_calendar_year_exists($year){
-    $ts[0] = strtotime('01/01/' . $year . ' 00:00:00');
-    $ts[1] = strtotime('12/31/' . $year . ' 23:59:59');
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'pickup_date')
-        ->propertyCondition('week_date', $ts, 'BETWEEN'); // verify field column on date fields is 'value'
+        ->fieldCondition('field_week_date','value', $year, 'CONTAINS');
 
     $result = $query->execute();
-    if(isset($result['id'])){
-        $entity_ids = array_keys($result['id']);
+    if(isset($result['pickup_date'])){
+        $entity_ids = array_keys($result['pickup_date']);
         if($entity_ids) {
             return TRUE;}
         else {
@@ -200,10 +198,12 @@ function ffvcoop_calendar_save_pickup_date($pickup) {
 
     // save all the dates for the week as entities
     foreach($pickup as $pickup_date){
+      // save field format as unix ts
         $entity_type = 'pickup_date';
         $entity = entity_create($entity_type, array('type' => 'pickup_date'));
         $wrapper = entity_metadata_wrapper($entity_type, $entity);
-        $wrapper->week_date->set($pickup_date);
+      $ts = strtotime($pickup_date);
+        $wrapper->field_week_date=$ts;
         $wrapper->save();
     }
 }
@@ -221,7 +221,7 @@ function ffvcoop_calendar_create_pickup_dates($year=2015){
         switch($date->format('w')){
             case THURSDAY:
                 //$pickup[]= $date->format('r');
-                $pickup[]= strtotime($date->format('m/d/y'));
+                $pickup[]= $date->format('Y-m-d h:m:s');
         }
     }
     return $pickup;
