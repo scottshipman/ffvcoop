@@ -66,6 +66,58 @@ customer-list',
     'visibility' => 1,
   );
 
+  $export['nice_menus-1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 1,
+    'module' => 'nice_menus',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['nice_menus-2'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 2,
+    'module' => 'nice_menus',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['views-bf5ee37bd60ea98abcb761c967f50021'] = array(
     'cache' => -1,
     'custom' => 0,
