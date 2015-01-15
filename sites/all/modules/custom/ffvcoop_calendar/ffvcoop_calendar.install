@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function ffvcoop_calendar_schema() {
+
+    $schema = array();
+
+    $schema['pickup_date'] = array(
+        'description' => 'The base table for the Pickup Date entity',
+        'fields' => array(
+            'pdid' => array(
+                'description' => 'Primary key of the Pickup Date entity',
+                'type' => 'serial',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ),
+            'week_date' => array(
+                'description' => 'Pickup Date value.',
+                'type' => 'int',
+                'mysql_type' => 'int',
+                'not null' => FALSE,
+            ),
+        ),
+        'primary key' => array('id'),
+    );
+
+    return $schema;
+}

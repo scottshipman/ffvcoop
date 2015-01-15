@@ -1,0 +1,237 @@
+
+
+<?php
+/**
+ * FFVCOOP Calendar
+ * Generates and manages a calendar of pickup dates
+ * creates a years worth of dates, defaulting to thursdays
+ * creates a view to allow editing of individual dates to accomodate holidays
+ * creates a form to select a year to generate from, as long as it doesnt already exist
+ * Orders will have these dates added when added to CART as a param on the order using a reference to this field.
+ *
+ * also look at https://drupalcommerce.org/extensions/sandbox/project/commerce-recurring-order
+ * requires commerce_recurring
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function ffvcoop_calendar_entity_info() {
+    return array(
+        'pickup_date' => array(
+            'fieldable' => FALSE,
+            'label' => t('Pick Up Date'),
+            'base table' => 'pickup_date',
+            'entity keys' => array(
+                'id' => 'pdid',
+                'label' => 'week_date',
+            ),
+            'module' => 'ffvcoop_calendar',
+            'controller class' => 'DrupalDefaultEntityController',
+        ),
+
+    );
+}
+
+
+/**
+ * Implements hook_entity_property_info()
+ *
+ * @see entity_metadata_entity_property_info()
+ */
+function ffvcoop_calendar_entity_property_info()
+{
+    $info = array();
+    // Add meta-data about the basic node properties.
+    $properties = &$info['pickup_date']['properties'];
+
+    $properties['pdid'] = array(
+        'label' => t("Pickup Date ID"),
+        'type' => 'integer',
+        'description' => t("The unique ID of the Pickup Date."),
+        'schema field' => 'pdid',
+    );
+    $properties['week_date'] = array(
+        'label' => t("Week Date"),
+        'type' => 'integer',
+        'description' => t("Week Date"),
+        'schema field' => 'week_date',
+        'setter callback' => 'entity_property_verbatim_set',
+    );
+    return $info;
+}
+
+    /**
+ * Implements hook_menu()
+ */
+function ffvcoop_calendar_menu(){
+    $items = array();
+    $items['configuration/calendar'] = array (
+        'title' => 'FFVCOOP Calendar',
+        'description' => 'Manage the Pickup Dates calendar',
+        'page callback' => 'ffvcoop_calendar_page',
+        'access arguments' => array('access content'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+
+function ffvcoop_calendar_page(){
+    $content['raw_markup'] = array(
+        '#type' => 'markup',
+        '#markup' => "<h2>Manage Pickup Date Calendar</h2>",
+    );
+
+    return $content;
+}
+/**
+ * Implements hook_block_info().
+ * Generate Calendar by Year Block
+ */
+function ffvcoop_calendar_block_info() {
+    $blocks = array();
+    $blocks['calendar_dates_by_year'] = array(
+        'info' => t('Generate Dates By Year'),
+    );
+
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ * Generate calendar by Year Block
+ */
+function ffvcoop_calendar_block_view($delta='') {
+    $block = array();
+
+    switch($delta) {
+        case 'calendar_dates_by_year' :
+            $block['content'] = drupal_get_form('calendar_dates_by_year_form');
+            break;
+    }
+
+    return $block;
+}
+
+/**
+ * form to generate new pickup calendar by year.
+ */
+function calendar_dates_by_year_form($form, &$form_state) {
+    $disabled=TRUE;
+    $message = "It is not necessary to create a calendar because the current year and the next few years already exist. If you need to recreate a calendar year, first delete that year.";
+    $options = get_year_list();
+    if($options) {
+        $disabled = FALSE;
+        $message = "Select a Year to create the Pickup dates for that year.";
+    }
+    $form['header'] = array(
+        '#markup' => $message,
+    );
+
+    $form['year'] = array(
+        '#type' => 'select',
+        '#title' => t('Year'),
+        '#options' => $options,
+        '#description' => t('Select a Year to generate. If a calendar already exists for a year, you wont see that year here.'),
+    );
+
+    $form['submit_button'] = array(
+        '#type' => 'submit',
+        '#value' => t('Create Calendar'),
+        '#disabled' => $disabled,
+    );
+
+    return $form;
+}
+
+function calendar_dates_by_year_form_submit($form, &$form_state) {
+    if ($form_state['values']['year']) {
+        $pickup = ffvcoop_calendar_create_pickup_dates($form_state['values']['year']); //check field value structure here
+        ffvcoop_calendar_save_pickup_date($pickup);
+        drupal_set_message("Pickup Dates automatically generated for " . $form_state['values']['year'] . ".");
+        Drupal_goto('admin/config/calendar/' . $form_state['values']['year']); //set this to the view page that shows results, pass in Year argument
+    }
+}
+
+
+/**
+ * build year list for form.
+ */
+function get_year_list() {
+    $range = array(0,1,2,3);
+    $year = array();
+    foreach($range as $incr){
+        if(!ffvcoop_calendar_year_exists(date("Y") + $incr)) {
+            $year[date("Y") + $incr] = date("Y") + $incr;
+        }
+    }
+    return $year;
+}
+
+/*
+ * Check to see if pickup dates exist for a given year
+ * Input: Year as yyyy
+ */
+
+function ffvcoop_calendar_year_exists($year){
+    $ts[0] = strtotime('01/01/' . $year . ' 00:00:00');
+    $ts[1] = strtotime('12/31/' . $year . ' 23:59:59');
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'pickup_date')
+        ->propertyCondition('week_date', $ts, 'BETWEEN'); // verify field column on date fields is 'value'
+
+    $result = $query->execute();
+    if(isset($result['id'])){
+        $entity_ids = array_keys($result['id']);
+        if($entity_ids) {
+            return TRUE;}
+        else {
+            return FALSE;
+    }   }
+}
+
+/*
+ * Save Dates as entities
+ * Input: Array of dates as thur, daynum month year time timezone offset
+ */
+function ffvcoop_calendar_save_pickup_date($pickup) {
+
+    // save all the dates for the week as entities
+    foreach($pickup as $pickup_date){
+        $entity_type = 'pickup_date';
+        $entity = entity_create($entity_type, array('type' => 'pickup_date'));
+        $wrapper = entity_metadata_wrapper($entity_type, $entity);
+        $wrapper->week_date->set($pickup_date);
+        $wrapper->save();
+    }
+}
+
+/*
+ * create all thursday week dates for provided year
+ * Input: year as yyyy
+ */
+function ffvcoop_calendar_create_pickup_dates($year=2015){
+    define('THURSDAY', 4);
+    $from = new DateTime($year . '-01-01');;
+    $to = new DateTime($year . '-12-31');;
+    $pickup = array();
+    for($date=clone $from; $date<$to; $date->modify('+1 day')){
+        switch($date->format('w')){
+            case THURSDAY:
+                //$pickup[]= $date->format('r');
+                $pickup[]= strtotime($date->format('m/d/y'));
+        }
+    }
+    return $pickup;
+}
+
+/*
+ * Hooks commerce_order_presave
+ * Adds a pickup date value to an order before saving.
+ */
+function ffvcoop_calendar_commerce_order_presave($order){
+// get the pickup date somehow
+
+//	$order->commerce_line_items['und'][] = $pickeup_date; //what is the date field on the order
+}

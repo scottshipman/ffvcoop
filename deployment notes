@@ -17,4 +17,4 @@ MISC
 export non-commerce site settings into feature
 
 Coupons:
-Need to export coupons and coupons types (features entities module?)
+Need to export coupons and coupons types (commerce_features?)

@@ -411,3 +411,22 @@ form#views-form-weekly-email-block-1 div.form-actions.form-wrapper{
 .login_page {
     margin:8px;
 }
+
+/*********  Nice menus ************/
+ul.nice-menu-down li {
+    border:none;
+    background:none;
+}
+
+ul.nice-menu-down li.menuparent {
+    background: url("images/arrow-down.png") right center no-repeat;  /* LTR */
+    padding-right:10px;
+}
+ul.nice-menu-down li.menuparent:hover {
+    background:none;
+}
+
+ul.nice-menu ul {
+    border:none;
+    background:rgb(242,176,53);
+}

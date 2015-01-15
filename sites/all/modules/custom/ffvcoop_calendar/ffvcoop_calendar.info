@@ -1,0 +1,7 @@
+;$Id$
+
+name = FFVCOOP Order Calendar
+description = Manage a calendar of order pickup dates and integrate to commerce order
+package = FFVCOOP
+core = 7.x
+files[] = ffvcoop_calendar.module
