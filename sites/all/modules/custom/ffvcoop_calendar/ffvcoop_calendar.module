@@ -15,7 +15,7 @@
 
 /**
  * Implements hook_entity_info().
- */
+
 function ffvcoop_calendar_entity_info() {
     return array(
         'pickup_date' => array(
@@ -32,13 +32,13 @@ function ffvcoop_calendar_entity_info() {
 
     );
 }
-
+ */
 
 /**
  * Implements hook_entity_property_info()
  *
  * @see entity_metadata_entity_property_info()
- */
+
 function ffvcoop_calendar_entity_property_info()
 {
     $info = array();
@@ -60,6 +60,7 @@ function ffvcoop_calendar_entity_property_info()
     );
     return $info;
 }
+ */
 
     /**
  * Implements hook_menu()

@@ -2,7 +2,7 @@
 
 /**
  * Implements hook_schema().
- */
+
 function ffvcoop_calendar_schema() {
 
     $schema = array();
@@ -28,3 +28,4 @@ function ffvcoop_calendar_schema() {
 
     return $schema;
 }
+ */

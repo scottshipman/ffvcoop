@@ -1,0 +1,16 @@
+name = ffvcoop calendar feature
+description = exportables for calendar
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = ffvcoop_calendar_feature
+dependencies[] = eck
+dependencies[] = eck
+dependencies[] = fe_block
+dependencies[] = features
+dependencies[] = ffvcoop_calendar
+features[eck_bundle][] = pickup_date_pickup_date
+features[eck_entity_type][] = pickup_date
+features[fe_block_settings][] = ffvcoop_calendar-calendar_dates_by_year
+features[features_api][] = api:2
+project path = sites/all/modules/custom

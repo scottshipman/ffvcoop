@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ffvcoop calendar feature feature.
+ */
+
+include_once 'ffvcoop_calendar_feature.features.inc';
