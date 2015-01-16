@@ -20,7 +20,8 @@ function ffvcoop_commerce_init_default_fe_block_settings() {
     'node_types' => array(),
     'pages' => 'checkout*
 cart
-customer-list',
+customer-list
+manage*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
@@ -38,6 +39,34 @@ customer-list',
     ),
     'title' => 'My Shopping Cart',
     'visibility' => 0,
+  );
+
+  $export['ffvcoop_delivery-ffvcoop_delivery_form'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'ffvcoop_delivery_form',
+    'module' => 'ffvcoop_delivery',
+    'node_types' => array(),
+    'pages' => 'product-list
+cart
+checkout',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => 'highlighted',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
   );
 
   $export['formblock-user_password_request'] = array(

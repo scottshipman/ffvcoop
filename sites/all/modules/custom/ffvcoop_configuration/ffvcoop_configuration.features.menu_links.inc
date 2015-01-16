@@ -10,17 +10,17 @@
 function ffvcoop_configuration_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_current-orders:admin/commerce/orders/list-revised
-  $menu_links['main-menu_current-orders:admin/commerce/orders/list-revised'] = array(
+  // Exported menu link: main-menu_current-orders:manage/commerce/orders/list
+  $menu_links['main-menu_current-orders:manage/commerce/orders/list'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'admin/commerce/orders/list-revised',
-    'router_path' => 'admin/commerce/orders/list-revised',
+    'link_path' => 'manage/commerce/orders/list',
+    'router_path' => 'manage/commerce/orders/list',
     'link_title' => 'Current Orders',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_current-orders:admin/commerce/orders/list-revised',
+      'identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -125,26 +125,26 @@ function ffvcoop_configuration_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_shopping-carts:admin/commerce/orders/carts
-  $menu_links['main-menu_shopping-carts:admin/commerce/orders/carts'] = array(
+  // Exported menu link: main-menu_shopping-carts:manage/commerce/orders/carts
+  $menu_links['main-menu_shopping-carts:manage/commerce/orders/carts'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'admin/commerce/orders/carts',
-    'router_path' => 'admin/commerce/orders/carts',
+    'link_path' => 'manage/commerce/orders/carts',
+    'router_path' => 'manage/commerce/orders/carts',
     'link_title' => 'Shopping Carts',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_shopping-carts:admin/commerce/orders/carts',
+      'identifier' => 'main-menu_shopping-carts:manage/commerce/orders/carts',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_current-orders:admin/commerce/orders/list-revised',
+    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_weekly-orders:weekly-customer-orders
   $menu_links['main-menu_weekly-orders:weekly-customer-orders'] = array(

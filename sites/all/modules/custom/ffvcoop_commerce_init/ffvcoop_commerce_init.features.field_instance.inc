@@ -1155,6 +1155,159 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_order-commerce_order-field_week_date'
+  $field_instances['commerce_order-commerce_order-field_week_date'] = array(
+    'bundle' => 'commerce_order',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => -3,
+      ),
+    ),
+    'entity_type' => 'commerce_order',
+    'field_name' => 'field_week_date',
+    'label' => 'Pickup Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-delivery-commerce_price'
+  $field_instances['commerce_product-delivery-commerce_price'] = array(
+    'bundle' => 'delivery',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_line_item_diff_standard' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'commerce_line_item_display' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'commerce_line_item_token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'diff_standard' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'line_item' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'commerce_price',
+        'settings' => array(
+          'calculation' => 'calculated_sell_price',
+        ),
+        'type' => 'commerce_price_formatted_amount',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'commerce_price',
+    'label' => 'Price',
+    'required' => TRUE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'commerce_product-product-commerce_price'
   $field_instances['commerce_product-product-commerce_price'] = array(
     'bundle' => 'product',
@@ -1914,6 +2067,7 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   t('Order Count');
   t('Order total');
   t('Percentage Amount');
+  t('Pickup Date');
   t('Price');
   t('Product');
   t('Product Image');

@@ -15,7 +15,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'commerce_product';
-  $view->human_name = 'Product list';
+  $view->human_name = 'FVCOOP Product list';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */

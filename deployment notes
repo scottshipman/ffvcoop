@@ -29,3 +29,7 @@ Theory for recurring orders
 3. Hook checkout submit process to add orders with "recurring-pending" status cloned from current order.
 4. Cron job gets all recurring-pending orders and processes payment - updates status.
 
+Delivery Module
+ - only add block when not in cart
+ - force shipping address if in cart
+ - report of only delivery orders for current week
