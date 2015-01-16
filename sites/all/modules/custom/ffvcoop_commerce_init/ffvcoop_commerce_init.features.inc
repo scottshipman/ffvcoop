@@ -5,6 +5,68 @@
  */
 
 /**
+ * Implements hook_commerce_coupon_default_types().
+ */
+function ffvcoop_commerce_init_commerce_coupon_default_types() {
+  $items = array(
+    'commerce_coupon_fixed' => array(
+      'type' => 'commerce_coupon_fixed',
+      'label' => 'Fixed coupon',
+      'weight' => 0,
+      'data' => NULL,
+      'status' => 1,
+      'module' => NULL,
+      'metatags' => array(),
+      'rdf_mapping' => array(),
+    ),
+    'commerce_coupon_pct' => array(
+      'type' => 'commerce_coupon_pct',
+      'label' => 'Percentage coupon',
+      'weight' => 0,
+      'data' => NULL,
+      'status' => 1,
+      'module' => NULL,
+      'metatags' => array(),
+      'rdf_mapping' => array(),
+    ),
+    'new_user_fixed' => array(
+      'type' => 'new_user_fixed',
+      'label' => 'New User Fixed',
+      'weight' => 0,
+      'data' => NULL,
+      'status' => 1,
+      'module' => NULL,
+      'metatags' => array(),
+      'rdf_mapping' => array(),
+    ),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_commerce_product_default_types().
+ */
+function ffvcoop_commerce_init_commerce_product_default_types() {
+  $items = array(
+    'delivery' => array(
+      'type' => 'delivery',
+      'name' => 'Delivery',
+      'description' => 'Delivery line item to add to a customer\'s CART',
+      'help' => '',
+      'revision' => 1,
+    ),
+    'product' => array(
+      'type' => 'product',
+      'name' => 'Baskets',
+      'description' => 'A basic product type.',
+      'help' => '',
+      'revision' => 1,
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implements hook_ctools_plugin_api().
  */
 function ffvcoop_commerce_init_ctools_plugin_api($module = NULL, $api = NULL) {

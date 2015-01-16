@@ -28,7 +28,7 @@ manage*',
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -23,
+        'weight' => -26,
       ),
       'ffvcoop_commerce' => array(
         'region' => 'sidebar_second',
@@ -48,15 +48,15 @@ manage*',
     'module' => 'ffvcoop_delivery',
     'node_types' => array(),
     'pages' => 'product-list
-cart
-checkout',
+cart*
+checkout*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
-        'region' => 'highlighted',
+        'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => 0,
+        'weight' => -25,
       ),
       'ffvcoop_commerce' => array(
         'region' => '',

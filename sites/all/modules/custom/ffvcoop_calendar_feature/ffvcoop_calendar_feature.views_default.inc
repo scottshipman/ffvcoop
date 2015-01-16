@@ -43,7 +43,7 @@ function ffvcoop_calendar_feature_views_default_views() {
   $handler->display->display_options['fields']['id']['table'] = 'eck_pickup_date';
   $handler->display->display_options['fields']['id']['field'] = 'id';
   $handler->display->display_options['fields']['id']['exclude'] = TRUE;
-  /* Field: Pickup Date: Week Date */
+  /* Field: Field: Week Date */
   $handler->display->display_options['fields']['field_week_date']['id'] = 'field_week_date';
   $handler->display->display_options['fields']['field_week_date']['table'] = 'field_data_field_week_date';
   $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
@@ -55,7 +55,7 @@ function ffvcoop_calendar_feature_views_default_views() {
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'eck_pickup_date';
   $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
-  /* Contextual filter: Pickup Date: Week Date (field_week_date) */
+  /* Contextual filter: Field: Week Date (field_week_date) */
   $handler->display->display_options['arguments']['field_week_date_value']['id'] = 'field_week_date_value';
   $handler->display->display_options['arguments']['field_week_date_value']['table'] = 'field_data_field_week_date';
   $handler->display->display_options['arguments']['field_week_date_value']['field'] = 'field_week_date_value';

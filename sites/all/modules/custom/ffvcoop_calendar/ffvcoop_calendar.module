@@ -204,7 +204,7 @@ function ffvcoop_calendar_save_pickup_date($pickup) {
         $entity_type = 'pickup_date';
         $entity = entity_create($entity_type, array('type' => 'pickup_date'));
         $wrapper = entity_metadata_wrapper($entity_type, $entity);
-      $ts = strtotime($pickup_date);
+        $ts = strtotime($pickup_date);
         $wrapper->field_week_date=$ts;
         $wrapper->save();
     }
@@ -253,7 +253,7 @@ function get_next_pickup_date(){
     if(isset($result['pickup_date'])){
         $entity_id = array_keys($result['pickup_date']);
         if($entity_id) {
-            $entity = entity_load('pickup_date', $entity_id);
+           // $entity = entity_load('pickup_date', $entity_id);
             $wrapper = entity_metadata_wrapper('pickup_date', $entity_id[0]);
             $next_date = $wrapper->field_week_date->value();
             return $next_date;
