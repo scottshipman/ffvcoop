@@ -2,22 +2,19 @@ USERS
 
 
 CART
-Authorize.net rule was set to inactive. Find way to export settings in feature.
-checkout pane configuration not exported, may need manual configuration
+ Authorize.net rule was set to inactive. Find way to export settings in feature.
+ checkout pane configuration not exported, may need manual configuration
+ Order Status needs manually created for PickedUp/Delivery
 
 PRODUCTS
-export the Product List view
-generate final products export list and import
-export product fields from entity field manager
-change menu to show new product-list + order now page
-change Order Now link button to correct Product order page.
-Product images need to be added manually
+ generate final products export list and import on final deployment
+ Product images need to be added manually on feed import
 
 MISC
-export non-commerce site settings into feature
+
 
 Coupons:
-Need to export coupons and coupons types (commerce_features?)
+ Manually create coupon instances on deployment
 
 
 
@@ -30,6 +27,11 @@ Theory for recurring orders
 4. Cron job gets all recurring-pending orders and processes payment - updates status.
 
 Delivery Module
- - only add block when not in cart
- - force shipping address if in cart
  - report of only delivery orders for current week
+
+Calendar Module
+ Run widget to create calendar upon first install so they exist.
+
+Orders:
+ Need Current week line item report.
+ Need "not picked up yet" report.
