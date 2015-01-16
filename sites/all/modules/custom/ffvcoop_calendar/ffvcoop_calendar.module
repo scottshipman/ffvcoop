@@ -176,9 +176,11 @@ function get_year_list() {
  */
 
 function ffvcoop_calendar_year_exists($year){
+    $ts[0] = strtotime(date($year . '-01-01 00:00:00')) ;
+    $ts[1] = strtotime(date($year . '-12-31 23:59:59'));
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'pickup_date')
-        ->fieldCondition('field_week_date','value', $year, 'CONTAINS');
+        ->fieldCondition('field_week_date','value', $ts, 'BETWEEN');
 
     $result = $query->execute();
     if(isset($result['pickup_date'])){
@@ -231,8 +233,33 @@ function ffvcoop_calendar_create_pickup_dates($year=2015){
  * Hooks commerce_order_presave
  * Adds a pickup date value to an order before saving.
  */
-function ffvcoop_calendar_commerce_order_presave($order){
-// get the pickup date somehow
+function ffvcoop_calendar_commerce_cart_product_add($order, $product, $quantity, $line_item) {
 
-//	$order->commerce_line_items['und'][] = $pickeup_date; //what is the date field on the order
+    $pickup_date = get_next_pickup_date(); // get next pickup date
+
+    $wrapper = entity_metadata_wrapper('commerce_order', $order->order_number);
+    $wrapper->field_week_date=$pickup_date;
+    $wrapper->save();
+}
+
+function get_next_pickup_date(){
+    $ts = time(); //now
+    //$ts[1] = time() + (7 * 24 * 60 * 60); //next week
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'pickup_date')
+        ->fieldCondition('field_week_date','value', $ts, '>') //dates greater than now
+        ->range(0,1); //limit to one result
+    $result = $query->execute();
+    if(isset($result['pickup_date'])){
+        $entity_id = array_keys($result['pickup_date']);
+        if($entity_id) {
+            $entity = entity_load('pickup_date', $entity_id);
+            $wrapper = entity_metadata_wrapper('pickup_date', $entity_id[0]);
+            $next_date = $wrapper->field_week_date->value();
+            return $next_date;
+        }
+        else {
+            drupal_set_message("Error adding item to Cart. There is no future scheduled pickup date in the system. Please contact FFVCOOP to resolve this.");
+            return FALSE;
+        }   }
 }

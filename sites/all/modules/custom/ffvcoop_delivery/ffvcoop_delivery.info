@@ -1,0 +1,7 @@
+;$Id$
+
+name = FFVCOOP Delivery
+description = Add to Cart Delivery block and rules
+package = FFVCOOP
+core = 7.x
+files[] = ffvcoop_delivery.module

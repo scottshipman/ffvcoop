@@ -18,3 +18,14 @@ export non-commerce site settings into feature
 
 Coupons:
 Need to export coupons and coupons types (commerce_features?)
+
+
+
+*****************************
+Theory for recurring orders
+*****************************
+1. Add to cart appends pickup date field to all line items (then line item report can be based on pickup date + charged order status)
+2. hook checkout form to add an option for recurring (select # of weeks)
+3. Hook checkout submit process to add orders with "recurring-pending" status cloned from current order.
+4. Cron job gets all recurring-pending orders and processes payment - updates status.
+

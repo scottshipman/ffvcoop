@@ -1,0 +1,75 @@
+
+
+<?php
+/**
+ * FFVCOOP Delivery
+ *
+ */
+
+
+/**
+ *  Implements block info().
+ */
+function ffvcoop_delivery_block_info() {
+    $blocks = array();
+    $blocks['ffvcoop_delivery_form'] = array(
+        'info' => t('Add Delivery to Cart'),
+    );
+
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ * Generate calendar by Year Block
+ */
+function ffvcoop_delivery_block_view($delta='') {
+    $block = array();
+
+    switch($delta) {
+        case 'ffvcoop_delivery_form' :
+            $block['content'] = add_delivery_to_cart_construct();
+            break;
+    }
+
+    return $block;
+}
+
+
+function add_delivery_to_cart_construct() {
+    $show_quantity = FALSE;
+    $data = array();
+
+    // get current CART and see if line item for delivery exists. If so, do not show this block.
+
+    if($delivery = get_delivery_products()) {
+        $product = commerce_product_load($delivery);
+        $line_item = commerce_product_line_item_new($product, 1, NULL, $data, 'product');
+        $wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+        $line_item->data['context']['product_ids']=array(0=>$delivery);
+        $context=array();
+        $form = drupal_get_form('commerce_cart_add_to_cart_form', $line_item);
+        $form['submit']['#value'] = 'Add Delivery to your Order';
+        return "<div id='add-delivery'>" . drupal_render($form) . "</div>";
+    } else {
+        return NULL;
+    }
+}
+//commerce_cart_add_to_cart_form($form, &$form_state, $line_item, $show_quantity, $context)
+
+function get_delivery_products(){
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'commerce_product')
+        ->entityCondition('bundle', 'delivery')
+        ->propertyCondition('status', 1)
+        ->range(0,1);
+
+    $result = $query->execute();
+    if(isset($result['commerce_product'])){
+        $entity_ids = array_keys($result['commerce_product']);
+        if($entity_ids) {
+            return $entity_ids[0];}
+        else {
+            return FALSE;
+        }   }
+}
