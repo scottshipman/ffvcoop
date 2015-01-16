@@ -62,5 +62,73 @@ function ffvcoop_commerce_init_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_hide_shipping_pane_if_not_delivery'] = entity_import('rules_config', '{ "rules_hide_shipping_pane_if_not_delivery" : {
+      "LABEL" : "Hide Shipping Pane if Not Delivery",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "FFVCOOP" ],
+      "REQUIRES" : [ "commerce_order", "commerce_rules_extra" ],
+      "ON" : { "commerce_rules_extra_process_checkout_pane" : [] },
+      "IF" : [
+        { "NOT commerce_order_contains_product_type" : {
+            "commerce_order" : [ "commerce_order" ],
+            "product_type" : { "value" : { "delivery" : "delivery" } },
+            "operator" : "\\u003E=",
+            "value" : "1"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_rules_extra_change_pane" : {
+            "pane_id" : "customer_profile_shipping",
+            "page_id" : "\\u003Csame\\u003E",
+            "enabled" : 0
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_remove_delivery_if_no_baskets'] = entity_import('rules_config', '{ "rules_remove_delivery_if_no_baskets" : {
+      "LABEL" : "Remove Delivery if no Baskets",
+      "PLUGIN" : "reaction rule",
+      "WEIGHT" : "-10",
+      "OWNER" : "rules",
+      "TAGS" : [ "ffvcoop" ],
+      "REQUIRES" : [ "commerce_order", "rules", "ffvcoop_delivery", "entity" ],
+      "ON" : { "commerce_order_update" : [] },
+      "IF" : [
+        { "NOT commerce_order_contains_product_type" : {
+            "commerce_order" : [ "commerce_order" ],
+            "product_type" : { "value" : { "product" : "product" } },
+            "operator" : "\\u003E=",
+            "value" : "1"
+          }
+        },
+        { "commerce_order_contains_product_type" : {
+            "commerce_order" : [ "commerce_order" ],
+            "product_type" : { "value" : { "delivery" : "delivery" } },
+            "operator" : "\\u003E=",
+            "value" : "1"
+          }
+        },
+        { "data_is" : { "data" : [ "commerce-order:status" ], "value" : "cart" } },
+        { "commerce_order_compare_total_product_quantity" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "1"
+          }
+        }
+      ],
+      "DO" : [
+        { "ffvcoop_delivery_remove_delivery" : { "commerce_order" : [ "commerce_order" ] } },
+        { "drupal_message" : {
+            "message" : "The Delivery item was removed because no Baskets were left in the cart.",
+            "type" : "warning",
+            "repeat" : 0
+          }
+        }
+      ]
+    }
+  }');
   return $items;
 }

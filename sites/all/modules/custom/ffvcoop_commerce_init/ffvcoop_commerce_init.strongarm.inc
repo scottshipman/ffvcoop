@@ -142,6 +142,41 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_shipping_addressbook';
+  $strongarm->value = 1;
+  $export['commerce_customer_profile_shipping_addressbook'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_shipping_field';
+  $strongarm->value = 'commerce_customer_shipping';
+  $export['commerce_customer_profile_shipping_field'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_shipping_profile_copy';
+  $strongarm->value = 1;
+  $export['commerce_customer_profile_shipping_profile_copy'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_shipping_profile_copy_default';
+  $strongarm->value = 1;
+  $export['commerce_customer_profile_shipping_profile_copy_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_shipping_profile_copy_source';
+  $strongarm->value = 'billing';
+  $export['commerce_customer_profile_shipping_profile_copy_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_order_account_pane_auth_display';
   $strongarm->value = 1;
   $export['commerce_order_account_pane_auth_display'] = $strongarm;
@@ -206,6 +241,32 @@ function ffvcoop_commerce_init_strongarm() {
     ),
   );
   $export['field_bundle_settings_commerce_coupon__new_user_fixed'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_commerce_product__delivery';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'sku' => array(
+          'weight' => '-10',
+        ),
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'status' => array(
+          'weight' => '35',
+        ),
+        'metatags' => array(
+          'weight' => '10',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_commerce_product__delivery'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -279,6 +340,23 @@ function ffvcoop_commerce_init_strongarm() {
     ),
   );
   $export['field_bundle_settings_commerce_product__product'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_pickup_date__pickup_date';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '10',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_pickup_date__pickup_date'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
