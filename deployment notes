@@ -35,3 +35,6 @@ Calendar Module
 Orders:
  Need Current week line item report.
  Need "not picked up yet" report.
+
+ Modules to Enable:
+ ** Generate list of modules to enable on deployment **

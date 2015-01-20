@@ -41,7 +41,7 @@ function add_delivery_to_cart_construct() {
     $data = array();
   GLOBAL $user;
   $uid = $user->uid;
-  $cart = commerce_cart_order_load($uid);
+  if(!$cart = commerce_cart_order_load($uid)) {return FALSE;};
   $cart_li = count($cart->commerce_line_items);
   //check to see if a delivery already exists in cart and if so dont show block
   $order=commerce_order_load($cart->order_id);
@@ -173,4 +173,17 @@ function ffvcoop_delivery_order_remove_delivery($order) {
   commerce_order_save($order);
 
   return $order;
+}
+
+function ffvcoop_delivery_form_alter($form, &$form_state){
+    if($form['#form_id']=='commerce_checkout_form_checkout'){
+        $form['customer_profile_shipping']['#title'] = 'Delivery Information';
+        $form['customer_profile_shipping']['commerce_customer_profile_copy']['#title'] = 'My <em class="placeholder">Delivery information</em> is the same as my <em class="placeholder">Billing information</em>.';
+        drupal_add_js('jQuery(document).ready(function ($) {
+            $("fieldset.customer_profile_shipping a").text("Delivery Information");
+            $("div.form-item-customer-profile-shipping-commerce-customer-profile-copy label").text("My Delivery information is the same as my Billing information.");
+        });'
+            ,array('type' => 'inline', 'scope' => 'footer', 'weight' => 1 ));
+        $foo='';
+    }
 }

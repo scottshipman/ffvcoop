@@ -199,5 +199,31 @@ checkout*',
     'visibility' => 0,
   );
 
+  $export['views-ffvcoop_line_items-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'ffvcoop_line_items-block_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'manage/delivery',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   return $export;
 }

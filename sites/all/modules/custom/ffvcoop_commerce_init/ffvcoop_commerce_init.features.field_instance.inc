@@ -573,6 +573,41 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_customer_profile-billing-field_customer_phone'
+  $field_instances['commerce_customer_profile-billing-field_customer_phone'] = array(
+    'bundle' => 'billing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'phone',
+        'settings' => array(),
+        'type' => 'phone',
+        'weight' => -9,
+      ),
+    ),
+    'entity_type' => 'commerce_customer_profile',
+    'field_name' => 'field_customer_phone',
+    'label' => 'Phone',
+    'required' => FALSE,
+    'settings' => array(
+      'ca_phone_parentheses' => 1,
+      'ca_phone_separator' => '-',
+      'phone_country_code' => 0,
+      'phone_default_country_code' => 1,
+      'phone_int_max_length' => 15,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'phone',
+      'settings' => array(),
+      'type' => 'phone_textfield',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'commerce_customer_profile-shipping-commerce_customer_address'
   $field_instances['commerce_customer_profile-shipping-commerce_customer_address'] = array(
     'bundle' => 'shipping',
@@ -635,6 +670,40 @@ function ffvcoop_commerce_init_field_default_field_instances() {
       ),
       'type' => 'addressfield_standard',
       'weight' => -10,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_customer_profile-shipping-field_order_notes'
+  $field_instances['commerce_customer_profile-shipping-field_order_notes'] = array(
+    'bundle' => 'shipping',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you have special Delivery Instructions, please specify them here.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => -9,
+      ),
+    ),
+    'entity_type' => 'commerce_customer_profile',
+    'field_name' => 'field_order_notes',
+    'label' => 'Delivery Instructions',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 12,
     ),
   );
 
@@ -2287,6 +2356,42 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_customer_phone'
+  $field_instances['user-user-field_customer_phone'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'phone',
+        'settings' => array(),
+        'type' => 'phone',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_customer_phone',
+    'label' => 'Phone',
+    'required' => 1,
+    'settings' => array(
+      'ca_phone_parentheses' => 1,
+      'ca_phone_separator' => '-',
+      'phone_country_code' => 0,
+      'phone_default_country_code' => 1,
+      'phone_int_max_length' => 15,
+      'user_register_form' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'phone',
+      'settings' => array(),
+      'type' => 'phone_textfield',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_order_count'
   $field_instances['user-user-field_order_count'] = array(
     'bundle' => 'user',
@@ -2338,11 +2443,13 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   t('Billing information');
   t('Coupon');
   t('Coupon Code');
+  t('Delivery Instructions');
   t('Description');
   t('Display path');
   t('End period');
   t('Fixed Amount');
   t('Fixed price');
+  t('If you have special Delivery Instructions, please specify them here.');
   t('Initial period');
   t('Initial price');
   t('Line items');
@@ -2352,6 +2459,7 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   t('Order Count');
   t('Order total');
   t('Percentage Amount');
+  t('Phone');
   t('Pickup Date');
   t('Price');
   t('Product');
