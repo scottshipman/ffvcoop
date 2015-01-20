@@ -30,27 +30,6 @@ function ffvcoop_configuration_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_customer-list:customer-list
-  $menu_links['main-menu_customer-list:customer-list'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'customer-list',
-    'router_path' => 'customer-list',
-    'link_title' => 'Customer List',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_customer-list:customer-list',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'parent_identifier' => 'main-menu_old-order-system:node/8',
-  );
   // Exported menu link: main-menu_home:<front>
   $menu_links['main-menu_home:<front>'] = array(
     'menu_name' => 'main-menu',
@@ -66,26 +45,6 @@ function ffvcoop_configuration_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_old-order-system:node/8
-  $menu_links['main-menu_old-order-system:node/8'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/8',
-    'router_path' => 'node/%',
-    'link_title' => 'Old Order System',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_old-order-system:node/8',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 1,
-    'expanded' => 1,
-    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_products:product-list
@@ -146,37 +105,13 @@ function ffvcoop_configuration_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
   );
-  // Exported menu link: main-menu_weekly-orders:weekly-customer-orders
-  $menu_links['main-menu_weekly-orders:weekly-customer-orders'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'weekly-customer-orders',
-    'router_path' => 'weekly-customer-orders',
-    'link_title' => 'Weekly Orders',
-    'options' => array(
-      'identifier' => 'main-menu_weekly-orders:weekly-customer-orders',
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => -50,
-    'customized' => 1,
-    'parent_identifier' => 'main-menu_old-order-system:node/8',
-  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Current Orders');
-  t('Customer List');
   t('Home');
-  t('Old Order System');
   t('Products');
   t('Send Bulk Email');
   t('Shopping Carts');
-  t('Weekly Orders');
 
 
   return $menu_links;

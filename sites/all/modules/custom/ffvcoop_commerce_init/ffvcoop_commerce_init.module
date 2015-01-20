@@ -11,3 +11,96 @@ function ffvcoop_commerce_init_commerce_checkout_complete($order){
   $existingUser->field_order_count['und'][0]['value'] = intval($existingUser->field_order_count['und'][0]['value']) +1;
   user_save((object) array('uid' => $existingUser->uid), (array) $existingUser);
 }
+
+/**
+ * Implements hook_menu()
+ */
+function ffvcoop_commerce_init_menu(){
+  $items = array();
+  $items['manage/weekly-product-report'] = array (
+    'title' => 'Weekly Product Report',
+    'description' => 'Manage the Pickup Dates calendar',
+    'page callback' => 'line_item_report_page',
+    'access arguments' => array('access site reports'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function line_item_report_page(){
+  return '<h2>Weekly Order Summary</h2>' . drupal_render(drupal_get_form('line_item_date_select_form')) . '<div id="line-item-results"></div>';
+}
+
+function line_item_date_select_form($form, &$form_state){
+  $form['week_date'] = array(
+    '#type' => 'date_popup',
+    '#date_format' => 'Y-m-d',
+    '#date_year_range' => '-1:+0',
+    '#required' => TRUE,
+    '#title' => t("Select the Pickup Date"),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+    '#ajax' => array(
+      'callback' => 'line_item_date_select_form_submit',
+      'wrapper' => 'line-item-results',
+      'method' => 'replace',
+      'effect' => 'fade',
+    ),
+  );
+
+  return $form;
+}
+
+function line_item_date_select_form_submit($form, &$form_state){
+  $qty=array();
+  $report = '<ul>';
+  $query = new EntityFieldQuery();
+  $date = $form_state['values']['week_date'];
+
+  $query->entityCondition('entity_type', 'commerce_line_item')
+    ->propertyCondition('type','product','=')
+    ->addMetaData('account', user_load(1)); // Run the query as user 1.
+
+  $result = $query->execute();
+
+  if (isset($result['commerce_line_item'])) {
+    $items_nids = array_keys($result['commerce_line_item']);
+    $items = entity_load('commerce_line_item', $items_nids);
+    foreach($items as $item){
+      $item_wrapper = entity_metadata_wrapper('commerce_line_item', $item->line_item_id);
+      if(get_order_pickup_date($item->order_id) == $form_state['values']['week_date']){
+        if($name = is_line_item_a_product($item_wrapper)){
+          //do something
+          $qty[$name] = $qty[$name] + intval($item->quantity);
+        }
+      }
+    }
+    foreach($qty as $title=>$value){
+      $report.= '<li class="row-summary">' . $title . ' - <span class="total">' . $value . '</span></li>';
+    }
+  }
+  $report .='</ul>';
+return $report;
+}
+
+function is_line_item_a_product($line_item_wrapper){
+  $type = $line_item_wrapper->commerce_product->product_id->value();
+  $product_item = commerce_product_load($type);
+  $product_type = $product_item->type;
+  if($product_type!='product'){
+    return FALSE;
+  }
+  return $product_item->title;
+}
+
+function get_order_pickup_date($order_id){
+  $order = commerce_order_load($order_id);
+  if(in_array($order->status, array('charged', 'cardonfile_charged', 'completed', 'pickedup/delivered'))){
+  $date = date('Y-m-d', $order->field_week_date['und'][0]['value']);
+   return $date;
+  }
+  return FALSE;
+}

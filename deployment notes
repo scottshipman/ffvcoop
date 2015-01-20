@@ -27,14 +27,21 @@ Theory for recurring orders
 4. Cron job gets all recurring-pending orders and processes payment - updates status.
 
 Delivery Module
- - report of only delivery orders for current week
+ - make delivery pane required when visible
 
 Calendar Module
  Run widget to create calendar upon first install so they exist.
 
 Orders:
- Need Current week line item report.
+Verify all status names for line item report status check
  Need "not picked up yet" report.
 
  Modules to Enable:
  ** Generate list of modules to enable on deployment **
+
+ Weekly Email (views Send)
+  - Update to use users + customers
+
+Permissions
+  - auth users can view own orders
+  - create role for store employees to see all reports and pages (manage orders?)

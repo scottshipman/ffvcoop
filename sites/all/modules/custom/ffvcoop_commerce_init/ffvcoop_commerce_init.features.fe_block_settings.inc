@@ -209,8 +209,8 @@ checkout*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ffvcoop',
         'weight' => 0,
       ),

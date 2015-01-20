@@ -71,7 +71,7 @@ function ffvcoop_calendar_menu(){
         'title' => 'FFVCOOP Calendar',
         'description' => 'Manage the Pickup Dates calendar',
         'page callback' => 'ffvcoop_calendar_page',
-        'access arguments' => array('access content'),
+        'access arguments' => array('access site reports'),
         'type' => MENU_NORMAL_ITEM,
     );
     return $items;

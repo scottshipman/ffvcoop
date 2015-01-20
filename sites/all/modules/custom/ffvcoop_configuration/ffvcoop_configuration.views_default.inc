@@ -157,7 +157,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['field_customer_email']['table'] = 'field_data_field_customer_email';
   $handler->display->display_options['fields']['field_customer_email']['field'] = 'field_customer_email';
   $handler->display->display_options['fields']['field_customer_email']['element_label_colon'] = FALSE;
-  /* Field: Content: Phone */
+  /* Field: Field: Phone */
   $handler->display->display_options['fields']['field_customer_phone']['id'] = 'field_customer_phone';
   $handler->display->display_options['fields']['field_customer_phone']['table'] = 'field_data_field_customer_phone';
   $handler->display->display_options['fields']['field_customer_phone']['field'] = 'field_customer_phone';
@@ -1764,7 +1764,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['field_customer_last_name']['field'] = 'field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['relationship'] = 'field_order_customer_target_id';
   $handler->display->display_options['fields']['field_customer_last_name']['element_label_colon'] = FALSE;
-  /* Field: Content: Phone */
+  /* Field: Field: Phone */
   $handler->display->display_options['fields']['field_customer_phone']['id'] = 'field_customer_phone';
   $handler->display->display_options['fields']['field_customer_phone']['table'] = 'field_data_field_customer_phone';
   $handler->display->display_options['fields']['field_customer_phone']['field'] = 'field_customer_phone';
@@ -1865,7 +1865,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['field_customer_delivery_address']['alter']['text'] = '<a href="node/[nid]/edit" target="_blank">edit:</a> [field_customer_delivery_address]';
   $handler->display->display_options['fields']['field_customer_delivery_address']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_customer_delivery_address']['empty'] = '<a href="node/[nid]/edit" target="_blank"> Add Delivery</a>';
-  /* Field: customer order: Order Notes */
+  /* Field: Field: Order Notes */
   $handler->display->display_options['fields']['field_order_notes']['id'] = 'field_order_notes';
   $handler->display->display_options['fields']['field_order_notes']['table'] = 'field_data_field_order_notes';
   $handler->display->display_options['fields']['field_order_notes']['field'] = 'field_order_notes';
