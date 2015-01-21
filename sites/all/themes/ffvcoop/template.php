@@ -137,4 +137,13 @@ function ffvcoop_preprocess_page(&$vars) {
     if(arg(0) == "user" && arg(1) == "login") {
         drupal_goto("");
     }
+
+    // login link for template
+    global $user;
+    if($user->uid >0 ){
+        $user_link = 'Welcome ' . $user->name . ' | <A href="/user/logout">logout</a>';
+    }    else {
+        $user_link = '<a href="/user/current-user/login">My Account</a> | <a href="/user/new-user">Join Co-op</a>';
+    }
+    $vars['user_link'] = $user_link;
 }

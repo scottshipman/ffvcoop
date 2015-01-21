@@ -45,6 +45,7 @@
         )); ?>
       </nav>
     <?php endif; ?>
+    <div id="user-link" style="float:right;"><?php echo $user_link ?></div>
 	<div id="email-header"><a href="product-list">Order Now</a></div>
     <?php print render($page['header']); ?>
 
