@@ -141,7 +141,7 @@ function ffvcoop_preprocess_page(&$vars) {
     // login link for template
     global $user;
     if($user->uid >0 ){
-        $user_link = 'Welcome ' . $user->name . ' | <A href="/user/logout">logout</a>';
+        $user_link = 'Welcome <a href="/users/' . $user->name . '"> ' . $user->name . '</a> | <A href="/user/logout">logout</a>';
     }    else {
         $user_link = '<a href="/user/current-user/login">My Account</a> | <a href="/user/new-user">Join Co-op</a>';
     }
