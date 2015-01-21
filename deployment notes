@@ -1,22 +1,3 @@
-USERS
-
-
-CART
- Authorize.net rule was set to inactive. Find way to export settings in feature.
- checkout pane configuration not exported, may need manual configuration
- Order Status needs manually created for PickedUp/Delivery
-
-PRODUCTS
- generate final products export list and import on final deployment
- Product images need to be added manually on feed import
-
-MISC
-
-
-Coupons:
- Manually create coupon instances on deployment
-
-
 
 *****************************
 Theory for recurring orders
@@ -29,19 +10,50 @@ Theory for recurring orders
 Delivery Module
  - make delivery pane required when visible
 
-Calendar Module
- Run widget to create calendar upon first install so they exist.
-
 Orders:
-Verify all status names for line item report status check
- Need "not picked up yet" report.
-
- Modules to Enable:
- ** Generate list of modules to enable on deployment **
+  Verify all status names for line item report status check
+  Need "not picked up yet" report.
 
  Weekly Email (views Send)
   - Update to use users + customers
 
-Permissions
-  - auth users can view own orders
-  - create role for store employees to see all reports and pages (manage orders?)
+
+Annual Fee Module (probably handled with rules)
+ - create Annual Fee Product (Product>Fees)
+ - widget to clear Fee Paid field
+ - Auto Add to Order if not paid and has at least 1 order.
+
+Add Log out link in header when logged in, login when anon
+
+Add Refund Policy, Terms and Conditions, SSL Checkout, Privacy Policy
+
+****************************************************************************
+
+test Deploy Results and TODO
+
+****************************************************************************
+
+1. Enable Modules:
+FIRST DISABLE METATAGS
+
+   All Commerce modules but Tax, Payment Example
+   Commerce Contrib - Authorize.net, add to cart xtras, addressbook, cart ajax, feeds
+   Commerce Shipping - shipping, UI
+   Addressfield module
+   Features - Features, commerce init
+   Features Xtra
+   Other - Strongarm, commerce feeds multi
+
+2. Features - enable all FFVCOOP features
+3. Fix Menu items.
+4. Add Products
+5. Add Coupon Type for new User Fixed (new_user_coupon)
+        and add coupon for January code
+6. Checkout Settings:
+     Re-order checkout pane make them collapsible
+     Enable Auth.net payment method
+7. Permissions - allow anonymous to access checkout, config-people allow anon registration
+8. verify error reporting at admin/config/development/logging
+9. Add manager role to mark and kathy
+10. FIX LINE ITEM VIEW TO SHOW TITLE (re-add title field and remove old one, reexport to feature)
+11. Add calendar view block to configuration/calendar, Run Calendar for 2015
