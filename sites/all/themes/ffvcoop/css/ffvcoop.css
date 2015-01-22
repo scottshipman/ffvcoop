@@ -64,9 +64,19 @@
   	}
  
  div#email-header a:hover, div#email-header a:visited{
- color:white;
+ color:rgb(242,176,53);
  text-decoration:none;
  }
+
+.header__site-link:hover{
+    color:rgb(242,176,53);
+    text-decoration: none;
+}
+
+div#email-header a:visited{
+    color:white
+    text-decoration:none;
+}
  
  div#content {
  	margin-top:26px;
@@ -105,10 +115,17 @@ div#phone-nav {
 div#email-header {
 	float:right;
 	position:relative;
-	margin-right:10px;
-	margin-top:15px;
+    /* margin-right:10px; */
+    /* margin-top:15px; */
 	font-size:2em;
-} 
+}
+
+div#user-link a{
+    color:white;
+}
+div#user-link a:hover{
+    color:rgb(242,176,53);
+}
 
 div#highlighted{
 	margin-top:30px;
