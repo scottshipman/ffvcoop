@@ -12,9 +12,8 @@ Delivery Module
 
 Orders:
   Verify all status names for line item report status check
-  Need "not picked up yet" report.
 
- Weekly Email (views Send)
+Weekly Email (views Send)
   - Update to use users + customers
 
 
@@ -23,7 +22,6 @@ Annual Fee Module (probably handled with rules)
  - widget to clear Fee Paid field
  - Auto Add to Order if not paid and has at least 1 order.
 
-Add Log out link in header when logged in, login when anon
 
 Add Refund Policy, Terms and Conditions, SSL Checkout, Privacy Policy, text about Fee on Register page
 
@@ -45,15 +43,14 @@ FIRST DISABLE METATAGS
    Other - Strongarm, commerce feeds multi
 
 2. Features - enable all FFVCOOP features
-3. Fix Menu items.
+DONE 3. Fix Menu items.
 4. Add Products
-5. Add Coupon Type for new User Fixed (new_user_coupon)
-        and add coupon for January code
+5. add coupon for January / February code
 6. Checkout Settings:
      Re-order checkout pane make them collapsible
      Enable Auth.net payment method
-7. Permissions - allow anonymous to access checkout, config-people allow anon registration
-8. verify error reporting at admin/config/development/logging
+DONE 7. Permissions - allow anonymous to access checkout, config-people allow anon registration
+DONE 8. verify error reporting at admin/config/development/logging
 9. Add manager role to mark and kathy
-10. FIX LINE ITEM VIEW TO SHOW TITLE (re-add title field and remove old one, reexport to feature)
-11. Add calendar view block to configuration/calendar, Run Calendar for 2015
+DONE 10. FIX LINE ITEM VIEW TO SHOW TITLE (re-add title field and remove old one, reexport to feature)
+DONE 11. Add calendar view block to configuration/calendar, Run Calendar for 2015

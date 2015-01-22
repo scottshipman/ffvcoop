@@ -15,6 +15,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'access checkout',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'commerce_checkout',
@@ -77,6 +78,15 @@ function ffvcoop_commerce_init_user_default_permissions() {
       'manager' => 'manager',
     ),
     'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'administer commerce_recurring entities'.
+  $permissions['administer commerce_recurring entities'] = array(
+    'name' => 'administer commerce_recurring entities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
   );
 
   // Exported permission: 'administer coupon settings'.
@@ -217,9 +227,9 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_coupon',
   );
 
-  // Exported permission: 'create commerce_coupon entities of bundle new_user_fixed'.
-  $permissions['create commerce_coupon entities of bundle new_user_fixed'] = array(
-    'name' => 'create commerce_coupon entities of bundle new_user_fixed',
+  // Exported permission: 'create commerce_coupon entities of bundle new_user_coupon'.
+  $permissions['create commerce_coupon entities of bundle new_user_coupon'] = array(
+    'name' => 'create commerce_coupon entities of bundle new_user_coupon',
     'roles' => array(),
     'module' => 'commerce_coupon',
   );
@@ -304,6 +314,33 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
+  // Exported permission: 'create commerce_recurring entities'.
+  $permissions['create commerce_recurring entities'] = array(
+    'name' => 'create commerce_recurring entities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'create commerce_recurring entities of bundle order'.
+  $permissions['create commerce_recurring entities of bundle order'] = array(
+    'name' => 'create commerce_recurring entities of bundle order',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'create commerce_recurring entities of bundle product'.
+  $permissions['create commerce_recurring entities of bundle product'] = array(
+    'name' => 'create commerce_recurring entities of bundle product',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
   // Exported permission: 'create own card data'.
   $permissions['create own card data'] = array(
     'name' => 'create own card data',
@@ -384,9 +421,9 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_coupon',
   );
 
-  // Exported permission: 'edit any commerce_coupon entity of bundle new_user_fixed'.
-  $permissions['edit any commerce_coupon entity of bundle new_user_fixed'] = array(
-    'name' => 'edit any commerce_coupon entity of bundle new_user_fixed',
+  // Exported permission: 'edit any commerce_coupon entity of bundle new_user_coupon'.
+  $permissions['edit any commerce_coupon entity of bundle new_user_coupon'] = array(
+    'name' => 'edit any commerce_coupon entity of bundle new_user_coupon',
     'roles' => array(),
     'module' => 'commerce_coupon',
   );
@@ -471,6 +508,33 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
+  // Exported permission: 'edit any commerce_recurring entity'.
+  $permissions['edit any commerce_recurring entity'] = array(
+    'name' => 'edit any commerce_recurring entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'edit any commerce_recurring entity of bundle order'.
+  $permissions['edit any commerce_recurring entity of bundle order'] = array(
+    'name' => 'edit any commerce_recurring entity of bundle order',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'edit any commerce_recurring entity of bundle product'.
+  $permissions['edit any commerce_recurring entity of bundle product'] = array(
+    'name' => 'edit any commerce_recurring entity of bundle product',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
   // Exported permission: 'edit own card data'.
   $permissions['edit own card data'] = array(
     'name' => 'edit own card data',
@@ -504,9 +568,9 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_coupon',
   );
 
-  // Exported permission: 'edit own commerce_coupon entities of bundle new_user_fixed'.
-  $permissions['edit own commerce_coupon entities of bundle new_user_fixed'] = array(
-    'name' => 'edit own commerce_coupon entities of bundle new_user_fixed',
+  // Exported permission: 'edit own commerce_coupon entities of bundle new_user_coupon'.
+  $permissions['edit own commerce_coupon entities of bundle new_user_coupon'] = array(
+    'name' => 'edit own commerce_coupon entities of bundle new_user_coupon',
     'roles' => array(),
     'module' => 'commerce_coupon',
   );
@@ -592,6 +656,33 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
+  // Exported permission: 'edit own commerce_recurring entities'.
+  $permissions['edit own commerce_recurring entities'] = array(
+    'name' => 'edit own commerce_recurring entities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'edit own commerce_recurring entities of bundle order'.
+  $permissions['edit own commerce_recurring entities of bundle order'] = array(
+    'name' => 'edit own commerce_recurring entities of bundle order',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'edit own commerce_recurring entities of bundle product'.
+  $permissions['edit own commerce_recurring entities of bundle product'] = array(
+    'name' => 'edit own commerce_recurring entities of bundle product',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
   // Exported permission: 'update payments'.
   $permissions['update payments'] = array(
     'name' => 'update payments',
@@ -635,9 +726,9 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_coupon',
   );
 
-  // Exported permission: 'view any commerce_coupon entity of bundle new_user_fixed'.
-  $permissions['view any commerce_coupon entity of bundle new_user_fixed'] = array(
-    'name' => 'view any commerce_coupon entity of bundle new_user_fixed',
+  // Exported permission: 'view any commerce_coupon entity of bundle new_user_coupon'.
+  $permissions['view any commerce_coupon entity of bundle new_user_coupon'] = array(
+    'name' => 'view any commerce_coupon entity of bundle new_user_coupon',
     'roles' => array(),
     'module' => 'commerce_coupon',
   );
@@ -722,6 +813,33 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_product',
   );
 
+  // Exported permission: 'view any commerce_recurring entity'.
+  $permissions['view any commerce_recurring entity'] = array(
+    'name' => 'view any commerce_recurring entity',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'view any commerce_recurring entity of bundle order'.
+  $permissions['view any commerce_recurring entity of bundle order'] = array(
+    'name' => 'view any commerce_recurring entity of bundle order',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'view any commerce_recurring entity of bundle product'.
+  $permissions['view any commerce_recurring entity of bundle product'] = array(
+    'name' => 'view any commerce_recurring entity of bundle product',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
   // Exported permission: 'view own card data'.
   $permissions['view own card data'] = array(
     'name' => 'view own card data',
@@ -755,9 +873,9 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_coupon',
   );
 
-  // Exported permission: 'view own commerce_coupon entities of bundle new_user_fixed'.
-  $permissions['view own commerce_coupon entities of bundle new_user_fixed'] = array(
-    'name' => 'view own commerce_coupon entities of bundle new_user_fixed',
+  // Exported permission: 'view own commerce_coupon entities of bundle new_user_coupon'.
+  $permissions['view own commerce_coupon entities of bundle new_user_coupon'] = array(
+    'name' => 'view own commerce_coupon entities of bundle new_user_coupon',
     'roles' => array(),
     'module' => 'commerce_coupon',
   );
@@ -841,6 +959,33 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view own commerce_product entities of bundle recurring',
     'roles' => array(),
     'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'view own commerce_recurring entities'.
+  $permissions['view own commerce_recurring entities'] = array(
+    'name' => 'view own commerce_recurring entities',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'view own commerce_recurring entities of bundle order'.
+  $permissions['view own commerce_recurring entities of bundle order'] = array(
+    'name' => 'view own commerce_recurring entities of bundle order',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
+  );
+
+  // Exported permission: 'view own commerce_recurring entities of bundle product'.
+  $permissions['view own commerce_recurring entities of bundle product'] = array(
+    'name' => 'view own commerce_recurring entities of bundle product',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_recurring',
   );
 
   // Exported permission: 'view payments'.

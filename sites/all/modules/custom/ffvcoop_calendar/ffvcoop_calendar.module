@@ -81,7 +81,7 @@ function ffvcoop_calendar_menu(){
 function ffvcoop_calendar_page(){
     $content['raw_markup'] = array(
         '#type' => 'markup',
-        '#markup' => "<h2>Manage Pickup Date Calendar</h2>",
+        '#markup' => "<h2>Pickup Date Weekly Calendar</h2>",
     );
 
     return $content;
@@ -124,7 +124,7 @@ function calendar_dates_by_year_form($form, &$form_state) {
     $options = get_year_list();
     if($options) {
         $disabled = FALSE;
-        $message = "Select a Year to create the Pickup dates for that year.";
+        $message = "<h3>Select a Year to create the Pickup dates for that year.</h3>";
     }
     $form['header'] = array(
         '#markup' => $message,
@@ -134,7 +134,7 @@ function calendar_dates_by_year_form($form, &$form_state) {
         '#type' => 'select',
         '#title' => t('Year'),
         '#options' => $options,
-        '#description' => t('Select a Year to generate. If a calendar already exists for a year, you wont see that year here.'),
+        '#description' => t('If a calendar already exists for a year, you wont see that year here.'),
     );
 
     $form['submit_button'] = array(

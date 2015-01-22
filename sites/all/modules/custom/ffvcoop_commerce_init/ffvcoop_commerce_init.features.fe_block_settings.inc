@@ -21,14 +21,16 @@ function ffvcoop_commerce_init_default_fe_block_settings() {
     'pages' => 'checkout*
 cart
 customer-list
-manage*',
+manage*
+configuration*
+admin*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
-        'region' => 'sidebar_second',
+        'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -26,
+        'weight' => -25,
       ),
       'ffvcoop_commerce' => array(
         'region' => 'sidebar_second',
@@ -47,16 +49,19 @@ manage*',
     'delta' => 'ffvcoop_delivery_form',
     'module' => 'ffvcoop_delivery',
     'node_types' => array(),
-    'pages' => 'product-list
-cart*
-checkout*',
+    'pages' => 'checkout*
+cart
+customer-list
+manage*
+configuration*
+admin*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
-        'region' => 'sidebar_second',
+        'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -25,
+        'weight' => -24,
       ),
       'ffvcoop_commerce' => array(
         'region' => '',
@@ -197,32 +202,6 @@ checkout*',
     ),
     'title' => '',
     'visibility' => 0,
-  );
-
-  $export['views-ffvcoop_line_items-block_1'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'ffvcoop_line_items-block_1',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => 'manage/delivery',
-    'roles' => array(),
-    'themes' => array(
-      'ffvcoop' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'ffvcoop',
-        'weight' => 0,
-      ),
-      'ffvcoop_commerce' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'ffvcoop_commerce',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 1,
   );
 
   return $export;

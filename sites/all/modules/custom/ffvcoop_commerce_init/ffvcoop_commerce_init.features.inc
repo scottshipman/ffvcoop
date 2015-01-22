@@ -29,9 +29,9 @@ function ffvcoop_commerce_init_commerce_coupon_default_types() {
       'metatags' => array(),
       'rdf_mapping' => array(),
     ),
-    'new_user_fixed' => array(
-      'type' => 'new_user_fixed',
-      'label' => 'New User Fixed',
+    'new_user_coupon' => array(
+      'type' => 'new_user_coupon',
+      'label' => 'New User Coupon',
       'weight' => 0,
       'data' => NULL,
       'status' => 1,

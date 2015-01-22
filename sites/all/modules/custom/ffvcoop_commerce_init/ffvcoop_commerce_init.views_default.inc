@@ -101,18 +101,17 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['quantity']['label'] = '';
   $handler->display->display_options['fields']['quantity']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['quantity']['precision'] = '0';
+  /* Field: Commerce Line Item: Title */
+  $handler->display->display_options['fields']['line_item_title_1']['id'] = 'line_item_title_1';
+  $handler->display->display_options['fields']['line_item_title_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['line_item_title_1']['field'] = 'line_item_title';
+  $handler->display->display_options['fields']['line_item_title_1']['label'] = '';
+  $handler->display->display_options['fields']['line_item_title_1']['element_label_colon'] = FALSE;
   /* Field: Commerce Line Item: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'commerce_line_item';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
-  /* Field: Commerce Line Item: Title */
-  $handler->display->display_options['fields']['line_item_title']['id'] = 'line_item_title';
-  $handler->display->display_options['fields']['line_item_title']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['line_item_title']['field'] = 'line_item_title';
-  $handler->display->display_options['fields']['line_item_title']['group_type'] = 'count';
-  $handler->display->display_options['fields']['line_item_title']['label'] = '';
-  $handler->display->display_options['fields']['line_item_title']['element_label_colon'] = FALSE;
   /* Field: Commerce Line Item: Label */
   $handler->display->display_options['fields']['line_item_label']['id'] = 'line_item_label';
   $handler->display->display_options['fields']['line_item_label']['table'] = 'commerce_line_item';
@@ -157,260 +156,6 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
   $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
   $handler->display->display_options['filters']['product_line_item_type']['value'] = '1';
-
-  /* Display: Delivery Orders */
-  $handler = $view->new_display('block', 'Delivery Orders', 'block_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Delivery Orders';
-  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'name',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['columns'] = array(
-    'line_item_id' => 'line_item_id',
-    'quantity' => 'quantity',
-    'type' => 'type',
-    'line_item_title' => 'line_item_title',
-    'line_item_label' => 'line_item_label',
-    'commerce_unit_price' => 'commerce_unit_price',
-    'commerce_total' => 'commerce_total',
-    'commerce_customer_shipping' => 'commerce_customer_shipping',
-    'order_id' => 'order_id',
-    'field_week_date' => 'field_week_date',
-    'mail' => 'mail',
-    'name' => 'name',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'line_item_id' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'quantity' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'type' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'line_item_title' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'line_item_label' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'commerce_unit_price' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'commerce_total' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'commerce_customer_shipping' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'order_id' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_week_date' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'mail' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Commerce Line Item: Order ID */
-  $handler->display->display_options['relationships']['order_id']['id'] = 'order_id';
-  $handler->display->display_options['relationships']['order_id']['table'] = 'commerce_line_item';
-  $handler->display->display_options['relationships']['order_id']['field'] = 'order_id';
-  /* Relationship: Commerce Order: Owner */
-  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['table'] = 'commerce_order';
-  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['relationship'] = 'order_id';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Commerce Line Item: Line item ID */
-  $handler->display->display_options['fields']['line_item_id']['id'] = 'line_item_id';
-  $handler->display->display_options['fields']['line_item_id']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['line_item_id']['field'] = 'line_item_id';
-  $handler->display->display_options['fields']['line_item_id']['label'] = 'ID';
-  $handler->display->display_options['fields']['line_item_id']['exclude'] = TRUE;
-  /* Field: Commerce Line Item: Quantity */
-  $handler->display->display_options['fields']['quantity']['id'] = 'quantity';
-  $handler->display->display_options['fields']['quantity']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['quantity']['field'] = 'quantity';
-  $handler->display->display_options['fields']['quantity']['label'] = '';
-  $handler->display->display_options['fields']['quantity']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['quantity']['precision'] = '0';
-  /* Field: Commerce Line Item: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
-  /* Field: Commerce Line Item: Title */
-  $handler->display->display_options['fields']['line_item_title']['id'] = 'line_item_title';
-  $handler->display->display_options['fields']['line_item_title']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['line_item_title']['field'] = 'line_item_title';
-  $handler->display->display_options['fields']['line_item_title']['label'] = '';
-  $handler->display->display_options['fields']['line_item_title']['element_label_colon'] = FALSE;
-  /* Field: Commerce Line Item: Label */
-  $handler->display->display_options['fields']['line_item_label']['id'] = 'line_item_label';
-  $handler->display->display_options['fields']['line_item_label']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['line_item_label']['field'] = 'line_item_label';
-  $handler->display->display_options['fields']['line_item_label']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['line_item_label']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['line_item_label']['alter']['text'] = '([line_item_label])';
-  /* Field: Commerce Line item: Unit price */
-  $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price']['label'] = '';
-  $handler->display->display_options['fields']['commerce_unit_price']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
-  $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
-    'calculation' => FALSE,
-  );
-  /* Field: Commerce Line item: Total */
-  $handler->display->display_options['fields']['commerce_total']['id'] = 'commerce_total';
-  $handler->display->display_options['fields']['commerce_total']['table'] = 'field_data_commerce_total';
-  $handler->display->display_options['fields']['commerce_total']['field'] = 'commerce_total';
-  $handler->display->display_options['fields']['commerce_total']['label'] = '';
-  $handler->display->display_options['fields']['commerce_total']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['commerce_total']['click_sort_column'] = 'amount';
-  $handler->display->display_options['fields']['commerce_total']['settings'] = array(
-    'calculation' => FALSE,
-  );
-  /* Field: Commerce Order: Shipping information */
-  $handler->display->display_options['fields']['commerce_customer_shipping']['id'] = 'commerce_customer_shipping';
-  $handler->display->display_options['fields']['commerce_customer_shipping']['table'] = 'field_data_commerce_customer_shipping';
-  $handler->display->display_options['fields']['commerce_customer_shipping']['field'] = 'commerce_customer_shipping';
-  $handler->display->display_options['fields']['commerce_customer_shipping']['relationship'] = 'order_id';
-  /* Field: Commerce Line Item: Order ID */
-  $handler->display->display_options['fields']['order_id']['id'] = 'order_id';
-  $handler->display->display_options['fields']['order_id']['table'] = 'commerce_line_item';
-  $handler->display->display_options['fields']['order_id']['field'] = 'order_id';
-  /* Field: Field: Week Date */
-  $handler->display->display_options['fields']['field_week_date']['id'] = 'field_week_date';
-  $handler->display->display_options['fields']['field_week_date']['table'] = 'field_data_field_week_date';
-  $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
-  $handler->display->display_options['fields']['field_week_date']['relationship'] = 'order_id';
-  $handler->display->display_options['fields']['field_week_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_week_date']['settings'] = array(
-    'format_type' => 'long',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
-  /* Field: Commerce Order: E-mail */
-  $handler->display->display_options['fields']['mail']['id'] = 'mail';
-  $handler->display->display_options['fields']['mail']['table'] = 'commerce_order';
-  $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  $handler->display->display_options['fields']['mail']['relationship'] = 'order_id';
-  $handler->display->display_options['fields']['mail']['render_as_link'] = 0;
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
-  /* Field: Field: Phone */
-  $handler->display->display_options['fields']['field_customer_phone']['id'] = 'field_customer_phone';
-  $handler->display->display_options['fields']['field_customer_phone']['table'] = 'field_data_field_customer_phone';
-  $handler->display->display_options['fields']['field_customer_phone']['field'] = 'field_customer_phone';
-  $handler->display->display_options['fields']['field_customer_phone']['relationship'] = 'uid';
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Commerce Line Item: Line item is of a product line item type */
-  $handler->display->display_options['filters']['product_line_item_type']['id'] = 'product_line_item_type';
-  $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
-  $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
-  $handler->display->display_options['filters']['product_line_item_type']['value'] = '1';
-  /* Filter criterion: Commerce Order: Order status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'commerce_order';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['relationship'] = 'order_id';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    'checkout_complete' => 'checkout_complete',
-    'cardonfile_charged' => 'cardonfile_charged',
-    'processing' => 'processing',
-    'order_picked_up' => 'order_picked_up',
-    'completed' => 'completed',
-  );
-  /* Filter criterion: Field: Week Date (field_week_date) */
-  $handler->display->display_options['filters']['field_week_date_value']['id'] = 'field_week_date_value';
-  $handler->display->display_options['filters']['field_week_date_value']['table'] = 'field_data_field_week_date';
-  $handler->display->display_options['filters']['field_week_date_value']['field'] = 'field_week_date_value';
-  $handler->display->display_options['filters']['field_week_date_value']['relationship'] = 'order_id';
-  $handler->display->display_options['filters']['field_week_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_week_date_value']['expose']['operator_id'] = 'field_week_date_value_op';
-  $handler->display->display_options['filters']['field_week_date_value']['expose']['label'] = 'Pickup Date';
-  $handler->display->display_options['filters']['field_week_date_value']['expose']['operator'] = 'field_week_date_value_op';
-  $handler->display->display_options['filters']['field_week_date_value']['expose']['identifier'] = 'field_week_date_value';
-  $handler->display->display_options['filters']['field_week_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -708,10 +453,6 @@ function ffvcoop_commerce_init_views_default_views() {
     3 => 0,
   );
   $handler->display->display_options['filters']['field_week_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Commerce Line Item: Line item is of a product line item type */
-  $handler->display->display_options['filters']['product_line_item_type_1']['id'] = 'product_line_item_type_1';
-  $handler->display->display_options['filters']['product_line_item_type_1']['table'] = 'commerce_line_item';
-  $handler->display->display_options['filters']['product_line_item_type_1']['field'] = 'product_line_item_type';
   /* Filter criterion: Commerce Order: Shipping information (commerce_customer_shipping) */
   $handler->display->display_options['filters']['commerce_customer_shipping_profile_id']['id'] = 'commerce_customer_shipping_profile_id';
   $handler->display->display_options['filters']['commerce_customer_shipping_profile_id']['table'] = 'field_data_commerce_customer_shipping';
@@ -1091,6 +832,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Commerce Order: Operations links */
   $handler->display->display_options['fields']['operations']['id'] = 'operations';
@@ -1236,10 +978,13 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Order status';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
+    5 => 0,
   );
   $handler->display->display_options['filters']['status']['expose']['reduce'] = TRUE;
   /* Filter criterion: Field: Week Date (field_week_date) */

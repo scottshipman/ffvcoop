@@ -53,7 +53,7 @@ function ffvcoop_configuration_default_fe_block_settings() {
         'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => 0,
+        'weight' => -20,
       ),
       'ffvcoop_commerce' => array(
         'region' => 'highlighted',

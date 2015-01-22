@@ -36,7 +36,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -55,7 +54,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access site in maintenance mode',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'system',
   );
@@ -65,7 +63,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access site reports',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'system',
   );
@@ -75,7 +72,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -85,7 +81,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer blocks',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'block',
   );
@@ -104,7 +99,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -123,7 +117,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer users',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -187,7 +180,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'create article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -202,9 +194,7 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'create customer content'.
   $permissions['create customer content'] = array(
     'name' => 'create customer content',
-    'roles' => array(
-      'manager' => 'manager',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -213,7 +203,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -239,7 +228,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'delete any article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -254,9 +242,7 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'delete any customer content'.
   $permissions['delete any customer content'] = array(
     'name' => 'delete any customer content',
-    'roles' => array(
-      'manager' => 'manager',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -265,7 +251,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'delete any page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -291,7 +276,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'delete own article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -306,9 +290,7 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'delete own customer content'.
   $permissions['delete own customer content'] = array(
     'name' => 'delete own customer content',
-    'roles' => array(
-      'manager' => 'manager',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -317,7 +299,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'delete own page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -334,7 +315,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -353,7 +333,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck add entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -363,7 +342,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck add pickup_date bundles',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -373,7 +351,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck add pickup_date pickup_date entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -401,7 +378,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck administer pickup_date bundles',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -411,7 +387,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck administer pickup_date pickup_date entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -430,7 +405,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck delete entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -465,7 +439,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck edit entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -475,7 +448,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck edit pickup_date bundles',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -485,7 +457,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck edit pickup_date pickup_date entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -504,7 +475,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck list entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -514,7 +484,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck list pickup_date bundles',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -524,7 +493,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck list pickup_date pickup_date entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -534,7 +502,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck view entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -544,7 +511,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck view pickup_date bundles',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -554,7 +520,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'eck view pickup_date pickup_date entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'eck',
   );
@@ -573,7 +538,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -588,9 +552,7 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'edit any customer content'.
   $permissions['edit any customer content'] = array(
     'name' => 'edit any customer content',
-    'roles' => array(
-      'manager' => 'manager',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -599,7 +561,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -625,7 +586,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit own article content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -640,9 +600,7 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'edit own customer content'.
   $permissions['edit own customer content'] = array(
     'name' => 'edit own customer content',
-    'roles' => array(
-      'manager' => 'manager',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -651,7 +609,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit own page content',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -668,7 +625,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'ffvcoop_admin',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'ffvcoop_new_user',
   );
@@ -685,7 +641,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'mass mailing with views_send',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'views_send',
   );
@@ -695,7 +650,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -705,7 +659,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'select account cancellation method',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -724,7 +677,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'manager' => 'manager',
     ),
     'module' => 'node',
   );

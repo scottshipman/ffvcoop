@@ -98,7 +98,9 @@
                 )); ?>
             </nav>
         <?php endif; ?>
-
+        <span id="social" style="position:relative; float:right;">
+            <a href="http://www.facebook.com/ffvcoop" target="_blank"><img alt="Follow Us On Facebook" src="/sites/default/files/socialnetworking_facebook_icon_116x24.gif" title="Follow Us On Facebook" /></a>
+        </span>
 
       <?php print render($page['navigation']); ?>
 

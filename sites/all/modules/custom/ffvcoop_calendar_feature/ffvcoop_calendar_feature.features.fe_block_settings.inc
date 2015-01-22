@@ -22,7 +22,7 @@ function ffvcoop_calendar_feature_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
-        'region' => 'sidebar_second',
+        'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
         'weight' => -16,
