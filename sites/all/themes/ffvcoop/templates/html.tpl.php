@@ -39,6 +39,9 @@
     <script src="<?php print $base_path . $path_to_zen; ?>/js/respond.js"></script>
     <![endif]-->
   <?php endif; ?>
+    <!--<link href='http://fonts.googleapis.com/css?family=Copse&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Overlock&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Fauna+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php if ($skip_link_text && $skip_link_anchor): ?>

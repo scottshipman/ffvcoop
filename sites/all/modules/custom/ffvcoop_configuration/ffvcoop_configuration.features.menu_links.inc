@@ -10,108 +10,62 @@
 function ffvcoop_configuration_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_current-orders:manage/commerce/orders/list
-  $menu_links['main-menu_current-orders:manage/commerce/orders/list'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'manage/commerce/orders/list',
-    'router_path' => 'manage/commerce/orders/list',
-    'link_title' => 'Current Orders',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 1,
-    'expanded' => 1,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_home:<front>
-  $menu_links['main-menu_home:<front>'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Home',
-    'options' => array(
-      'identifier' => 'main-menu_home:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_products:product-list
-  $menu_links['main-menu_products:product-list'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'product-list',
-    'router_path' => 'product-list',
-    'link_title' => 'Products',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_products:product-list',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_send-bulk-email:node/64
-  $menu_links['main-menu_send-bulk-email:node/64'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/64',
+  // Exported menu link: menu-footer-menu_privacy-policy:node/7451
+  $menu_links['menu-footer-menu_privacy-policy:node/7451'] = array(
+    'menu_name' => 'menu-footer-menu',
+    'link_path' => 'node/7451',
     'router_path' => 'node/%',
-    'link_title' => 'Send Bulk Email',
+    'link_title' => 'Privacy policy',
     'options' => array(
-      'identifier' => 'main-menu_send-bulk-email:node/64',
+      'identifier' => 'menu-footer-menu_privacy-policy:node/7451',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
+    'weight' => 0,
+    'customized' => 0,
   );
-  // Exported menu link: main-menu_shopping-carts:manage/commerce/orders/carts
-  $menu_links['main-menu_shopping-carts:manage/commerce/orders/carts'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'manage/commerce/orders/carts',
-    'router_path' => 'manage/commerce/orders/carts',
-    'link_title' => 'Shopping Carts',
+  // Exported menu link: menu-footer-menu_refund-policy:node/7450
+  $menu_links['menu-footer-menu_refund-policy:node/7450'] = array(
+    'menu_name' => 'menu-footer-menu',
+    'link_path' => 'node/7450',
+    'router_path' => 'node/%',
+    'link_title' => 'Refund Policy',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_shopping-carts:manage/commerce/orders/carts',
+      'identifier' => 'menu-footer-menu_refund-policy:node/7450',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-footer-menu_terms-of-service:node/7449
+  $menu_links['menu-footer-menu_terms-of-service:node/7449'] = array(
+    'menu_name' => 'menu-footer-menu',
+    'link_path' => 'node/7449',
+    'router_path' => 'node/%',
+    'link_title' => 'Terms of Service',
+    'options' => array(
+      'identifier' => 'menu-footer-menu_terms-of-service:node/7449',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Current Orders');
-  t('Home');
-  t('Products');
-  t('Send Bulk Email');
-  t('Shopping Carts');
+  t('Privacy policy');
+  t('Refund Policy');
+  t('Terms of Service');
 
 
   return $menu_links;

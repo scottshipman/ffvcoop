@@ -25,7 +25,7 @@ function ffvcoop_calendar_feature_default_fe_block_settings() {
         'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -16,
+        'weight' => -19,
       ),
       'ffvcoop_commerce' => array(
         'region' => '',

@@ -92,6 +92,32 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'visibility' => 1,
   );
 
+  $export['menu-menu-footer-menu'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-footer-menu',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => -26,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   $export['views-10f1734f9a8007f97e5f15d29c443064'] = array(
     'cache' => -1,
     'custom' => 0,
