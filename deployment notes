@@ -13,6 +13,7 @@ Delivery Module
 
 Orders:
   Verify all status names for line item report status check
+  Move Status field to top on order edit form
 
 Weekly Email (views Send)
   - Update to use users + customers
@@ -25,8 +26,24 @@ Annual Fee Module (probably handled with rules)
 
 SSL Checkout
 
-Add Honeypot module
+DONE - Add Honeypot module
 
+DONE - Dont let user's edit their own order count
+
+DONE - Verify that pickupdate cutoff is two calendar days before pickupdate (IE 24 hours and 1 minute)
+
+
+DONE - Add the Old Welcome message to the new welcome message.
+
+DONE - Change Customer Order Report to show phone instead of email address.
+
+DONE - Add coupons into line Item list so total makes sense.
+
+Annual Fees as being relative to when its paid, and we'll need to add that for current users being tracked at launch.
+
+DONE - Add an unsubscribe to weekly email
+
+DONE - bigger font on user links
 
 ****************************************************************************
 
@@ -58,3 +75,4 @@ DONE 8. verify error reporting at admin/config/development/logging
 DONE 10. FIX LINE ITEM VIEW TO SHOW TITLE (re-add title field and remove old one, reexport to feature)
 DONE 11. Add calendar view block to configuration/calendar, Run Calendar for 2015
 12. Add Refund Policy, Terms and Conditions, Privacy Policy, text about Fee on Register page, and add each page to footer menu
+Add how it works

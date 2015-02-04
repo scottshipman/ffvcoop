@@ -486,12 +486,19 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->name = 'user_mail_register_no_approval_required_body';
   $strongarm->value = '[user:name],
 
-Thank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it to your browser:
+Welcome to the Co-op!  You may now log in by clicking this link, or copying and pasting it to your browser:
 
 [site:login-url]
 
 username: [user:name]
-password: Your password
+password: The password you used during registration.
+
+How it works:
+We are open for pick up between 11:00 - 7:00 pm, weekly on Thursday.  Please bring a reusable bag with you.  We are located at 2250 SR 580, Suite 2, Clearwater.  We are between US 19 and Belcher Rd, directly across from St. Michael\'s Church.
+
+After your initial order, you will receive our weekly (Saturday) email asking if you would like to purchase a basket that week.  If you would like a basket, you can simply respond to our email.  The order cut off is Tuesday at 7:00 pm.   If you don\'t want a basket that week there is no need for you to respond.  You can order baskets when it best fits your schedule.
+
+We look forward to meeting you.
 
 --  [site:name] team';
   $export['user_mail_register_no_approval_required_body'] = $strongarm;
@@ -500,7 +507,7 @@ password: Your password
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_no_approval_required_subject';
-  $strongarm->value = 'Account details for [user:name] at [site:name]';
+  $strongarm->value = 'Welcome to Fresh Fruit and Vegetable Co-op';
   $export['user_mail_register_no_approval_required_subject'] = $strongarm;
 
   $strongarm = new stdClass();

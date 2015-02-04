@@ -123,6 +123,9 @@ div#email-header {
 	font-size:2em;
 }
 
+div#user-link{
+    font-size:1.2em;
+}
 div#user-link a{
     color:white;
 }

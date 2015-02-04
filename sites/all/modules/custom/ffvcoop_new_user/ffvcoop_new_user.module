@@ -467,6 +467,14 @@ function ffvcoop_new_user_menu() {
         'access arguments' => array('access content'),
         'type' => MENU_NORMAL_ITEM,
     );
+    $items['user/unsubscribe'] = array (
+        'title' => 'Unsubscribe',
+        'description' => 'Unsubscribe from weekly email',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('ffvcoop_unsubscribe_form'),
+        'access arguments' => array('access content'),
+        'type' => MENU_NORMAL_ITEM,
+    );
   return $items;
 }
 
@@ -715,3 +723,64 @@ function _get_php_errors(){
   echo '<pre>' . $theData . '</pre>';
 }
 
+/*
+ * Implements hook form alter
+ */
+
+function ffvcoop_new_user_form_alter(&$form, $form_state, $form_id){
+    global $user;
+    $can_edit = FALSE;
+    if($form['#form_id'] == 'user_profile_form'){
+        foreach($user->roles as $key=>$role) {
+            if (in_array($role, array('administrator', 'manager', 'employee'))) {
+                $can_edit = TRUE;
+            }
+        }
+     if(!$can_edit){
+         $form['field_order_count']['#access'] = false;
+         $form['field_annual_fee']['#access'] = FALSE;
+         $form['field_last_order_date']['#access'] = FALSE;
+     }
+        return $form;
+    }
+
+}
+
+function ffvcoop_unsubscribe_form($form_state){
+
+    $form['email'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Email'),
+        '#required' => TRUE,
+        '#default_value' => "",
+        '#description' => "Please enter your email.",
+        '#size' => 20,
+        '#maxlength' => 20,
+    );
+    $form['submit'] = array(
+        '#type'=> 'submit',
+        '#value' => 'Unsubscribe',
+    );
+    return $form;
+}
+
+function ffvcoop_unsubscribe_form_submit($form, &$form_state){
+    $email = $form_state['values']['email'];
+    $nodeQuery = new EntityFieldQuery();
+    $nodeQuery->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'customer')
+        ->fieldCondition('field_customer_email','email', $email, '=');
+    $entities = $nodeQuery->execute();
+    if (isset($entities['node'])) {
+        $entity_id = array_keys($entities['node']);
+        if ($entity_id) {
+            $wrapper = entity_metadata_wrapper('node', $entity_id[0]);
+            $wrapper->field_customer_active=0;
+            $wrapper->save();
+            drupal_set_message("We have removed $email from our weekly list.");
+        }
+        // set field_customer_active to 0
+    } else {
+        drupal_set_message("We couldnt find any customer records for this email. Please check your spelling and try again.", 'error');
+    }
+}

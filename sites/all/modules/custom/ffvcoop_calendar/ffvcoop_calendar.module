@@ -242,24 +242,39 @@ function ffvcoop_calendar_commerce_cart_product_add($order, $product, $quantity,
     $wrapper->save();
 }
 
-function get_next_pickup_date(){
-    $ts = time(); //now
-    //$ts[1] = time() + (7 * 24 * 60 * 60); //next week
+function get_next_pickup_date($ts = FALSE){
+    if($ts==false){
+        $ts = time(); //now
+    }
+    $next_date = return_next_date($ts);
+    // convert next date to new format
+    $date = date('m/d/y', $next_date);
+    $next_date = strtotime($date);
+    $cutoff = strtotime('-26 hours', $next_date);
+    // if next date is within 24 hours then add 1 week (IE, cutoff is tues midnight)
+    if($ts>=$cutoff){
+        $next_date = return_next_date(strtotime('+2 days', $ts));
+    }
+    $date = date('m/d/y', $next_date);
+    return $next_date;
+}
+
+function return_next_date($ts){
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'pickup_date')
-        ->fieldCondition('field_week_date','value', $ts, '>') //dates greater than now
-        ->range(0,1); //limit to one result
+        ->fieldCondition('field_week_date', 'value', $ts, '>')//dates greater than now
+        ->range(0, 1); //limit to one result
     $result = $query->execute();
-    if(isset($result['pickup_date'])){
+    if (isset($result['pickup_date'])) {
         $entity_id = array_keys($result['pickup_date']);
-        if($entity_id) {
-           // $entity = entity_load('pickup_date', $entity_id);
+        if ($entity_id) {
+            // $entity = entity_load('pickup_date', $entity_id);
             $wrapper = entity_metadata_wrapper('pickup_date', $entity_id[0]);
             $next_date = $wrapper->field_week_date->value();
             return $next_date;
-        }
-        else {
+        } else {
             drupal_set_message("Error adding item to Cart. There is no future scheduled pickup date in the system. Please contact FFVCOOP to resolve this.");
             return FALSE;
-        }   }
+        }
+    }
 }

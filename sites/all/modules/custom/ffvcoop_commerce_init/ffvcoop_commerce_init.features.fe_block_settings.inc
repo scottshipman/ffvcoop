@@ -23,7 +23,9 @@ cart
 customer-list
 manage*
 configuration*
-admin*',
+admin*
+user/unsubscribe
+user/*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(
@@ -50,11 +52,8 @@ admin*',
     'module' => 'ffvcoop_delivery',
     'node_types' => array(),
     'pages' => 'checkout*
-cart
-customer-list
-manage*
-configuration*
-admin*',
+cart*
+product-list*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(

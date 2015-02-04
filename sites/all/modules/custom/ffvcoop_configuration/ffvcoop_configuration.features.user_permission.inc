@@ -15,7 +15,8 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access administration menu',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'employee' => 'employee',
+      'manager' => 'manager',
     ),
     'module' => 'admin_menu',
   );

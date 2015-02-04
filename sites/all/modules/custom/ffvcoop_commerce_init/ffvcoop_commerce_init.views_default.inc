@@ -151,11 +151,6 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['arguments']['line_item_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['line_item_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['line_item_id']['break_phrase'] = TRUE;
-  /* Filter criterion: Commerce Line Item: Line item is of a product line item type */
-  $handler->display->display_options['filters']['product_line_item_type']['id'] = 'product_line_item_type';
-  $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
-  $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
-  $handler->display->display_options['filters']['product_line_item_type']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -872,6 +867,12 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Field: Phone */
+  $handler->display->display_options['fields']['field_customer_phone']['id'] = 'field_customer_phone';
+  $handler->display->display_options['fields']['field_customer_phone']['table'] = 'field_data_field_customer_phone';
+  $handler->display->display_options['fields']['field_customer_phone']['field'] = 'field_customer_phone';
+  $handler->display->display_options['fields']['field_customer_phone']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_customer_phone']['exclude'] = TRUE;
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
@@ -886,7 +887,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['commerce_customer_address']['relationship'] = 'commerce_customer_billing_profile_id';
   $handler->display->display_options['fields']['commerce_customer_address']['label'] = 'Name';
   $handler->display->display_options['fields']['commerce_customer_address']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['commerce_customer_address']['alter']['text'] = '<a href="/user/[uid]/edit">[commerce_customer_address-name_line]</a> ([mail])';
+  $handler->display->display_options['fields']['commerce_customer_address']['alter']['text'] = '<a href="/user/[uid]/edit">[commerce_customer_address-name_line]</a> [[field_customer_phone]]';
   $handler->display->display_options['fields']['commerce_customer_address']['empty'] = '-';
   $handler->display->display_options['fields']['commerce_customer_address']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['commerce_customer_address']['click_sort_column'] = 'country';
