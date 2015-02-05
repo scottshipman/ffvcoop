@@ -55,6 +55,13 @@ function ffvcoop_commerce_init_commerce_product_default_types() {
       'help' => '',
       'revision' => 1,
     ),
+    'fee' => array(
+      'type' => 'fee',
+      'name' => 'Fee',
+      'description' => '',
+      'help' => 'Use this for various fees, such as the Annual Fee',
+      'revision' => 0,
+    ),
     'product' => array(
       'type' => 'product',
       'name' => 'Baskets',
