@@ -137,7 +137,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Last Name */
+  /* Field: Field: Last Name */
   $handler->display->display_options['fields']['field_customer_last_name']['id'] = 'field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['field'] = 'field_customer_last_name';
@@ -181,7 +181,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['view']['view'] = 'last_order_date_view_field';
   $handler->display->display_options['fields']['view']['display'] = 'block';
   $handler->display->display_options['fields']['view']['arguments'] = '[nid]';
-  /* Sort criterion: Content: Last Name (field_customer_last_name:format) */
+  /* Sort criterion: Field: Last Name (field_customer_last_name:format) */
   $handler->display->display_options['sorts']['field_customer_last_name_format']['id'] = 'field_customer_last_name_format';
   $handler->display->display_options['sorts']['field_customer_last_name_format']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['sorts']['field_customer_last_name_format']['field'] = 'field_customer_last_name_format';
@@ -200,7 +200,7 @@ function ffvcoop_configuration_views_default_views() {
     'customer' => 'customer',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Last Name (field_customer_last_name) */
+  /* Filter criterion: Field: Last Name (field_customer_last_name) */
   $handler->display->display_options['filters']['field_customer_last_name_value']['id'] = 'field_customer_last_name_value';
   $handler->display->display_options['filters']['field_customer_last_name_value']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['filters']['field_customer_last_name_value']['field'] = 'field_customer_last_name_value';
@@ -512,7 +512,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['field_order_customer']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: Last Name */
+  /* Field: Field: Last Name */
   $handler->display->display_options['fields']['field_customer_last_name']['id'] = 'field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['field'] = 'field_customer_last_name';
@@ -1309,7 +1309,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'First Name';
-  /* Field: Content: Last Name */
+  /* Field: Field: Last Name */
   $handler->display->display_options['fields']['field_customer_last_name']['id'] = 'field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['field'] = 'field_customer_last_name';
@@ -1397,7 +1397,7 @@ function ffvcoop_configuration_views_default_views() {
   );
   $handler->display->display_options['filters']['field_order_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_order_date_value']['year_range'] = '-1:+1';
-  /* Filter criterion: Content: Last Name (field_customer_last_name) */
+  /* Filter criterion: Field: Last Name (field_customer_last_name) */
   $handler->display->display_options['filters']['field_customer_last_name_value']['id'] = 'field_customer_last_name_value';
   $handler->display->display_options['filters']['field_customer_last_name_value']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['filters']['field_customer_last_name_value']['field'] = 'field_customer_last_name_value';
@@ -1453,7 +1453,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'First Name';
-  /* Field: Content: Last Name */
+  /* Field: Field: Last Name */
   $handler->display->display_options['fields']['field_customer_last_name']['id'] = 'field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['field'] = 'field_customer_last_name';
@@ -1521,7 +1521,7 @@ function ffvcoop_configuration_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Content: Last Name (field_customer_last_name) */
+  /* Filter criterion: Field: Last Name (field_customer_last_name) */
   $handler->display->display_options['filters']['field_customer_last_name_value']['id'] = 'field_customer_last_name_value';
   $handler->display->display_options['filters']['field_customer_last_name_value']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['filters']['field_customer_last_name_value']['field'] = 'field_customer_last_name_value';
@@ -1758,7 +1758,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['field_order_customer']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: Last Name */
+  /* Field: Field: Last Name */
   $handler->display->display_options['fields']['field_customer_last_name']['id'] = 'field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['fields']['field_customer_last_name']['field'] = 'field_customer_last_name';
@@ -1874,7 +1874,7 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['field_order_notes']['alter']['text'] = '<span style="font-size:9px; line-height:95%">[field_order_notes-value]</span>';
   $handler->display->display_options['fields']['field_order_notes']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_order_notes']['type'] = 'text_plain';
-  /* Sort criterion: Content: Last Name (field_customer_last_name) */
+  /* Sort criterion: Field: Last Name (field_customer_last_name) */
   $handler->display->display_options['sorts']['field_customer_last_name_value']['id'] = 'field_customer_last_name_value';
   $handler->display->display_options['sorts']['field_customer_last_name_value']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['sorts']['field_customer_last_name_value']['field'] = 'field_customer_last_name_value';
@@ -1973,7 +1973,7 @@ function ffvcoop_configuration_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Content: Last Name (field_customer_last_name) */
+  /* Filter criterion: Field: Last Name (field_customer_last_name) */
   $handler->display->display_options['filters']['field_customer_last_name_value']['id'] = 'field_customer_last_name_value';
   $handler->display->display_options['filters']['field_customer_last_name_value']['table'] = 'field_data_field_customer_last_name';
   $handler->display->display_options['filters']['field_customer_last_name_value']['field'] = 'field_customer_last_name_value';

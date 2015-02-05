@@ -6,11 +6,104 @@
 
 include_once 'ffvcoop_commerce_init.features.inc';
 
+/*
+ * Implements hook_commerce_checkout_complete
+ *
+ * Set the last order date on user and customer entities
+ * If an annual fee is included, set the annual fee date also
+ */
+
 function ffvcoop_commerce_init_commerce_checkout_complete($order){
   $existingUser = user_load($order->uid);
+    // todo check for annal fee and if so add date below
+    $annual_fee=FALSE;
   $existingUser->field_order_count['und'][0]['value'] = intval($existingUser->field_order_count['und'][0]['value']) +1;
- // $existingUser->field_last_order_date['und'][0]['value'] = date('m d, Y');
+  $existingUser->field_last_order_date = array(
+            'und' => array(
+                0 => array(
+                    'value' => date('Y-m-d', time()),
+                    'timezone' => 'America/New_York',
+                    'timezone_db' => 'America/New_York',
+                    'date_type' => "datetime",
+                ),
+            ),
+        );
+    if($annual_fee) {
+        $existingUser->field_annual_fee = array(
+            'und' => array(
+                0 => array(
+                    'value' => date('Y-m-d', time()),
+                    'timezone' => 'America/New_York',
+                    'timezone_db' => 'America/New_York',
+                    'date_type' => "datetime",
+                ),
+            ),
+        );
+    }
     user_save((object) array('uid' => $existingUser->uid), (array) $existingUser);
+
+    // update the customer node type also
+    $nodeQuery = new EntityFieldQuery();
+    $nodeQuery->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'customer')
+        ->fieldCondition('field_customer_email','email', $existingUser->mail, '=')
+        ->range(0, 1); //limit to one result
+    $customer = $nodeQuery->execute();
+    if (isset($customer['node'])) {
+        $entity_id = array_keys($customer['node']);
+        if ($entity_id) {
+            $node = node_load($entity_id[0]);
+            if($annual_fee) {
+                $node->field_annual_fee = $existingUser->field_annual_fee;
+            }
+            $node->field_last_order_date = $existingUser->field_last_order_date;
+            $node->field_user_reference['und'][0]['target_id'] = $existingUser->uid;
+            // save node
+            node_save($node);
+        }
+    }
+}
+
+/*
+ * Implements hook_user_presave
+ *
+ * When a user is created or updated, check if a customer value already exists,
+ * if so, copy values over to the customer and set the relationship
+ */
+function ffvcoop_commerce_init_user_presave(&$edit, $account, $category){
+    //check if customer node exists with same email
+    $nodeQuery = new EntityFieldQuery();
+    $nodeQuery->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'customer')
+        ->fieldCondition('field_customer_email','email', $account->mail, '=')
+        ->range(0, 1); //limit to one result
+    $customer = $nodeQuery->execute();
+    if (isset($customer['node'])) {
+        $entity_id = array_keys($customer['node']);
+        if ($entity_id) {
+            $node = node_load($entity_id[0]);
+            $node->field_customer_email['und'][0]['email'] = $edit['mail'];
+            $node->field_annual_fee  = $edit['field_annual_fee'];
+            $node->field_last_order_date = $edit['field_last_order_date'];
+            $node->title = $edit['field_customer_first_name']['und'][0]['value'];
+            $node->field_customer_last_name = $edit['field_customer_last_name'];
+            // save node
+            node_save($node);
+        }
+    } else {
+      // create a new customer record
+        $entity = entity_create('node', array('type' => 'customer'));
+        $entity->uid = 1;
+        $wrapper = entity_metadata_wrapper('node', $entity);
+        $wrapper->title = $edit['field_customer_first_name']['und'][0]['value'];
+        $wrapper->field_customer_email = $edit['mail'];
+        $wrapper->field_customer_last_name = $edit['field_customer_last_name']['und'][0]['value'];
+
+        // - dont have a UID yet so cant set it here.
+        $wrapper->save();
+
+
+    }
 }
 
 /**

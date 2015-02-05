@@ -2388,7 +2388,7 @@ function ffvcoop_commerce_init_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 13,
+      'weight' => 4,
     ),
   );
 
@@ -2432,7 +2432,7 @@ function ffvcoop_commerce_init_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 

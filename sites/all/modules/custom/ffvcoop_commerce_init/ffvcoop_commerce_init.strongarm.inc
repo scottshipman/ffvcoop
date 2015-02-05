@@ -425,19 +425,19 @@ function ffvcoop_commerce_init_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'ckeditor' => array(
-          'weight' => '10',
+          'weight' => '7',
         ),
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '6',
         ),
         'mimemail' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'account' => array(
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '6',
+          'weight' => '5',
         ),
       ),
       'display' => array(),
