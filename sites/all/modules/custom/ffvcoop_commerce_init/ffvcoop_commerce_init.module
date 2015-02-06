@@ -14,9 +14,19 @@ include_once 'ffvcoop_commerce_init.features.inc';
  */
 
 function ffvcoop_commerce_init_commerce_checkout_complete($order){
+    $annual_fee=FALSE;
   $existingUser = user_load($order->uid);
     // todo check for annal fee and if so add date below
-    $annual_fee=FALSE;
+    $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+    foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
+        $type = $line_item_wrapper->commerce_product->product_id->value();
+        $product_item = commerce_product_load($type);
+        $product_type = $product_item->type;
+        if($product_type=='fee'){
+            $annual_fee=TRUE;
+        }
+    }
+
   $existingUser->field_order_count['und'][0]['value'] = intval($existingUser->field_order_count['und'][0]['value']) +1;
   $existingUser->field_last_order_date = array(
             'und' => array(
@@ -72,6 +82,10 @@ function ffvcoop_commerce_init_commerce_checkout_complete($order){
  */
 function ffvcoop_commerce_init_user_presave(&$edit, $account, $category){
     //check if customer node exists with same email
+    if(!isset($account->mail)){
+        $user = user_load($account->uid);
+        $account->mail = $user->mail;
+    }
     $nodeQuery = new EntityFieldQuery();
     $nodeQuery->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', 'customer')
@@ -197,4 +211,113 @@ function get_order_pickup_date($order_id){
    return $date;
   }
   return FALSE;
+}
+
+/*
+ * Hooks commerce_order_presave
+ * checks for annual fee date older than 1 year
+ * if so, adds new annual fee line item.
+ */
+function ffvcoop_commerce_init_commerce_cart_product_add($order, $product, $quantity, $line_item) {
+    global $user;
+    add_fee_to_cart($user, $order);
+}
+
+/*
+ * helper function to add fee to cart
+ *
+ * triggered at login and at add to cart
+ */
+function add_fee_to_cart($user, $order){
+    $fee_exists = FALSE;
+    if($user->uid > 0) {
+        $user_data = user_load($user->uid);
+        $fee_date = isset($user_data->field_annual_fee['und']['0']['value'])? $user_data->field_annual_fee['und']['0']['value'] : '2014-1-1 00:00:00';
+        $expire = strtotime($fee_date . '+1 year');
+        $order_count = intval($user_date->field_order_count['und'][0]['value']);
+        //make sure there isnt already an annual fee in the cart
+        $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+        foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
+            $type = $line_item_wrapper->commerce_product->product_id->value();
+            $product_item = commerce_product_load($type);
+            $product_type = $product_item->type;
+            if($product_type=='fee'){
+                $fee_exists = TRUE;
+            }
+        }
+
+        if(time() > $expire && $fee_exists == FALSE && $order_count>0){
+            // add annual fee
+            if($annual_fee = get_fee_products()) {
+                $product = commerce_product_load($annual_fee);
+                $line_item = commerce_product_line_item_new(commerce_product_load($annual_fee));
+                commerce_cart_product_add($user->uid, $line_item);
+                drupal_set_message("Your annual Co-op membership fee is due. We have added the fee to your cart for this order.");
+            }
+
+        }
+    }
+}
+
+function get_fee_products(){
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'commerce_product')
+        ->entityCondition('bundle', 'fee')
+        ->propertyCondition('status', 1)
+        ->range(0,1);
+
+    $result = $query->execute();
+    if(isset($result['commerce_product'])){
+        $entity_ids = array_keys($result['commerce_product']);
+        if($entity_ids) {
+            return $entity_ids[0];}
+        else {
+            return FALSE;
+        }
+    }
+}
+
+/*
+ * Implements hook_commerce_cart_product_remove($order, $product, $quantity, $line_item)
+ *
+ * Dont let user's remove the annual fee
+ */
+
+function ffvcoop_commerce_init_commerce_cart_product_remove($order, $product, $quantity, $line_item){
+    if($product->type == 'fee'){
+        drupal_set_message("You can not remove the annual fee from your cart. In order to place an order, you will need to renew your membership by paying the fee.", 'warning');
+        $url = $_SERVER['HTTP_REFERER'];
+        header('Location:' . $url);
+        drupal_exit($url);
+    }
+}
+
+/*
+ * Implements hook form alter
+ *
+ * move order status to the top of the order edit page
+ */
+
+function ffvcoop_commerce_init_form_alter(&$form, &$form_state, $form_id){
+    if($form_id == 'commerce_order_ui_order_form' ){
+        $form['order_status']['#weight'] = -20;
+        $form['order_status']['#group'] = '';
+    }
+}
+
+/*
+ * Implements hook user login
+ *
+ * After a user logs in, check to see if annual fee is due.
+ */
+
+function ffvcoop_commerce_init_user_login(&$edit, $account){
+    $uid = $user->uid;
+    if($cart = commerce_cart_order_load($uid)) {
+        $cart_li = count($cart->commerce_line_items);
+        if($cart_li > 0) {
+            $order = commerce_order_load($cart->order_id);
+            add_fee_to_cart($user, $order);
+        }
+    }
 }

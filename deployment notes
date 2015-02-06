@@ -13,16 +13,16 @@ Delivery Module
 
 Orders:
   Verify all status names for line item report status check
-  Move Status field to top on order edit form
+  DONE Move Status field to top on order edit form
 
 Weekly Email (views Send)
   - Update to use users + customers
 
 
 Annual Fee Module (probably handled with rules)
- - create Annual Fee Product (Product>Fees)
- - widget to clear Fee Paid field
- - Auto Add to Order if not paid and has at least 1 order.
+DONE - create Annual Fee Product (Product>Fees)
+DONE - widget to set Annual Fee value to 1 year ago for every customer / user. (left blank)
+DONE - Auto Add to Order if not paid and has at least 1 order.
 
 SSL Checkout
 
@@ -39,7 +39,7 @@ DONE - Change Customer Order Report to show phone instead of email address.
 
 DONE - Add coupons into line Item list so total makes sense.
 
-Annual Fees as being relative to when its paid, and we'll need to add that for current users being tracked at launch.
+DONE - Annual Fees as being relative to when its paid, and we'll need to add that for current users being tracked at launch.
 
 DONE - Add an unsubscribe to weekly email
 

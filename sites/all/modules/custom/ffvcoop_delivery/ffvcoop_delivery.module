@@ -175,7 +175,7 @@ function ffvcoop_delivery_order_remove_delivery($order) {
   return $order;
 }
 
-function ffvcoop_delivery_form_alter($form, &$form_state){
+function ffvcoop_delivery_form_alter(&$form, &$form_state){
     if($form['#form_id']=='commerce_checkout_form_checkout'){
         $form['customer_profile_shipping']['#title'] = 'Delivery Information';
         $form['customer_profile_shipping']['commerce_customer_profile_copy']['#title'] = 'My <em class="placeholder">Delivery information</em> is the same as my <em class="placeholder">Billing information</em>.';
