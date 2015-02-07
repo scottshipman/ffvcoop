@@ -64,5 +64,31 @@ function ffvcoop_calendar_feature_default_fe_block_settings() {
     'visibility' => 1,
   );
 
+  $export['views-calendar_date_list-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'calendar_date_list-block_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ffvcoop' => array(
+        'region' => 'highlighted',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+      'ffvcoop_commerce' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ffvcoop_commerce',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   return $export;
 }

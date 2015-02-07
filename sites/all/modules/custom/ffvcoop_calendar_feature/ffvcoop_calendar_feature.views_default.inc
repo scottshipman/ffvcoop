@@ -70,6 +70,45 @@ function ffvcoop_calendar_feature_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: Week Date */
+  $handler->display->display_options['fields']['field_week_date']['id'] = 'field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['table'] = 'field_data_field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['label'] = '';
+  $handler->display->display_options['fields']['field_week_date']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_week_date']['alter']['text'] = 'The next weekly order pickup date will be [field_week_date] between 11am and 7pm. ';
+  $handler->display->display_options['fields']['field_week_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_week_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Field: Week Date (field_week_date) */
+  $handler->display->display_options['filters']['field_week_date_value']['id'] = 'field_week_date_value';
+  $handler->display->display_options['filters']['field_week_date_value']['table'] = 'field_data_field_week_date';
+  $handler->display->display_options['filters']['field_week_date_value']['field'] = 'field_week_date_value';
+  $handler->display->display_options['filters']['field_week_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_week_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_week_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_week_date_value']['year_range'] = '-1:+1';
   $export['calendar_date_list'] = $view;
 
   return $export;

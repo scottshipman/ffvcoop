@@ -18,6 +18,7 @@ features[eck_bundle][] = pickup_date_pickup_date
 features[eck_entity_type][] = pickup_date
 features[fe_block_settings][] = ffvcoop_calendar-calendar_dates_by_year
 features[fe_block_settings][] = views-calendar_date_list-block
+features[fe_block_settings][] = views-calendar_date_list-block_1
 features[features_api][] = api:2
 features[field_base][] = field_week_date
 features[field_instance][] = pickup_date-pickup_date-field_week_date

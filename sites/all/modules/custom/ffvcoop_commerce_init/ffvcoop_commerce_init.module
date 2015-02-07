@@ -234,7 +234,7 @@ function add_fee_to_cart($user, $order){
         $user_data = user_load($user->uid);
         $fee_date = isset($user_data->field_annual_fee['und']['0']['value'])? $user_data->field_annual_fee['und']['0']['value'] : '2014-1-1 00:00:00';
         $expire = strtotime($fee_date . '+1 year');
-        $order_count = intval($user_data->field_order_count['und'][0]['value']);
+        $order_count = isset($user_data->field_order_count['und'][0]['value'])? intval($user_data->field_order_count['und'][0]['value']) : "0" ;
         //make sure there isnt already an annual fee in the cart
         $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
         foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
