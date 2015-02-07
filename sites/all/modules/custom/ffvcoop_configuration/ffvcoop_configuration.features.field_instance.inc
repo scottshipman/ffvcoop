@@ -1149,7 +1149,7 @@ function ffvcoop_configuration_field_default_field_instances() {
     'label' => 'Annual Fee',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1164,7 +1164,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'input_format_custom' => '',
         'label_position' => 'above',
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '-0:+2',
       ),
       'type' => 'date_popup',
       'weight' => 10,
@@ -1264,7 +1264,7 @@ function ffvcoop_configuration_field_default_field_instances() {
     'label' => 'Last Order Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',

@@ -177,10 +177,22 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['view']['id'] = 'view';
   $handler->display->display_options['fields']['view']['table'] = 'views';
   $handler->display->display_options['fields']['view']['field'] = 'view';
-  $handler->display->display_options['fields']['view']['label'] = 'Last Order Date';
+  $handler->display->display_options['fields']['view']['label'] = 'Last Order Date (old system)';
   $handler->display->display_options['fields']['view']['view'] = 'last_order_date_view_field';
   $handler->display->display_options['fields']['view']['display'] = 'block';
   $handler->display->display_options['fields']['view']['arguments'] = '[nid]';
+  /* Field: Field: Last Order Date */
+  $handler->display->display_options['fields']['field_last_order_date']['id'] = 'field_last_order_date';
+  $handler->display->display_options['fields']['field_last_order_date']['table'] = 'field_data_field_last_order_date';
+  $handler->display->display_options['fields']['field_last_order_date']['field'] = 'field_last_order_date';
+  $handler->display->display_options['fields']['field_last_order_date']['label'] = 'Last Order Date (New System)';
+  $handler->display->display_options['fields']['field_last_order_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Sort criterion: Field: Last Name (field_customer_last_name:format) */
   $handler->display->display_options['sorts']['field_customer_last_name_format']['id'] = 'field_customer_last_name_format';
   $handler->display->display_options['sorts']['field_customer_last_name_format']['table'] = 'field_data_field_customer_last_name';
@@ -1293,10 +1305,6 @@ function ffvcoop_configuration_views_default_views() {
   );
   $handler->display->display_options['style_options']['caption'] = 'Active Customers';
   $handler->display->display_options['style_options']['summary'] = 'Active Customers';
-  /* Relationship: Entity Reference: Referencing entity */
-  $handler->display->display_options['relationships']['reverse_field_order_customer_customer_order']['id'] = 'reverse_field_order_customer_customer_order';
-  $handler->display->display_options['relationships']['reverse_field_order_customer_customer_order']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_order_customer_customer_order']['field'] = 'reverse_field_order_customer_customer_order';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -1467,18 +1475,28 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['fields']['views_send']['id'] = 'views_send';
   $handler->display->display_options['fields']['views_send']['table'] = 'views';
   $handler->display->display_options['fields']['views_send']['field'] = 'views_send';
-  /* Field: Content: Fee Paid */
-  $handler->display->display_options['fields']['field_customer_fee_paid']['id'] = 'field_customer_fee_paid';
-  $handler->display->display_options['fields']['field_customer_fee_paid']['table'] = 'field_data_field_customer_fee_paid';
-  $handler->display->display_options['fields']['field_customer_fee_paid']['field'] = 'field_customer_fee_paid';
-  /* Field: Global: View */
-  $handler->display->display_options['fields']['view']['id'] = 'view';
-  $handler->display->display_options['fields']['view']['table'] = 'views';
-  $handler->display->display_options['fields']['view']['field'] = 'view';
-  $handler->display->display_options['fields']['view']['label'] = 'Last Order Date';
-  $handler->display->display_options['fields']['view']['view'] = 'last_order_date_view_field';
-  $handler->display->display_options['fields']['view']['display'] = 'block';
-  $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
+  /* Field: Field: Last Order Date */
+  $handler->display->display_options['fields']['field_last_order_date']['id'] = 'field_last_order_date';
+  $handler->display->display_options['fields']['field_last_order_date']['table'] = 'field_data_field_last_order_date';
+  $handler->display->display_options['fields']['field_last_order_date']['field'] = 'field_last_order_date';
+  $handler->display->display_options['fields']['field_last_order_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Field: Annual Fee Date */
+  $handler->display->display_options['fields']['field_annual_fee']['id'] = 'field_annual_fee';
+  $handler->display->display_options['fields']['field_annual_fee']['table'] = 'field_data_field_annual_fee';
+  $handler->display->display_options['fields']['field_annual_fee']['field'] = 'field_annual_fee';
+  $handler->display->display_options['fields']['field_annual_fee']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Email (field_customer_email) */
   $handler->display->display_options['sorts']['field_customer_email_email']['id'] = 'field_customer_email_email';
@@ -1506,20 +1524,6 @@ function ffvcoop_configuration_views_default_views() {
   $handler->display->display_options['filters']['field_customer_active_value']['field'] = 'field_customer_active_value';
   $handler->display->display_options['filters']['field_customer_active_value']['value'] = array(
     1 => '1',
-  );
-  /* Filter criterion: Content: Fee Paid (field_customer_fee_paid) */
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['id'] = 'field_customer_fee_paid_value';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['table'] = 'field_data_field_customer_fee_paid';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['field'] = 'field_customer_fee_paid_value';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['expose']['operator_id'] = 'field_customer_fee_paid_value_op';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['expose']['label'] = 'Fee Paid';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['expose']['operator'] = 'field_customer_fee_paid_value_op';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['expose']['identifier'] = 'field_customer_fee_paid_value';
-  $handler->display->display_options['filters']['field_customer_fee_paid_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
   );
   /* Filter criterion: Field: Last Name (field_customer_last_name) */
   $handler->display->display_options['filters']['field_customer_last_name_value']['id'] = 'field_customer_last_name_value';
@@ -1551,22 +1555,46 @@ function ffvcoop_configuration_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: customer order: order date (field_order_date) */
-  $handler->display->display_options['filters']['field_order_date_value']['id'] = 'field_order_date_value';
-  $handler->display->display_options['filters']['field_order_date_value']['table'] = 'field_data_field_order_date';
-  $handler->display->display_options['filters']['field_order_date_value']['field'] = 'field_order_date_value';
-  $handler->display->display_options['filters']['field_order_date_value']['relationship'] = 'reverse_field_order_customer_customer_order';
-  $handler->display->display_options['filters']['field_order_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_order_date_value']['expose']['operator_id'] = 'field_order_date_value_op';
-  $handler->display->display_options['filters']['field_order_date_value']['expose']['label'] = 'order date (field_order_date)';
-  $handler->display->display_options['filters']['field_order_date_value']['expose']['operator'] = 'field_order_date_value_op';
-  $handler->display->display_options['filters']['field_order_date_value']['expose']['identifier'] = 'field_order_date_value';
-  $handler->display->display_options['filters']['field_order_date_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Field: Last Order Date (field_last_order_date) */
+  $handler->display->display_options['filters']['field_last_order_date_value']['id'] = 'field_last_order_date_value';
+  $handler->display->display_options['filters']['field_last_order_date_value']['table'] = 'field_data_field_last_order_date';
+  $handler->display->display_options['filters']['field_last_order_date_value']['field'] = 'field_last_order_date_value';
+  $handler->display->display_options['filters']['field_last_order_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_last_order_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_last_order_date_value']['expose']['operator_id'] = 'field_last_order_date_value_op';
+  $handler->display->display_options['filters']['field_last_order_date_value']['expose']['label'] = 'Last Order Date';
+  $handler->display->display_options['filters']['field_last_order_date_value']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_last_order_date_value']['expose']['operator'] = 'field_last_order_date_value_op';
+  $handler->display->display_options['filters']['field_last_order_date_value']['expose']['identifier'] = 'field_last_order_date_value';
+  $handler->display->display_options['filters']['field_last_order_date_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
+    5 => 0,
   );
-  $handler->display->display_options['filters']['field_order_date_value']['year_range'] = '-1:+1';
+  $handler->display->display_options['filters']['field_last_order_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_last_order_date_value']['year_range'] = '-2:+1';
+  /* Filter criterion: Field: Annual Fee Date (field_annual_fee) */
+  $handler->display->display_options['filters']['field_annual_fee_value']['id'] = 'field_annual_fee_value';
+  $handler->display->display_options['filters']['field_annual_fee_value']['table'] = 'field_data_field_annual_fee';
+  $handler->display->display_options['filters']['field_annual_fee_value']['field'] = 'field_annual_fee_value';
+  $handler->display->display_options['filters']['field_annual_fee_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_annual_fee_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_annual_fee_value']['expose']['operator_id'] = 'field_annual_fee_value_op';
+  $handler->display->display_options['filters']['field_annual_fee_value']['expose']['label'] = 'Annual Fee Date';
+  $handler->display->display_options['filters']['field_annual_fee_value']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_annual_fee_value']['expose']['operator'] = 'field_annual_fee_value_op';
+  $handler->display->display_options['filters']['field_annual_fee_value']['expose']['identifier'] = 'field_annual_fee_value';
+  $handler->display->display_options['filters']['field_annual_fee_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_annual_fee_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_annual_fee_value']['year_range'] = '-2:+1';
   $export['weekly_email'] = $view;
 
   $view = new view();

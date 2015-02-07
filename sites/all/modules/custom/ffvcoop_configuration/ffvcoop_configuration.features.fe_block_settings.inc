@@ -229,7 +229,11 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'module' => 'views',
     'node_types' => array(),
     'pages' => 'send-bulk-email',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 3,
+      'employee' => 4,
+      'manager' => 5,
+    ),
     'themes' => array(
       'ffvcoop' => array(
         'region' => 'content',

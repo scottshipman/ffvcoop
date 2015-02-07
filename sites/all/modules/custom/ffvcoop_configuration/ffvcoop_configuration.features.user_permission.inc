@@ -21,6 +21,18 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: 'access administration pages'.
+  $permissions['access administration pages'] = array(
+    'name' => 'access administration pages',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'employee' => 'employee',
+      'manager' => 'manager',
+    ),
+    'module' => 'system',
+  );
+
   // Exported permission: 'access content'.
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -111,6 +123,15 @@ function ffvcoop_configuration_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'administer rules'.
+  $permissions['administer rules'] = array(
+    'name' => 'administer rules',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'rules',
   );
 
   // Exported permission: 'administer users'.
@@ -680,6 +701,16 @@ function ffvcoop_configuration_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view the administration theme'.
+  $permissions['view the administration theme'] = array(
+    'name' => 'view the administration theme',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'system',
   );
 
   return $permissions;

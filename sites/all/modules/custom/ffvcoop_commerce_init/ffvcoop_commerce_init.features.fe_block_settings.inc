@@ -23,6 +23,7 @@ cart
 customer-list
 manage*
 configuration*
+send-bulk-email
 admin*
 user/unsubscribe
 user/*',
