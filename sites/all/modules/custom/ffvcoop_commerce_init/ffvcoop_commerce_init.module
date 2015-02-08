@@ -368,7 +368,7 @@ function _get_customer_orders($entity_id){
 function _get_last_date($cust_orders){
     $dates=array();
     $return=array();
-    if(is_array($cust_orders){
+    if(is_array($cust_orders)){
     $ids = array_values($cust_orders);
     $orders = entity_load('customer_order', $ids);
     foreach ($orders as $order) {
