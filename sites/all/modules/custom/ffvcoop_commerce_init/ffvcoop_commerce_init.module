@@ -11,9 +11,16 @@ include_once 'ffvcoop_commerce_init.features.inc';
  *
  * Set the last order date on user and customer entities
  * If an annual fee is included, set the annual fee date also
+ *
+ * Also make sure the order pickupdate is current
  */
 
 function ffvcoop_commerce_init_commerce_checkout_complete($order){
+    $pickupdate = get_next_pickup_date();
+    if ($order->field_week_date['und'][0]['value']<$pickupdate){
+        $order->field_week_date['und'][0]['value'] = $pickupdate;
+    }
+
     $annual_fee=FALSE;
   $existingUser = user_load($order->uid);
     // todo check for annal fee and if so add date below
@@ -27,7 +34,7 @@ function ffvcoop_commerce_init_commerce_checkout_complete($order){
         }
     }
 
-  $existingUser->field_order_count['und'][0]['value'] = intval($existingUser->field_order_count['und'][0]['value']) +1;
+  $existingUser->field_order_count['und'][0]['value'] = isset($existingUser->field_order_count['und'][0]['value']) ? intval($existingUser->field_order_count['und'][0]['value']) +1: "1";
   $existingUser->field_last_order_date = array(
             'und' => array(
                 0 => array(
@@ -96,6 +103,7 @@ function ffvcoop_commerce_init_user_presave(&$edit, $account, $category){
         $entity_id = array_keys($customer['node']);
         if ($entity_id) {
             $node = node_load($entity_id[0]);
+            //todo get customer order list for last order date and order count and save to user record.
             $node->field_customer_email['und'][0]['email'] = $edit['mail'];
             $node->field_annual_fee  = $edit['field_annual_fee'];
             $node->field_last_order_date = $edit['field_last_order_date'];

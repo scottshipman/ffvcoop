@@ -55,6 +55,10 @@ function ffvcoop_calendar_feature_views_default_views() {
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'eck_pickup_date';
   $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
+  /* Sort criterion: Field: Week Date (field_week_date) */
+  $handler->display->display_options['sorts']['field_week_date_value']['id'] = 'field_week_date_value';
+  $handler->display->display_options['sorts']['field_week_date_value']['table'] = 'field_data_field_week_date';
+  $handler->display->display_options['sorts']['field_week_date_value']['field'] = 'field_week_date_value';
   /* Contextual filter: Field: Week Date (field_week_date) */
   $handler->display->display_options['arguments']['field_week_date_value']['id'] = 'field_week_date_value';
   $handler->display->display_options['arguments']['field_week_date_value']['table'] = 'field_data_field_week_date';
@@ -71,8 +75,8 @@ function ffvcoop_calendar_feature_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: Display Next Date */
+  $handler = $view->new_display('block', 'Display Next Date', 'block_1');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -105,9 +109,9 @@ function ffvcoop_calendar_feature_views_default_views() {
   $handler->display->display_options['filters']['field_week_date_value']['id'] = 'field_week_date_value';
   $handler->display->display_options['filters']['field_week_date_value']['table'] = 'field_data_field_week_date';
   $handler->display->display_options['filters']['field_week_date_value']['field'] = 'field_week_date_value';
-  $handler->display->display_options['filters']['field_week_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_week_date_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_week_date_value']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_week_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_week_date_value']['default_date'] = 'now +27 hours';
   $handler->display->display_options['filters']['field_week_date_value']['year_range'] = '-1:+1';
   $export['calendar_date_list'] = $view;
 

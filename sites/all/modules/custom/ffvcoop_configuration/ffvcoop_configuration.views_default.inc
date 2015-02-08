@@ -1439,10 +1439,11 @@ function ffvcoop_configuration_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Field: Annual Fee Date */
+  /* Field: Field: Annual Fee */
   $handler->display->display_options['fields']['field_annual_fee']['id'] = 'field_annual_fee';
   $handler->display->display_options['fields']['field_annual_fee']['table'] = 'field_data_field_annual_fee';
   $handler->display->display_options['fields']['field_annual_fee']['field'] = 'field_annual_fee';
+  $handler->display->display_options['fields']['field_annual_fee']['label'] = 'Annual Fee Date';
   $handler->display->display_options['fields']['field_annual_fee']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
@@ -1528,7 +1529,7 @@ function ffvcoop_configuration_views_default_views() {
   );
   $handler->display->display_options['filters']['field_last_order_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_last_order_date_value']['year_range'] = '-2:+1';
-  /* Filter criterion: Field: Annual Fee Date (field_annual_fee) */
+  /* Filter criterion: Field: Annual Fee (field_annual_fee) */
   $handler->display->display_options['filters']['field_annual_fee_value']['id'] = 'field_annual_fee_value';
   $handler->display->display_options['filters']['field_annual_fee_value']['table'] = 'field_data_field_annual_fee';
   $handler->display->display_options['filters']['field_annual_fee_value']['field'] = 'field_annual_fee_value';
