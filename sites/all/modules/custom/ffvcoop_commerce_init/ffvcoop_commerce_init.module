@@ -104,8 +104,8 @@ function ffvcoop_commerce_init_user_presave(&$edit, $account, $category){
         if ($entity_id) {
             $node = node_load($entity_id[0]);
             // if a new account add a customer order, copy last order and count over to user($edit).
-            if($account->is_new ==TRUE){
-            $cust_orders = _get_customer_orders($entity_id[0]);
+            if($account->is_new ==FALSE){
+            $cust_orders = NULL; //_get_customer_orders($entity_id[0]);
             $count = count($cust_orders);
             $last_date = _get_last_date($cust_orders);
             $edit['field_order_count']['und'][0]['value'] = $count;
@@ -354,7 +354,7 @@ function _get_customer_orders($entity_id){
         if($entity_ids) {
             return $entity_ids;}
         else {
-            return FALSE;
+            return NULL;
         }
     }
 }
@@ -368,15 +368,16 @@ function _get_customer_orders($entity_id){
 function _get_last_date($cust_orders){
     $dates=array();
     $return=array();
+    if(is_array($cust_orders){
     $ids = array_values($cust_orders);
     $orders = entity_load('customer_order', $ids);
-    foreach($orders as $order){
+    foreach ($orders as $order) {
         // grab date and add to array
         $dates[] = $order->field_order_date['und'][0]['value'];
 
     }
-    $mostRecent= array('date' => '', 'ts' => 0);
-    foreach($dates as $date){
+    $mostRecent = array('date' => '', 'ts' => 0);
+    foreach ($dates as $date) {
         $curDate = strtotime($date);
         if ($curDate > $mostRecent['ts']) {
             $mostRecent['ts'] = $curDate;
@@ -389,4 +390,8 @@ function _get_last_date($cust_orders){
     $return['und'][0]['datetype'] = 'datetime';
 
     return $return;
+    }
+    else {
+        return NULL;
+    }
 }
