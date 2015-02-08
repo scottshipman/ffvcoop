@@ -57,7 +57,9 @@ function ffvcoop_commerce_init_commerce_checkout_complete($order){
             ),
         );
     }
-    user_save((object) array('uid' => $existingUser->uid), (array) $existingUser);
+    field_attach_update('user', $existingUser);
+    //user_save((object) array('uid' => $existingUser->uid), (array) $existingUser); USER SAVE F's up pass field
+
 
     // update the customer node type also
     $nodeQuery = new EntityFieldQuery();
