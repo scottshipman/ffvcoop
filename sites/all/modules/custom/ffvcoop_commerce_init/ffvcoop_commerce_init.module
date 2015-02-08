@@ -23,7 +23,7 @@ function ffvcoop_commerce_init_commerce_checkout_complete($order){
 
     $annual_fee=FALSE;
   $existingUser = user_load($order->uid);
-    // todo check for annal fee and if so add date below
+
     $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
     foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
         $type = $line_item_wrapper->commerce_product->product_id->value();

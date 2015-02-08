@@ -13,7 +13,7 @@
 /**
  * ********** Create Administrative Settings Page   ****************
  */ 
- //TODO  use only one order form, if email already exists set is_new to false, 
+ //
  // and continue...prepopulate fields with values from email link lookup
 
 
@@ -224,7 +224,7 @@ function ffvcoop_new_user_new_user_form_submit($form, &$form_state) {
     drupal_set_message(t($line_items));
     _send_confirm_email($line_items, $form_state['values']['email'], $form_state['storage']['is_new']);
     drupal_goto('<front>');
-    //TODO: send confirm email to email address using $line_items
+
 }
 
 
@@ -610,7 +610,7 @@ function ffvcoop_new_user_form_eck__entity__form_edit_customer_order_customer_or
            'eck delete entities',
            "eck administer {$entity_type} {$bundle} entities",
            "eck delete {$entity_type} {$bundle} entities"
-          ), FALSE /* TODO: should also check user ownership perms. */ )
+          ), FALSE
   ){
     $delete_path = str_replace('%', $id, $crud_info['delete']['path']);
     $destination = ($_GET['destination']);
