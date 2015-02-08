@@ -99,11 +99,19 @@ function ffvcoop_commerce_init_user_presave(&$edit, $account, $category){
         ->fieldCondition('field_customer_email','email', $account->mail, '=')
         ->range(0, 1); //limit to one result
     $customer = $nodeQuery->execute();
-    if (isset($customer['node'])) {
+    if (isset($customer['node'])) {  // a customer record exists with same email addy
         $entity_id = array_keys($customer['node']);
         if ($entity_id) {
             $node = node_load($entity_id[0]);
-            //todo get customer order list for last order date and order count and save to user record.
+            // if a new account add a customer order, copy last order and count over to user($edit).
+            if($account->is_new ==TRUE){
+            $cust_orders = _get_customer_orders($entity_id[0]);
+            $count = count($cust_orders);
+            $last_date = _get_last_date($cust_orders);
+            $edit['field_order_count']['und'][0]['value'] = $count;
+            $edit['field_last_order_date'] = $last_date;
+            }
+
             $node->field_customer_email['und'][0]['email'] = $edit['mail'];
             $node->field_annual_fee  = $edit['field_annual_fee'];
             $node->field_last_order_date = $edit['field_last_order_date'];
@@ -328,4 +336,57 @@ function ffvcoop_commerce_init_user_login(&$edit, $account){
             add_fee_to_cart($account, $order);
         }
     }
+}
+
+/*
+ * helper function to load customer_orders by customer entity id
+ */
+
+function _get_customer_orders($entity_id){
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'customer_order')
+        ->entityCondition('bundle', 'customer_order')
+        ->fieldCondition('field_order_customer', 'target_id', $entity_id, '=');
+
+    $result = $query->execute();
+    if(isset($result['customer_order'])){
+        $entity_ids = array_keys($result['customer_order']);
+        if($entity_ids) {
+            return $entity_ids;}
+        else {
+            return FALSE;
+        }
+    }
+}
+
+/*
+ *  helper function to get a customer order max date
+ *
+ * used when a new user is created and old customer date is sync'd up
+ */
+
+function _get_last_date($cust_orders){
+    $dates=array();
+    $return=array();
+    $ids = array_values($cust_orders);
+    $orders = entity_load('customer_order', $ids);
+    foreach($orders as $order){
+        // grab date and add to array
+        $dates[] = $order->field_order_date['und'][0]['value'];
+
+    }
+    $mostRecent= array('date' => '', 'ts' => 0);
+    foreach($dates as $date){
+        $curDate = strtotime($date);
+        if ($curDate > $mostRecent['ts']) {
+            $mostRecent['ts'] = $curDate;
+            $mostRecent['date'] = $date;
+        }
+    }
+    $return['und'][0]['value'] = $mostRecent['date'];
+    $return['und'][0]['timezone'] = 'America/New_York';
+    $return['und'][0]['timezone_db'] = 'America/New_York';
+    $return['und'][0]['datetype'] = 'datetime';
+
+    return $return;
 }
