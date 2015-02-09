@@ -263,6 +263,7 @@ function return_next_date($ts){
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'pickup_date')
         ->fieldCondition('field_week_date', 'value', $ts, '>')//dates greater than now
+        ->fieldOrderBy('field_week_date', 'value', 'ASC')
         ->range(0, 1); //limit to one result
     $result = $query->execute();
     if (isset($result['pickup_date'])) {
