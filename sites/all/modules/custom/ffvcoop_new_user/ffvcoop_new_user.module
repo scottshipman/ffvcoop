@@ -489,8 +489,10 @@ function ffvcoop_new_user_register(){
 
 function ffvcoop_new_user_login(){
     module_load_include('inc', 'user', 'user.pages');
-    $login_form = drupal_render(drupal_get_form('user_login'));
-    $requestpw_form = drupal_render(drupal_get_form('user_pass'));
+    $lform = drupal_get_form('user_login');
+    $login_form = drupal_render($lform);
+    $rform = drupal_get_form('user_pass');
+    $requestpw_form = drupal_render($rform);
     $markup = '<div class="login_form"><h2>Login</h2>' . $login_form;
     $markup.= '<span class="login_page forgotpw"><a href="">forgot password?</a></span><span class="login_page"><a href="/user/new-user">Create a new account</a></span></div>';
     $markup.= '<div class="forgotpw_wrapper" style="display:none;"><h2>Request new password</h2>' . $requestpw_form;

@@ -94,7 +94,7 @@ function ffvcoop_calendar_feature_views_default_views() {
   $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
   $handler->display->display_options['fields']['field_week_date']['label'] = '';
   $handler->display->display_options['fields']['field_week_date']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_week_date']['alter']['text'] = 'The next weekly order pickup date will be [field_week_date] between 11am and 7pm. ';
+  $handler->display->display_options['fields']['field_week_date']['alter']['text'] = 'This week\'s order pickup date will be [field_week_date] between 11am and 7pm. ';
   $handler->display->display_options['fields']['field_week_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_week_date']['settings'] = array(
     'format_type' => 'long',

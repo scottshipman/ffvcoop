@@ -511,7 +511,18 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'commerce_customer_profile|billing|commerce_customer_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'locality' => '',
+        'administrative_area' => '',
+        'postal_code' => '',
+        'country' => 'US',
+        'name_line' => '',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -555,17 +566,21 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     'entity_type' => 'commerce_customer_profile',
     'field_name' => 'commerce_customer_address',
     'label' => 'Address',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
         'format_handlers' => array(
-          0 => 'address',
-          1 => 'name-oneline',
+          'address' => 'address',
+          'organisation' => 'organisation',
+          'name-oneline' => 'name-oneline',
+          'address-hide-country' => 0,
+          'name-full' => 0,
         ),
       ),
       'type' => 'addressfield_standard',

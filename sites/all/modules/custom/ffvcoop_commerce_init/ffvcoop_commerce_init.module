@@ -106,12 +106,21 @@ function ffvcoop_commerce_init_user_presave(&$edit, $account, $category){
         if ($entity_id) {
             $node = node_load($entity_id[0]);
             // if a new account add a customer order, copy last order and count over to user($edit).
-            if($account->is_new ==FALSE){
-            $cust_orders = NULL; //_get_customer_orders($entity_id[0]);
+            if($account->is_new ==TRUE){
+            $cust_orders = _get_customer_orders($entity_id[0]);
             $count = count($cust_orders);
             $last_date = _get_last_date($cust_orders);
             $edit['field_order_count']['und'][0]['value'] = $count;
             $edit['field_last_order_date'] = $last_date;
+                if($node->field_customer_fee_paid['und'][0]['value'] == "1"){
+                    $edit['field_annual_fee']['und'][0] = array(
+                        'value' => '2015-03-01 00:00:00',
+                        'timezone' => 'America/New_York',
+                        'timezone_db' => 'America/New_York',
+                        'datetype' => 'datetime',
+                    );
+
+                }
             }
 
             $node->field_customer_email['und'][0]['email'] = $edit['mail'];
@@ -320,7 +329,10 @@ function ffvcoop_commerce_init_form_alter(&$form, &$form_state, $form_id){
     if($form_id == 'commerce_order_ui_order_form' ){
         $form['order_status']['#weight'] = -20;
         $form['order_status']['#group'] = '';
+        $form['submit2'] = $form['actions']['submit'];
+        $form['submit2']['#weight'] = -19;
     }
+
 }
 
 /*

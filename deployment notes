@@ -1,3 +1,11 @@
+Add xcell sheet on current orders
+
+summary of basket counts on current orders
+
+Coupons
+    Add a Coupon type for Affiliate
+    create coupon instance for drop off @15$
+    Logic = 5 baskets any type + delivery
 
 *****************************
 Theory for recurring orders
@@ -7,31 +15,9 @@ Theory for recurring orders
 3. Hook checkout submit process to add orders with "recurring-pending" status cloned from current order.
 4. Cron job gets all recurring-pending orders and processes payment - updates status.
 
-Delivery Module
- - make delivery pane required when visible
- - Next Delivery Date block on product-list page
-
-Orders:
-    Bulk Copy last order date into Customer field
-    If pickup date is expired, set to new pickup date
-  DONE Move Status field to top on order edit form
-
-Weekly Email (views Send)
-  - Update to use users + customers
-
-
-Annual Fee Module (probably handled with rules)
-DONE - create Annual Fee Product (Product>Fees)
-DONE - widget to set Annual Fee value to 1 year ago for every customer / user. (left blank)
-DONE - Auto Add to Order if not paid and has at least 1 order.
 
 SSL Checkout
 
-DONE - Add Honeypot module
-
-DONE - Dont let user's edit their own order count
-
-DONE - Verify that pickupdate cutoff is two calendar days before pickupdate (IE 24 hours and 1 minute)
 
 
 DONE - Add the Old Welcome message to the new welcome message.
@@ -64,16 +50,28 @@ FIRST DISABLE METATAGS
    Other - Strongarm, commerce feeds multi, honeypot
 
 2. Features - enable all FFVCOOP features && enable ffvcoop commerce theme
-DONE 3. Fix Menu items.
+3. Fix Menu items. - hide things from anonymous users
 4. Add Products
 5. add coupon for January / February code
 6. Checkout Settings:
      Re-order checkout pane make them collapsible
      Enable Auth.net payment method
-DONE 7. Permissions - allow anonymous to access checkout, config-people allow anon registration
-DONE 8. verify error reporting at admin/config/development/logging
+7. Permissions - allow anonymous to access checkout, config-people allow anon registration People / register permission
 9. Add manager role to mark and kathy
-DONE 10. FIX LINE ITEM VIEW TO SHOW TITLE (re-add title field and remove old one, reexport to feature)
-DONE 11. Add calendar view block to configuration/calendar, Run Calendar for 2015
+11. Run Calendar for 2015
 12. Add Refund Policy, Terms and Conditions, Privacy Policy, text about Fee on Register page, and add each page to footer menu
 Add how it works
+13. SECURE PAGES
+     insecure = http://ffvcoop.com, secure = https://ffvcoop.com
+     only these pages user
+                      user/*
+                      users/*
+                      admin
+                      admin/*
+                      checkout
+                      checkout/*
+                      manage/*
+
+
+Content changes:
+   Home Page

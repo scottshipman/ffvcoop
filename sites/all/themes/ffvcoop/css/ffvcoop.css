@@ -19,9 +19,9 @@
 }
  
  html {
- 	/*font-family:"Tahoma, Arial, Helvetica, sans-serif";*/
+ 	font-family:"Tahoma, Arial, Helvetica, sans-serif";
     /* font-family: 'Fauna One', serif; */
-     font-family: 'Overlock', cursive;
+    /* font-family: 'Overlock', cursive; */
      /* font-family: 'Copse', serif;*/
       line-height: 1.5em;
       font-size:93%;

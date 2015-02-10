@@ -9,6 +9,25 @@
  */
 function ffvcoop_commerce_init_default_rules_configuration() {
   $items = array();
+  $items['commerce_checkout_ffvcoop_send_an_order_notification_e_mail'] = entity_import('rules_config', '{ "commerce_checkout_ffvcoop_send_an_order_notification_e_mail" : {
+      "LABEL" : "FFVCOOP Send an order notification e-mail",
+      "PLUGIN" : "reaction rule",
+      "WEIGHT" : "4",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Checkout" ],
+      "REQUIRES" : [ "rules", "commerce_checkout" ],
+      "ON" : { "commerce_checkout_complete" : [] },
+      "DO" : [
+        { "mail" : {
+            "to" : [ "commerce-order:mail" ],
+            "subject" : "[commerce-order:owner],\\r\\nThank you for your Order (#[commerce-order:order-number]) at [site:name]",
+            "message" : "Thanks for your order [commerce-order:order-number] at [site:name].\\r\\n\\r\\nYou can view your order history with us at any time by logging into our website at:\\r\\n[site:login-url]\\r\\n\\r\\nYou can find the status of your current order at:\\r\\n[commerce-order:customer-url]\\r\\n\\r\\nOrder Details\\r\\n------------------------------------------------------------------------------------------\\r\\n[commerce-order:commerce-line-items]\\r\\n[commerce-order:commerce-order-total]\\r\\nOrder Pickup Date: [commerce-order:field_week_date] between 11am and 7pm.\\r\\n\\r\\n[commerce-order:commerce_customer_shipping]\\r\\n\\r\\nPlease contact us if you have any questions about your order.",
+            "language" : [ "commerce-order:state" ]
+          }
+        }
+      ]
+    }
+  }');
   $items['commerce_coupon_fixed_amount_new_user_coupon_with_fixed_amount'] = entity_import('rules_config', '{ "commerce_coupon_fixed_amount_new_user_coupon_with_fixed_amount" : {
       "LABEL" : "New User coupon with fixed amount",
       "PLUGIN" : "reaction rule",
