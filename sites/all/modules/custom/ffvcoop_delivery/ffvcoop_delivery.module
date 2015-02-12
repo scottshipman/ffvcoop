@@ -46,12 +46,13 @@ function add_delivery_to_cart_construct() {
   //check to see if a delivery already exists in cart and if so dont show block
   $order=commerce_order_load($cart->order_id);
   $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
-  foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
-    $type = $line_item_wrapper->commerce_product->product_id->value();
-    $product_item = commerce_product_load($type);
-    $product_type = $product_item->type;
-    if($product_type=='delivery'){
-      return FALSE;
+  foreach ($order->commerce_line_items['und'] as $delta => $line_item_wrapper) {
+    if($type = get_line_item_type($line_item_wrapper)){
+      $product_item = commerce_product_load($type);
+      $product_type = $product_item->type;
+      if($product_type=='delivery'){
+        return FALSE;
+      }
     }
   }
 
@@ -153,12 +154,13 @@ function ffvcoop_delivery_order_remove_delivery($order) {
 
   // Build an array of product line item IDs.
   $line_item_ids = array();
-  foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
-    $type = $line_item_wrapper->commerce_product->product_id->value();
-    $product_item = commerce_product_load($type);
-    $product_type = $product_item->type;
-    if($product_type=='delivery'){
-      $line_item_ids[] = $line_item_wrapper->line_item_id->value();
+  foreach ($order->commerce_line_items['und'] as $delta => $line_item_wrapper) {
+    if($type = get_line_item_type($line_item_wrapper)){
+      $product_item = commerce_product_load($type);
+      $product_type = $product_item->type;
+      if($product_type=='delivery'){
+        $line_item_ids[] = $line_item_wrapper->line_item_id->value();
+      }
     }
   }
 

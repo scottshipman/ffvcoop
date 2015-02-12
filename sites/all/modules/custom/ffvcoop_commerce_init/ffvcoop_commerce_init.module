@@ -25,12 +25,13 @@ function ffvcoop_commerce_init_commerce_checkout_complete($order){
   $existingUser = user_load($order->uid);
 
     $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
-    foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
-        $type = $line_item_wrapper->commerce_product->product_id->value();
-        $product_item = commerce_product_load($type);
-        $product_type = $product_item->type;
-        if($product_type=='fee'){
-            $annual_fee=TRUE;
+    foreach ($order->commerce_line_items['und'] as $delta => $line_item_wrapper) {
+        if($type = get_line_item_type($line_item_wrapper)){
+          $product_item = commerce_product_load($type);
+          $product_type = $product_item->type;
+          if($product_type=='fee'){
+              $annual_fee=TRUE;
+          }
         }
     }
 
@@ -261,13 +262,16 @@ return $report;
 
 
 function is_line_item_a_product($line_item_wrapper){
-  $type = $line_item_wrapper->commerce_product->product_id->value();
-  $product_item = commerce_product_load($type);
-  $product_type = $product_item->type;
- // if($product_type!='product'){
- //   return FALSE;
- // }
-  return $product_item->title;
+  $return=NULL;
+  if($type = get_line_item_type($line_item_wrapper)){
+    $product_item = commerce_product_load($type);
+    $product_type = $product_item->type;
+   // if($product_type!='product'){
+   //   return FALSE;
+   // }
+    $return= $product_item->title;
+  }
+  return $return;
 }
 
 function get_order_pickup_date($order_id){
@@ -303,12 +307,14 @@ function add_fee_to_cart($user, $order){
         $order_count = isset($user_data->field_order_count['und'][0]['value'])? intval($user_data->field_order_count['und'][0]['value']) : "0" ;
         //make sure there isnt already an annual fee in the cart
         $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
-        foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
-            $type = $line_item_wrapper->commerce_product->product_id->value();
-            $product_item = commerce_product_load($type);
-            $product_type = $product_item->type;
-            if($product_type=='fee'){
-                $fee_exists = TRUE;
+       // foreach ($order_wrapper->commerce_line_items as $delta => $line_item_wrapper) {
+        foreach ($order->commerce_line_items['und'] as $delta => $line_item_wrapper) {
+            if($type = get_line_item_type($line_item_wrapper)){
+              $product_item = commerce_product_load($type);
+              $product_type = $product_item->type;
+              if($product_type=='fee'){
+                  $fee_exists = TRUE;
+              }
             }
         }
 
@@ -447,4 +453,15 @@ function _get_last_date($cust_orders){
     else {
         return NULL;
     }
+}
+
+function get_line_item_type($line_item_wrapper){
+  $product= NULL;
+  $line_item = entity_load('commerce_line_item', array($line_item_wrapper['line_item_id']));
+ // if(in_array('commerce_product', $line_item_wrapper)){
+  if($line_item[$line_item_wrapper['line_item_id']]->type =="product"){
+    $product = $line_item[$line_item_wrapper['line_item_id']]->commerce_product['und'][0]['product_id'];
+  }
+    return $product;
+ // }
 }
