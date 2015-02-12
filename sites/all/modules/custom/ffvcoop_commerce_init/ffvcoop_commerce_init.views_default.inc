@@ -482,8 +482,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = 50;
   $handler->display->display_options['style_plugin'] = 'table';
@@ -619,6 +618,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['field_week_date']['table'] = 'field_data_field_week_date';
   $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
   $handler->display->display_options['fields']['field_week_date']['label'] = 'Pickup Date';
+  $handler->display->display_options['fields']['field_week_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_week_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -740,6 +740,84 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Orders (revised)';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'commerce_customer_address_name_line' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'mail' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'status' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'field_week_date_value' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 1;
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a date and other filter and click on Apply to see results. You must select a Date.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -891,7 +969,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['commerce_customer_address']['relationship'] = 'commerce_customer_billing_profile_id';
   $handler->display->display_options['fields']['commerce_customer_address']['label'] = 'Name';
   $handler->display->display_options['fields']['commerce_customer_address']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['commerce_customer_address']['alter']['text'] = '<a href="/user/[uid]/edit">[commerce_customer_address-name_line]</a> [[field_customer_phone]]';
+  $handler->display->display_options['fields']['commerce_customer_address']['alter']['text'] = '<a href="/user/[uid]/edit" rel="lightframe">[commerce_customer_address-name_line]</a> [[field_customer_phone]]';
   $handler->display->display_options['fields']['commerce_customer_address']['empty'] = '-';
   $handler->display->display_options['fields']['commerce_customer_address']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['commerce_customer_address']['click_sort_column'] = 'country';
@@ -924,6 +1002,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['field_week_date']['id'] = 'field_week_date';
   $handler->display->display_options['fields']['field_week_date']['table'] = 'field_data_field_week_date';
   $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_week_date']['settings'] = array(
     'format_type' => 'short',
     'fromto' => 'both',
@@ -1012,10 +1091,13 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['filters']['field_week_date_value']['expose']['label'] = 'Pickup Date';
   $handler->display->display_options['filters']['field_week_date_value']['expose']['operator'] = 'field_week_date_value_op';
   $handler->display->display_options['filters']['field_week_date_value']['expose']['identifier'] = 'field_week_date_value';
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['required'] = TRUE;
   $handler->display->display_options['filters']['field_week_date_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
+    5 => 0,
   );
   $handler->display->display_options['filters']['field_week_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['path'] = 'manage/commerce/orders/list';

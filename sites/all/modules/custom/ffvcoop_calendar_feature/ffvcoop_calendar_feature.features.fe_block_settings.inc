@@ -58,7 +58,9 @@ function ffvcoop_calendar_feature_default_fe_block_settings() {
     'delta' => 'calendar_date_list-block_1',
     'module' => 'views',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'manage/*
+configure/*
+admin/*',
     'roles' => array(),
     'themes' => array(
       'ffvcoop' => array(

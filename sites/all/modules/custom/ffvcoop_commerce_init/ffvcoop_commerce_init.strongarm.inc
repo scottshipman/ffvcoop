@@ -567,6 +567,20 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'securepages_pages';
+  $strongarm->value = 'user
+user/*
+users/*
+admin
+admin/*
+checkout
+checkout/*
+manage/*';
+  $export['securepages_pages'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'user_email_verification';
   $strongarm->value = 0;
   $export['user_email_verification'] = $strongarm;
