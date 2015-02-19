@@ -206,7 +206,7 @@ function line_item_date_select_form_submit($form, &$form_state){
   $qty=array();
   $report = '<div id="line-item-results"><ul>';
   $query = new EntityFieldQuery();
-  $date = strtotime($form_state['values']['week_date']);
+  $date = strtotime($form_state['values']['week_date'] . '- 1 day');
   $date2 = strtotime($form_state['values']['week_date'] . '+ 1 day');
   $status = $form_state['values']['status'];
   $query->entityCondition('entity_type', 'commerce_order')
