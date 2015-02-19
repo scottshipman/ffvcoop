@@ -207,10 +207,11 @@ function line_item_date_select_form_submit($form, &$form_state){
   $report = '<div id="line-item-results"><ul>';
   $query = new EntityFieldQuery();
   $date = strtotime($form_state['values']['week_date']);
+  $date2 = strtotime($form_state['values']['week_date'] . '+ 1 day');
   $status = $form_state['values']['status'];
   $query->entityCondition('entity_type', 'commerce_order')
    // ->propertyCondition('status',$status,'=')
-    ->fieldCondition('field_week_date', 'value', $date, '=')
+    ->fieldCondition('field_week_date', 'value', array($date, $date2), BETWEEN)
     ->addMetaData('account', user_load(1)); // Run the query as user 1.
 
     if(!empty($status)){
