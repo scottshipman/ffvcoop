@@ -223,7 +223,7 @@ function ffvcoop_calendar_create_pickup_dates($year=2015){
         switch($date->format('w')){
             case THURSDAY:
                 //$pickup[]= $date->format('r');
-                $pickup[]= $date->format('Y-m-d h:m:s');
+                $pickup[]= $date->format('Y-m-d h:m:s'); // todo should this have no time format?
         }
     }
     return $pickup;

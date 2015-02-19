@@ -164,7 +164,8 @@ function ffvcoop_commerce_init_menu(){
 }
 
 function line_item_report_page(){
-  return '<h2>Weekly Order Summary</h2>' . drupal_render(drupal_get_form('line_item_date_select_form')) . '<div id="line-item-results"></div>';
+    $form=drupal_get_form('line_item_date_select_form');
+  return '<h2>Weekly Order Summary</h2>' . drupal_render($form) . '<div id="line-item-results"></div>';
 }
 
 function line_item_date_select_form($form, &$form_state){
@@ -221,7 +222,9 @@ function line_item_date_select_form_submit($form, &$form_state){
       $order_ids=array_keys($result['commerce_order']);
       foreach($order_ids as $order_id){
           $wrapper = entity_metadata_wrapper('commerce_order', $order_id);
-          foreach ($wrapper->commerce_line_items as $delta => $line_item_wrapper) {
+          $lines = $wrapper->commerce_line_items;
+          foreach ($lines as $line_item_wrapper) {
+              $bundle = $line_item_wrapper->getBundle();
               if($name = is_line_item_a_product($line_item_wrapper)){
                   //do something
                   $qty[$name] = $qty[$name] + $line_item_wrapper->quantity->value();
@@ -230,29 +233,11 @@ function line_item_date_select_form_submit($form, &$form_state){
       }
   }
 
-
-
-
-    /*
-      if (isset($result['commerce_line_item'])) {
-        $items_nids = array_keys($result['commerce_line_item']);
-        $items = entity_load('commerce_line_item', $items_nids);
-        foreach($items as $item){
-          $item_wrapper = entity_metadata_wrapper('commerce_line_item', $item->line_item_id);
-            $order = commerce_order_load($item->order_id);
-
-          if(get_order_pickup_date($item->order_id) == $form_state['values']['week_date'] && $order->status==$status){
-            if($name = is_line_item_a_product($item_wrapper)){
-              //do something
-              $qty[$name] = $qty[$name] + intval($item->quantity);
-            }
-          }
-        }
-    */
     foreach($qty as $title=>$value){
       $report.= '<li class="row-summary">' . $title . ' - <span class="total">' . $value . '</span></li>';
     }
-    if(count($qty<1)){
+    $count = count($qty);
+    if($count<1){
         $report.="There are no Orders matching your search criteria. Please try again.";
     }
 
@@ -457,11 +442,20 @@ function _get_last_date($cust_orders){
 
 function get_line_item_type($line_item_wrapper){
   $product= NULL;
-  $line_item = entity_load('commerce_line_item', array($line_item_wrapper['line_item_id']));
- // if(in_array('commerce_product', $line_item_wrapper)){
-  if($line_item[$line_item_wrapper['line_item_id']]->type =="product"){
-    $product = $line_item[$line_item_wrapper['line_item_id']]->commerce_product['und'][0]['product_id'];
-  }
+    if(is_array($line_item_wrapper)){
+        $line_item_arr = $line_item_wrapper['line_item_id'];
+        $line_item = entity_load('commerce_line_item', array($line_item_arr));
+        if ($line_item[$line_item_wrapper['line_item_id']]->type == "product") {
+            $product = $line_item[$line_item_wrapper['line_item_id']]->commerce_product['und'][0]['product_id'];
+        }
+    } elseif (is_object($line_item_wrapper)){
+        $line_item_arr = $line_item_wrapper->line_item_id->value();
+        $line_item = entity_load('commerce_line_item', array($line_item_arr));
+        if ($line_item_wrapper->getBundle() == "product") {
+            $product = $line_item[$line_item_arr]->commerce_product['und'][0]['product_id'];
+        }
+    }
+
     return $product;
  // }
 }
