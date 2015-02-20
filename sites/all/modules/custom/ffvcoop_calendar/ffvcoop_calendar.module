@@ -219,11 +219,12 @@ function ffvcoop_calendar_create_pickup_dates($year=2015){
     $from = new DateTime($year . '-01-01');;
     $to = new DateTime($year . '-12-31');;
     $pickup = array();
-    for($date=clone $from; $date<$to; $date->modify('+1 day')){
+    for($date=clone $from; $date<=$to; $date->modify('+1 day')){
         switch($date->format('w')){
             case THURSDAY:
                 //$pickup[]= $date->format('r');
-                $pickup[]= $date->format('Y-m-d h:m:s'); // todo should this have no time format?
+                //$pickup[]= $date->format('Y-m-d h:m:s'); // todo should this have no time format?
+                $pickup[]= $date->format('Y-m-d'); // todo should this have no time format?
         }
     }
     return $pickup;
