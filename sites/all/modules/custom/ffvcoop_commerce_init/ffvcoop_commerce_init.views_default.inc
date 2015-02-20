@@ -22,6 +22,7 @@ function ffvcoop_commerce_init_views_default_views() {
 
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['hide_admin_links'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -29,58 +30,9 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'quantity' => 'quantity',
-    'commerce_unit_price' => 'commerce_unit_price',
-    'line_item_title' => 'line_item_title',
-    'commerce_total' => 'commerce_total',
-    'field_week_date' => 'field_week_date',
-    'product_id' => 'product_id',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'quantity' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'commerce_unit_price' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'line_item_title' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'commerce_total' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_week_date' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'product_id' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -99,6 +51,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['quantity']['table'] = 'commerce_line_item';
   $handler->display->display_options['fields']['quantity']['field'] = 'quantity';
   $handler->display->display_options['fields']['quantity']['label'] = '';
+  $handler->display->display_options['fields']['quantity']['exclude'] = TRUE;
   $handler->display->display_options['fields']['quantity']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['quantity']['precision'] = '0';
   /* Field: Commerce Line Item: Title */
@@ -106,6 +59,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['line_item_title_1']['table'] = 'commerce_line_item';
   $handler->display->display_options['fields']['line_item_title_1']['field'] = 'line_item_title';
   $handler->display->display_options['fields']['line_item_title_1']['label'] = '';
+  $handler->display->display_options['fields']['line_item_title_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['line_item_title_1']['element_label_colon'] = FALSE;
   /* Field: Commerce Line Item: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
@@ -124,6 +78,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['label'] = '';
+  $handler->display->display_options['fields']['commerce_unit_price']['exclude'] = TRUE;
   $handler->display->display_options['fields']['commerce_unit_price']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['commerce_unit_price']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['commerce_unit_price']['settings'] = array(
@@ -135,6 +90,8 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['commerce_total']['field'] = 'commerce_total';
   $handler->display->display_options['fields']['commerce_total']['group_type'] = 'sum';
   $handler->display->display_options['fields']['commerce_total']['label'] = '';
+  $handler->display->display_options['fields']['commerce_total']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['commerce_total']['alter']['text'] = '[quantity] [line_item_title_1] [commerce_unit_price]/[commerce_total] <br>';
   $handler->display->display_options['fields']['commerce_total']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['commerce_total']['click_sort_column'] = 'amount';
   $handler->display->display_options['fields']['commerce_total']['settings'] = array(
@@ -1092,6 +1049,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['filters']['field_week_date_value']['expose']['operator'] = 'field_week_date_value_op';
   $handler->display->display_options['filters']['field_week_date_value']['expose']['identifier'] = 'field_week_date_value';
   $handler->display->display_options['filters']['field_week_date_value']['expose']['required'] = TRUE;
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['remember'] = TRUE;
   $handler->display->display_options['filters']['field_week_date_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1114,6 +1072,8 @@ function ffvcoop_commerce_init_views_default_views() {
 
   /* Display: Feed */
   $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'page_1';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -1121,6 +1081,8 @@ function ffvcoop_commerce_init_views_default_views() {
     4 => '4',
     5 => '5',
   );
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'xls';
@@ -1184,7 +1146,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['commerce_line_items']['table'] = 'field_data_commerce_line_items';
   $handler->display->display_options['fields']['commerce_line_items']['field'] = 'commerce_line_items';
   $handler->display->display_options['fields']['commerce_line_items']['settings'] = array(
-    'view' => 'commerce_line_item_table|default',
+    'view' => 'ffvcoop_line_items|default',
   );
   $handler->display->display_options['fields']['commerce_line_items']['delta_offset'] = '0';
   /* Field: Commerce Order: Order total */
@@ -1202,7 +1164,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
   $handler->display->display_options['fields']['field_week_date']['label'] = 'Pickup Date';
   $handler->display->display_options['fields']['field_week_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -1304,12 +1266,172 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['filters']['field_week_date_value']['year_range'] = '-2:+1';
   $handler->display->display_options['path'] = 'manage/reports/weekly-orders';
   $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'admin_page' => 0,
+    'shopping_carts' => 0,
+    'page_1' => 0,
+  );
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+    5 => '5',
+  );
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['parent_sort'] = 1;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Commerce Order: Order number */
+  $handler->display->display_options['fields']['order_number']['id'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['order_number']['field'] = 'order_number';
+  $handler->display->display_options['fields']['order_number']['link_to_order'] = 'admin';
+  /* Field: Commerce Order: Order status */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  /* Field: Commerce Order: Created date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'm/d/Y';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Commerce Order: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = 'Updated';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'medium';
+  /* Field: Commerce Order: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  /* Field: Field: Phone */
+  $handler->display->display_options['fields']['field_customer_phone']['id'] = 'field_customer_phone';
+  $handler->display->display_options['fields']['field_customer_phone']['table'] = 'field_data_field_customer_phone';
+  $handler->display->display_options['fields']['field_customer_phone']['field'] = 'field_customer_phone';
+  $handler->display->display_options['fields']['field_customer_phone']['relationship'] = 'uid';
+  /* Field: Commerce Order: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'commerce_order';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['render_as_link'] = 0;
+  /* Field: Commerce Customer profile: Address */
+  $handler->display->display_options['fields']['commerce_customer_address']['id'] = 'commerce_customer_address';
+  $handler->display->display_options['fields']['commerce_customer_address']['table'] = 'field_data_commerce_customer_address';
+  $handler->display->display_options['fields']['commerce_customer_address']['field'] = 'commerce_customer_address';
+  $handler->display->display_options['fields']['commerce_customer_address']['relationship'] = 'commerce_customer_billing_profile_id';
+  $handler->display->display_options['fields']['commerce_customer_address']['label'] = 'Name';
+  $handler->display->display_options['fields']['commerce_customer_address']['empty'] = '-';
+  $handler->display->display_options['fields']['commerce_customer_address']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['commerce_customer_address']['click_sort_column'] = 'country';
+  $handler->display->display_options['fields']['commerce_customer_address']['settings'] = array(
+    'use_widget_handlers' => 0,
+    'format_handlers' => array(
+      'name-oneline' => 'name-oneline',
+    ),
+  );
+  /* Field: Commerce Order: Line items */
+  $handler->display->display_options['fields']['commerce_line_items']['id'] = 'commerce_line_items';
+  $handler->display->display_options['fields']['commerce_line_items']['table'] = 'field_data_commerce_line_items';
+  $handler->display->display_options['fields']['commerce_line_items']['field'] = 'commerce_line_items';
+  $handler->display->display_options['fields']['commerce_line_items']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['commerce_line_items']['alter']['preserve_tags'] = '<br>';
+  $handler->display->display_options['fields']['commerce_line_items']['settings'] = array(
+    'view' => 'ffvcoop_line_items|default',
+  );
+  $handler->display->display_options['fields']['commerce_line_items']['delta_offset'] = '0';
+  /* Field: Commerce Order: Order total */
+  $handler->display->display_options['fields']['commerce_order_total']['id'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['table'] = 'field_data_commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['field'] = 'commerce_order_total';
+  $handler->display->display_options['fields']['commerce_order_total']['label'] = 'Total';
+  $handler->display->display_options['fields']['commerce_order_total']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_order_total']['settings'] = array(
+    'calculation' => FALSE,
+  );
+  /* Field: Field: Week Date */
+  $handler->display->display_options['fields']['field_week_date']['id'] = 'field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['table'] = 'field_data_field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['field'] = 'field_week_date';
+  $handler->display->display_options['fields']['field_week_date']['label'] = 'Pickup Date';
+  $handler->display->display_options['fields']['field_week_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Commerce Order: Order state */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['operator'] = 'not in';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'cart' => 'cart',
+    'checkout' => 'checkout',
+  );
+  $handler->display->display_options['filters']['state']['group'] = 1;
+  $handler->display->display_options['filters']['state']['expose']['label'] = 'Order state';
+  $handler->display->display_options['filters']['state']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
+  $handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
+  /* Filter criterion: Field: Week Date (field_week_date) */
+  $handler->display->display_options['filters']['field_week_date_value']['id'] = 'field_week_date_value';
+  $handler->display->display_options['filters']['field_week_date_value']['table'] = 'field_data_field_week_date';
+  $handler->display->display_options['filters']['field_week_date_value']['field'] = 'field_week_date_value';
+  $handler->display->display_options['filters']['field_week_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['operator_id'] = 'field_week_date_value_op';
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['label'] = 'Pickup Date';
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['operator'] = 'field_week_date_value_op';
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['identifier'] = 'field_week_date_value';
+  $handler->display->display_options['filters']['field_week_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_week_date_value']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_week_date_value']['year_range'] = '-2:+1';
+  /* Filter criterion: Commerce Order: Order status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'commerce_order';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    'recurring_pending' => 'recurring_pending',
+    'pending' => 'pending',
+    'cardonfile_charged' => 'cardonfile_charged',
+    'completed' => 'completed',
+  );
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Order status';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['path'] = 'manage/reports/weekly-orders-xls';
+  $handler->display->display_options['displays'] = array(
     'page_1' => 'page_1',
     'default' => 0,
     'admin_page' => 0,
     'shopping_carts' => 0,
-    'page_2' => 0,
-    'page_3' => 0,
   );
   $export['ffvcoop_orders'] = $view;
 

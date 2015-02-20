@@ -16,6 +16,7 @@ function ffvcoop_commerce_init_commerce_coupon_default_types() {
       'data' => NULL,
       'status' => 1,
       'module' => NULL,
+      'metatags' => array(),
       'rdf_mapping' => array(),
     ),
     'commerce_coupon_pct' => array(
@@ -25,6 +26,7 @@ function ffvcoop_commerce_init_commerce_coupon_default_types() {
       'data' => NULL,
       'status' => 1,
       'module' => NULL,
+      'metatags' => array(),
       'rdf_mapping' => array(),
     ),
     'new_user_coupon' => array(
@@ -34,6 +36,7 @@ function ffvcoop_commerce_init_commerce_coupon_default_types() {
       'data' => NULL,
       'status' => 1,
       'module' => NULL,
+      'metatags' => array(),
       'rdf_mapping' => array(),
     ),
   );

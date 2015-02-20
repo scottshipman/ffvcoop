@@ -76,7 +76,6 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[elysia_cron][] = :default
 features[elysia_cron][] = rules_cron
-features[fe_block_settings][] = block-authorize_merchant
 features[fe_block_settings][] = commerce_cart-cart
 features[fe_block_settings][] = ffvcoop_delivery-ffvcoop_delivery_form
 features[fe_block_settings][] = formblock-user_password_request
