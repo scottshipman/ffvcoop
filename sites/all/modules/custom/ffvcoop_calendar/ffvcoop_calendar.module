@@ -256,7 +256,6 @@ function get_next_pickup_date($ts = FALSE){
     if($ts>=$cutoff){
         $next_date = return_next_date(strtotime('+2 days', $ts));
     }
-    $date = date('m/d/y', $next_date);
     return $next_date;
 }
 

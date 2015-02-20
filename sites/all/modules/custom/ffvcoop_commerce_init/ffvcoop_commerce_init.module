@@ -211,7 +211,7 @@ function line_item_date_select_form_submit($form, &$form_state){
   $status = $form_state['values']['status'];
   $query->entityCondition('entity_type', 'commerce_order')
    // ->propertyCondition('status',$status,'=')
-    ->fieldCondition('field_week_date', 'value', array($date, $date2), BETWEEN)
+    ->fieldCondition('field_week_date', 'value', array($date, $date2), 'BETWEEN')
     ->addMetaData('account', user_load(1)); // Run the query as user 1.
 
     if(!empty($status)){
