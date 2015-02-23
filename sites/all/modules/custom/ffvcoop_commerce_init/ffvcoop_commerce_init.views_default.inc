@@ -1587,6 +1587,7 @@ function ffvcoop_commerce_init_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Order status';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
