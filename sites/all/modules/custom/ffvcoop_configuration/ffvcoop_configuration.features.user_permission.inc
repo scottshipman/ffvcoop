@@ -26,7 +26,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access administration pages',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
       'employee' => 'employee',
       'manager' => 'manager',
     ),
@@ -107,6 +106,15 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer honeypot'.
+  $permissions['administer honeypot'] = array(
+    'name' => 'administer honeypot',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'honeypot',
+  );
+
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -159,6 +167,15 @@ function ffvcoop_configuration_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'views_send',
+  );
+
+  // Exported permission: 'bypass honeypot protection'.
+  $permissions['bypass honeypot protection'] = array(
+    'name' => 'bypass honeypot protection',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'honeypot',
   );
 
   // Exported permission: 'bypass node access'.
@@ -350,6 +367,27 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'eck',
   );
 
+  // Exported permission: 'eck add customer_order bundles'.
+  $permissions['eck add customer_order bundles'] = array(
+    'name' => 'eck add customer_order bundles',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck add customer_order customer_order entities'.
+  $permissions['eck add customer_order customer_order entities'] = array(
+    'name' => 'eck add customer_order customer_order entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck add customer_order order_line_item entities'.
+  $permissions['eck add customer_order order_line_item entities'] = array(
+    'name' => 'eck add customer_order order_line_item entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
   // Exported permission: 'eck add entities'.
   $permissions['eck add entities'] = array(
     'name' => 'eck add entities',
@@ -383,6 +421,27 @@ function ffvcoop_configuration_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck administer customer_order bundles'.
+  $permissions['eck administer customer_order bundles'] = array(
+    'name' => 'eck administer customer_order bundles',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck administer customer_order customer_order entities'.
+  $permissions['eck administer customer_order customer_order entities'] = array(
+    'name' => 'eck administer customer_order customer_order entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck administer customer_order order_line_item entities'.
+  $permissions['eck administer customer_order order_line_item entities'] = array(
+    'name' => 'eck administer customer_order order_line_item entities',
+    'roles' => array(),
     'module' => 'eck',
   );
 
@@ -422,6 +481,27 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'eck',
   );
 
+  // Exported permission: 'eck delete customer_order bundles'.
+  $permissions['eck delete customer_order bundles'] = array(
+    'name' => 'eck delete customer_order bundles',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck delete customer_order customer_order entities'.
+  $permissions['eck delete customer_order customer_order entities'] = array(
+    'name' => 'eck delete customer_order customer_order entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck delete customer_order order_line_item entities'.
+  $permissions['eck delete customer_order order_line_item entities'] = array(
+    'name' => 'eck delete customer_order order_line_item entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
   // Exported permission: 'eck delete entities'.
   $permissions['eck delete entities'] = array(
     'name' => 'eck delete entities',
@@ -453,6 +533,27 @@ function ffvcoop_configuration_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck edit customer_order bundles'.
+  $permissions['eck edit customer_order bundles'] = array(
+    'name' => 'eck edit customer_order bundles',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck edit customer_order customer_order entities'.
+  $permissions['eck edit customer_order customer_order entities'] = array(
+    'name' => 'eck edit customer_order customer_order entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck edit customer_order order_line_item entities'.
+  $permissions['eck edit customer_order order_line_item entities'] = array(
+    'name' => 'eck edit customer_order order_line_item entities',
+    'roles' => array(),
     'module' => 'eck',
   );
 
@@ -492,6 +593,27 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'eck',
   );
 
+  // Exported permission: 'eck list customer_order bundles'.
+  $permissions['eck list customer_order bundles'] = array(
+    'name' => 'eck list customer_order bundles',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck list customer_order customer_order entities'.
+  $permissions['eck list customer_order customer_order entities'] = array(
+    'name' => 'eck list customer_order customer_order entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck list customer_order order_line_item entities'.
+  $permissions['eck list customer_order order_line_item entities'] = array(
+    'name' => 'eck list customer_order order_line_item entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
   // Exported permission: 'eck list entities'.
   $permissions['eck list entities'] = array(
     'name' => 'eck list entities',
@@ -516,6 +638,27 @@ function ffvcoop_configuration_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck view customer_order bundles'.
+  $permissions['eck view customer_order bundles'] = array(
+    'name' => 'eck view customer_order bundles',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck view customer_order customer_order entities'.
+  $permissions['eck view customer_order customer_order entities'] = array(
+    'name' => 'eck view customer_order customer_order entities',
+    'roles' => array(),
+    'module' => 'eck',
+  );
+
+  // Exported permission: 'eck view customer_order order_line_item entities'.
+  $permissions['eck view customer_order order_line_item entities'] = array(
+    'name' => 'eck view customer_order order_line_item entities',
+    'roles' => array(),
     'module' => 'eck',
   );
 
@@ -594,11 +737,22 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit mimemail user settings'.
+  $permissions['edit mimemail user settings'] = array(
+    'name' => 'edit mimemail user settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'mimemail',
+  );
+
   // Exported permission: 'edit own administration_page content'.
   $permissions['edit own administration_page content'] = array(
     'name' => 'edit own administration_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'employee' => 'employee',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -685,6 +839,26 @@ function ffvcoop_configuration_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'use text format filtered_html'.
+  $permissions['use text format filtered_html'] = array(
+    'name' => 'use text format filtered_html',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'filter',
+  );
+
+  // Exported permission: 'use text format full_html'.
+  $permissions['use text format full_html'] = array(
+    'name' => 'use text format full_html',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'employee' => 'employee',
+      'manager' => 'manager',
+    ),
+    'module' => 'filter',
+  );
+
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
@@ -708,7 +882,6 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'view the administration theme',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
     ),
     'module' => 'system',
   );

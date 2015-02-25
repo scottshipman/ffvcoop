@@ -30,12 +30,14 @@ function ffvcoop_configuration_strongarm() {
   $strongarm->name = 'content_access_administration_page';
   $strongarm->value = array(
     'view_own' => array(
-      0 => 2,
-      1 => 3,
+      0 => 4,
+      1 => 5,
+      2 => 3,
     ),
     'view' => array(
-      0 => 2,
-      1 => 3,
+      0 => 4,
+      1 => 5,
+      2 => 3,
     ),
   );
   $export['content_access_administration_page'] = $strongarm;
