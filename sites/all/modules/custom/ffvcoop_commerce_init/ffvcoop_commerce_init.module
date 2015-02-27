@@ -216,6 +216,9 @@ function line_item_date_select_form_submit($form, &$form_state){
 
     if(!empty($status)){
        $query->propertyCondition('status',$status,'IN');
+    } else {
+        $status = array('canceled'=>'canceled', 'cardonfile_charged' => 'cardonfile_charged', 'completed' => 'completed');
+        $query->propertyCondition('status',$status,'IN');
     }
   $result = $query->execute();
 
