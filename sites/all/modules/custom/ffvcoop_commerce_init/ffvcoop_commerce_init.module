@@ -180,7 +180,8 @@ function line_item_date_select_form($form, &$form_state){
         '#type' => 'select',
         '#options' => array(
             'canceled' => 'Canceled',
-            'cardonfile_charged' => 'Charged',
+            //'cardonfile_charged' => 'Charged',
+            'pending' => 'Pending',
             'completed' => 'Completed',
             ),
         '#multiple' => true,
@@ -217,7 +218,7 @@ function line_item_date_select_form_submit($form, &$form_state){
     if(!empty($status)){
        $query->propertyCondition('status',$status,'IN');
     } else {
-        $status = array('canceled'=>'canceled', 'cardonfile_charged' => 'cardonfile_charged', 'completed' => 'completed');
+        $status = array('canceled', 'completed', 'pending');
         $query->propertyCondition('status',$status,'IN');
     }
   $result = $query->execute();

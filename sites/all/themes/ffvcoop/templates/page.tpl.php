@@ -48,7 +48,7 @@
       <div style=""float:right;">
     <div id="user-link" style="float:right;"><?php echo $user_link ?></div>
       <div style="clear:both;"></div>
-	<div id="email-header"><a href="product-list">Order Now</a></div>
+	<div id="email-header"><a href="/product-list">Order Now</a></div>
       </div>
     <?php print render($page['header']); ?>
 
