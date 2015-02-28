@@ -420,8 +420,9 @@ div#block-block-18 a, div#block-block-18 a:hover, div#block-block-18 a:visited {
 /********  Move the save button to the top **********/
 form#views-form-weekly-email-block-1 div.form-actions.form-wrapper{
 	position:absolute;
-	top:16px;
+	top:160px;
 	left:23%;
+    z-index:99999;
 	/*border:1px solid black;
 	padding:12px 0px 7px 15px;
 	background-color:gray;*/
