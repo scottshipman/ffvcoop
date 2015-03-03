@@ -160,7 +160,17 @@ function ffvcoop_commerce_init_menu(){
     'access arguments' => array('access site reports'),
     'type' => MENU_NORMAL_ITEM,
   );
+
+    $items['order-now'] = array (
+        'title' => 'Order-now',
+        'page callback' => 'redirect_order_page',
+        'type' => MENU_NORMAL_ITEM,
+    );
   return $items;
+}
+
+function redirect_order_page(){
+    drupal_goto('product-list');
 }
 
 function line_item_report_page(){
