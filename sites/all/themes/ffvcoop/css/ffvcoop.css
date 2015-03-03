@@ -494,3 +494,5 @@ div#block-commerce-cart-cart {
     margin:0;
     padding: 0 12% 0 12%;
 }
+
+td.views-field views-field-field-comments {width:15%;}
