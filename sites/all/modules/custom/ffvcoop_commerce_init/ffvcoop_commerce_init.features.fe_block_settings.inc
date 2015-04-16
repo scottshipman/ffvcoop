@@ -26,14 +26,21 @@ configuration*
 send-bulk-email
 admin*
 user/unsubscribe
-user/*',
+user/*
+content/*',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -26,
+      ),
       'ffvcoop' => array(
-        'region' => 'highlighted',
+        'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -23,
+        'weight' => -26,
       ),
     ),
     'title' => 'My Shopping Cart',
@@ -51,11 +58,17 @@ cart*
 product-list*',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -25,
+      ),
       'ffvcoop' => array(
-        'region' => 'highlighted',
+        'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -22,
+        'weight' => -25,
       ),
     ),
     'title' => '',
@@ -71,6 +84,12 @@ product-list*',
     'pages' => 'user/current-user/login',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,
@@ -91,6 +110,12 @@ product-list*',
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,
@@ -111,6 +136,12 @@ product-list*',
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,
@@ -131,6 +162,12 @@ product-list*',
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,
@@ -151,6 +188,12 @@ product-list*',
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,

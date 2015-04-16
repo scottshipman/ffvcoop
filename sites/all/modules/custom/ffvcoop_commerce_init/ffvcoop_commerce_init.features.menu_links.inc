@@ -27,7 +27,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 1,
-    'weight' => 0,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_customer-list:customer-list
@@ -37,19 +37,15 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'router_path' => 'customer-list',
     'link_title' => 'Customer List',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
       'identifier' => 'main-menu_customer-list:customer-list',
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => 7,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_old-order-system:node/8',
   );
   // Exported menu link: main-menu_delivery-orders:manage/delivery
   $menu_links['main-menu_delivery-orders:manage/delivery'] = array(
@@ -67,7 +63,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_customer-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_home:<front>
   $menu_links['main-menu_home:<front>'] = array(
@@ -84,26 +80,6 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_old-order-system:node/8
-  $menu_links['main-menu_old-order-system:node/8'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/8',
-    'router_path' => 'node/%',
-    'link_title' => 'Old Order System',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_old-order-system:node/8',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 1,
-    'expanded' => 1,
-    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_products:product-list
@@ -162,7 +138,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_customer-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_weekly-calendar:configuration/calendar
   $menu_links['main-menu_weekly-calendar:configuration/calendar'] = array(
@@ -181,9 +157,9 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_products:admin/commerce/products',
   );
   // Exported menu link: main-menu_weekly-order-summary:manage/weekly-product-report
   $menu_links['main-menu_weekly-order-summary:manage/weekly-product-report'] = array(
@@ -204,7 +180,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_customer-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_weekly-orders:weekly-customer-orders
   $menu_links['main-menu_weekly-orders:weekly-customer-orders'] = array(
@@ -219,13 +195,12 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
       ),
     ),
     'module' => 'system',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
     'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_old-order-system:node/8',
   );
   // Translatables
   // Included for use with string extractors like potx.
@@ -233,7 +208,6 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
   t('Customer List');
   t('Delivery Orders');
   t('Home');
-  t('Old Order System');
   t('Products');
   t('Send Bulk Email');
   t('Shopping Carts');

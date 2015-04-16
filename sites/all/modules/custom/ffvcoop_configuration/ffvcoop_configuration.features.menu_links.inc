@@ -20,12 +20,12 @@ function ffvcoop_configuration_menu_default_menu_links() {
       'identifier' => 'menu-footer-menu_privacy-policy:node/7451',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'customized' => 0,
+    'customized' => 1,
   );
   // Exported menu link: menu-footer-menu_refund-policy:node/7450
   $menu_links['menu-footer-menu_refund-policy:node/7450'] = array(
@@ -37,12 +37,12 @@ function ffvcoop_configuration_menu_default_menu_links() {
       'identifier' => 'menu-footer-menu_refund-policy:node/7450',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'customized' => 0,
+    'customized' => 1,
   );
   // Exported menu link: menu-footer-menu_terms-of-service:node/7449
   $menu_links['menu-footer-menu_terms-of-service:node/7449'] = array(
@@ -54,12 +54,12 @@ function ffvcoop_configuration_menu_default_menu_links() {
       'identifier' => 'menu-footer-menu_terms-of-service:node/7449',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'customized' => 0,
+    'customized' => 1,
   );
   // Translatables
   // Included for use with string extractors like potx.

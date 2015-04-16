@@ -292,7 +292,7 @@ function ffvcoop_configuration_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'order_message';
-  $strongarm->value = 'Thank you for your order at ffvcoop.com.  Your basket will be ready for pick up on Thursday, December 18th.';
+  $strongarm->value = 'Thank you for your order at ffvcoop.com.  ';
   $export['order_message'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -378,6 +378,16 @@ function ffvcoop_commerce_init_form_alter(&$form, &$form_state, $form_id){
         $form['submit2']['#weight'] = -19;
     }
 
+    if($form_id =='commerce_checkout_form_review'){
+        $form['help']['#markup'] = '<div class="checkout-help">
+        <h3>Please review your order before continuing. </h3><p style="color:red;"><strong>When you click continue below,
+        the credit card information you supply will be charged.<br />
+        You may also click the "Go back" link to change your order.</strong></p></div>';
+
+        $form['buttons']['continue']['#value'] = "Continue and Pay Order";
+
+    }
+
 }
 
 /*
@@ -474,3 +484,4 @@ function get_line_item_type($line_item_wrapper){
     return $product;
  // }
 }
+

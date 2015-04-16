@@ -39,6 +39,7 @@ function ffvcoop_configuration_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -48,6 +49,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -75,6 +77,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access site reports',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'system',
   );
@@ -84,6 +87,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -93,6 +97,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer blocks',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'block',
   );
@@ -120,6 +125,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -147,6 +153,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer users',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -156,6 +163,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'administer views_send',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'views_send',
   );
@@ -183,6 +191,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -193,6 +202,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -203,6 +213,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'user',
   );
@@ -210,7 +221,9 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'create administration_page content'.
   $permissions['create administration_page content'] = array(
     'name' => 'create administration_page content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
@@ -226,14 +239,18 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'create basket content'.
   $permissions['create basket content'] = array(
     'name' => 'create basket content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'create customer content'.
   $permissions['create customer content'] = array(
     'name' => 'create customer content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
@@ -242,6 +259,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -694,6 +712,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit any administration_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -710,14 +729,18 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'edit any basket content'.
   $permissions['edit any basket content'] = array(
     'name' => 'edit any basket content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any customer content'.
   $permissions['edit any customer content'] = array(
     'name' => 'edit any customer content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
@@ -726,6 +749,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -769,14 +793,18 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'edit own basket content'.
   $permissions['edit own basket content'] = array(
     'name' => 'edit own basket content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit own customer content'.
   $permissions['edit own customer content'] = array(
     'name' => 'edit own customer content',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'node',
   );
 
@@ -785,6 +813,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'edit own page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );
@@ -801,6 +830,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'ffvcoop_admin',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'ffvcoop_new_user',
   );
@@ -817,6 +847,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'mass mailing with views_send',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'views_send',
   );
@@ -842,9 +873,7 @@ function ffvcoop_configuration_user_default_permissions() {
   // Exported permission: 'use text format filtered_html'.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
+    'roles' => array(),
     'module' => 'filter',
   );
 
@@ -864,6 +893,7 @@ function ffvcoop_configuration_user_default_permissions() {
     'name' => 'view own unpublished content',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'node',
   );

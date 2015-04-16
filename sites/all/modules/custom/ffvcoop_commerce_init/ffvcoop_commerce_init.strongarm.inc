@@ -142,6 +142,27 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_billing_profile_copy';
+  $strongarm->value = 0;
+  $export['commerce_customer_profile_billing_profile_copy'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_billing_profile_copy_default';
+  $strongarm->value = 1;
+  $export['commerce_customer_profile_billing_profile_copy_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_billing_profile_copy_source';
+  $strongarm->value = 'shipping';
+  $export['commerce_customer_profile_billing_profile_copy_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_customer_profile_shipping_addressbook';
   $strongarm->value = 1;
   $export['commerce_customer_profile_shipping_addressbook'] = $strongarm;
@@ -215,6 +236,20 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->name = 'commerce_order_simulate_checkout_link';
   $strongarm->value = 1;
   $export['commerce_order_simulate_checkout_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_payment_pane_require_method';
+  $strongarm->value = 0;
+  $export['commerce_payment_pane_require_method'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_first_day';
+  $strongarm->value = '6';
+  $export['date_first_day'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -293,6 +328,9 @@ function ffvcoop_commerce_init_strongarm() {
       'form' => array(
         'metatags' => array(
           'weight' => '10',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),
@@ -568,14 +606,9 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'securepages_pages';
-  $strongarm->value = 'user
-user/*
-users/*
-admin
-admin/*
-checkout
+  $strongarm->value = 'checkout
 checkout/*
-manage/*';
+';
   $export['securepages_pages'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -599,13 +632,21 @@ username: [user:name]
 password: The password you used during registration.
 
 How it works:
-We are open for pick up between 11:00 - 7:00 pm, weekly on Thursday.  Please bring a reusable bag with you.  We are located at 2250 SR 580, Suite 2, Clearwater.  We are between US 19 and Belcher Rd, directly across from St. Michael\'s Church.
+Welcome to the Co-op!  We will be happy to have a basket ready for you to pick up this Thursday.  We are open for pick up between 11:00 - 7:00 pm.  You will need to bring a reusable bag to carry the produce you select.
 
-After your initial order, you will receive our weekly (Saturday) email asking if you would like to purchase a basket that week.  If you would like a basket, you can simply respond to our email.  The order cut off is Tuesday at 7:00 pm.   If you don\'t want a basket that week there is no need for you to respond.  You can order baskets when it best fits your schedule.
+As you know, we are a prepaid business.   While we only accept pre-payment for the weekly baskets, we only accept cash if you wish to purchase something from our extras table.  
 
-We look forward to meeting you.
+We are located at 2250 SR 580, Suite 2, Clearwater.  We are between US 19 and Belcher Rd, directly across from St. Michael\'s Church.
 
---  [site:name] team';
+After this initial order, you will receive our weekly (Saturday) reminder email.   Our order cut off is Tuesday at 7:00 pm, for a Thursday basket pick up.  You can order baskets when it best fits your schedule.  There is an annual $10.00 co-op fee that will automatically be added to your second order.
+
+We look forward to meeting you on Thursday.
+
+Mark, Kathy and Steven Born  
+FFV Co-op, LLC
+727-488-0858
+<a href="www.ffvcoop.com">www.ffvcoop.com</a>
+<a href="https://www.facebook.com/ffvcoop">https://www.facebook.com/ffvcoop</a>';
   $export['user_mail_register_no_approval_required_body'] = $strongarm;
 
   $strongarm = new stdClass();

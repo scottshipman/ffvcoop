@@ -1524,6 +1524,40 @@ function ffvcoop_commerce_init_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_order-commerce_order-field_comments'
+  $field_instances['commerce_order-commerce_order-field_comments'] = array(
+    'bundle' => 'commerce_order',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => -2,
+      ),
+    ),
+    'entity_type' => 'commerce_order',
+    'field_name' => 'field_comments',
+    'label' => 'comments',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'commerce_order-commerce_order-field_week_date'
   $field_instances['commerce_order-commerce_order-field_week_date'] = array(
     'bundle' => 'commerce_order',
@@ -2593,6 +2627,7 @@ function ffvcoop_commerce_init_field_default_field_instances() {
   t('Shipping service');
   t('Total');
   t('Unit price');
+  t('comments');
 
   return $field_instances;
 }

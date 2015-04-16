@@ -21,9 +21,15 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => 'order-now',
     'roles' => array(),
     'themes' => array(
-      'ffvcoop' => array(
+      'adminimal' => array(
         'region' => 'content',
         'status' => 1,
+        'theme' => 'adminimal',
+        'weight' => -14,
+      ),
+      'ffvcoop' => array(
+        'region' => '',
+        'status' => 0,
         'theme' => 'ffvcoop',
         'weight' => -14,
       ),
@@ -43,11 +49,17 @@ function ffvcoop_configuration_default_fe_block_settings() {
       'authenticated user' => 2,
     ),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -24,
+      ),
       'ffvcoop' => array(
         'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -20,
+        'weight' => -24,
       ),
     ),
     'title' => '<none>',
@@ -63,6 +75,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => 'user/new-user',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => 'content',
         'status' => 1,
@@ -83,6 +101,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -26,
+      ),
       'ffvcoop' => array(
         'region' => 'footer',
         'status' => 1,
@@ -103,6 +127,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => 'weekly-order-summary',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => 'content',
         'status' => 1,
@@ -123,6 +153,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,
@@ -143,6 +179,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => '',
         'status' => 0,
@@ -163,6 +205,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
     'pages' => 'products',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'adminimal',
+        'weight' => -13,
+      ),
       'ffvcoop' => array(
         'region' => 'content',
         'status' => 1,
@@ -187,6 +235,12 @@ function ffvcoop_configuration_default_fe_block_settings() {
       'manager' => 5,
     ),
     'themes' => array(
+      'adminimal' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'adminimal',
+        'weight' => -16,
+      ),
       'ffvcoop' => array(
         'region' => 'content',
         'status' => 1,

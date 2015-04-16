@@ -17,6 +17,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_checkout',
   );
@@ -150,6 +151,15 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'module' => 'commerce_payment',
   );
 
+  // Exported permission: 'administer product pricing'.
+  $permissions['administer product pricing'] = array(
+    'name' => 'administer product pricing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'commerce_product_pricing_ui',
+  );
+
   // Exported permission: 'administer product types'.
   $permissions['administer product types'] = array(
     'name' => 'administer product types',
@@ -189,6 +199,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'configure store',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce',
   );
@@ -216,21 +227,27 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'create commerce_coupon entities of bundle commerce_coupon_fixed'.
   $permissions['create commerce_coupon entities of bundle commerce_coupon_fixed'] = array(
     'name' => 'create commerce_coupon entities of bundle commerce_coupon_fixed',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'create commerce_coupon entities of bundle commerce_coupon_pct'.
   $permissions['create commerce_coupon entities of bundle commerce_coupon_pct'] = array(
     'name' => 'create commerce_coupon entities of bundle commerce_coupon_pct',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'create commerce_coupon entities of bundle new_user_coupon'.
   $permissions['create commerce_coupon entities of bundle new_user_coupon'] = array(
     'name' => 'create commerce_coupon entities of bundle new_user_coupon',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
@@ -239,6 +256,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'create commerce_customer_profile entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
       'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
@@ -250,6 +268,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -259,6 +278,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'create commerce_customer_profile entities of bundle shipping',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -269,6 +289,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -278,6 +299,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'create commerce_order entities of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -287,6 +309,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'create commerce_product entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_product',
   );
@@ -294,6 +317,13 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'create commerce_product entities of bundle delivery'.
   $permissions['create commerce_product entities of bundle delivery'] = array(
     'name' => 'create commerce_product entities of bundle delivery',
+    'roles' => array(),
+    'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'create commerce_product entities of bundle fee'.
+  $permissions['create commerce_product entities of bundle fee'] = array(
+    'name' => 'create commerce_product entities of bundle fee',
     'roles' => array(),
     'module' => 'commerce_product',
   );
@@ -346,6 +376,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'create own card data',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_cardonfile',
   );
@@ -355,6 +386,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'create payments',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_payment',
   );
@@ -374,6 +406,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'delete own card data',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_cardonfile',
   );
@@ -410,21 +443,27 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'edit any commerce_coupon entity of bundle commerce_coupon_fixed'.
   $permissions['edit any commerce_coupon entity of bundle commerce_coupon_fixed'] = array(
     'name' => 'edit any commerce_coupon entity of bundle commerce_coupon_fixed',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'edit any commerce_coupon entity of bundle commerce_coupon_pct'.
   $permissions['edit any commerce_coupon entity of bundle commerce_coupon_pct'] = array(
     'name' => 'edit any commerce_coupon entity of bundle commerce_coupon_pct',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'edit any commerce_coupon entity of bundle new_user_coupon'.
   $permissions['edit any commerce_coupon entity of bundle new_user_coupon'] = array(
     'name' => 'edit any commerce_coupon entity of bundle new_user_coupon',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
@@ -463,6 +502,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit any commerce_order entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -472,6 +512,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit any commerce_order entity of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -481,6 +522,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit any commerce_product entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_product',
   );
@@ -488,6 +530,13 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'edit any commerce_product entity of bundle delivery'.
   $permissions['edit any commerce_product entity of bundle delivery'] = array(
     'name' => 'edit any commerce_product entity of bundle delivery',
+    'roles' => array(),
+    'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'edit any commerce_product entity of bundle fee'.
+  $permissions['edit any commerce_product entity of bundle fee'] = array(
+    'name' => 'edit any commerce_product entity of bundle fee',
     'roles' => array(),
     'module' => 'commerce_product',
   );
@@ -540,6 +589,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit own card data',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_cardonfile',
   );
@@ -557,21 +607,27 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'edit own commerce_coupon entities of bundle commerce_coupon_fixed'.
   $permissions['edit own commerce_coupon entities of bundle commerce_coupon_fixed'] = array(
     'name' => 'edit own commerce_coupon entities of bundle commerce_coupon_fixed',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'edit own commerce_coupon entities of bundle commerce_coupon_pct'.
   $permissions['edit own commerce_coupon entities of bundle commerce_coupon_pct'] = array(
     'name' => 'edit own commerce_coupon entities of bundle commerce_coupon_pct',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'edit own commerce_coupon entities of bundle new_user_coupon'.
   $permissions['edit own commerce_coupon entities of bundle new_user_coupon'] = array(
     'name' => 'edit own commerce_coupon entities of bundle new_user_coupon',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
@@ -581,6 +637,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -591,6 +648,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -600,6 +658,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit own commerce_customer_profile entities of bundle shipping',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -609,7 +668,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit own commerce_order entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -619,7 +678,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit own commerce_order entities of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -629,6 +688,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'edit own commerce_product entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_product',
   );
@@ -636,6 +696,13 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'edit own commerce_product entities of bundle delivery'.
   $permissions['edit own commerce_product entities of bundle delivery'] = array(
     'name' => 'edit own commerce_product entities of bundle delivery',
+    'roles' => array(),
+    'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'edit own commerce_product entities of bundle fee'.
+  $permissions['edit own commerce_product entities of bundle fee'] = array(
+    'name' => 'edit own commerce_product entities of bundle fee',
     'roles' => array(),
     'module' => 'commerce_product',
   );
@@ -688,6 +755,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'update payments',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_payment',
   );
@@ -715,21 +783,27 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'view any commerce_coupon entity of bundle commerce_coupon_fixed'.
   $permissions['view any commerce_coupon entity of bundle commerce_coupon_fixed'] = array(
     'name' => 'view any commerce_coupon entity of bundle commerce_coupon_fixed',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'view any commerce_coupon entity of bundle commerce_coupon_pct'.
   $permissions['view any commerce_coupon entity of bundle commerce_coupon_pct'] = array(
     'name' => 'view any commerce_coupon entity of bundle commerce_coupon_pct',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'view any commerce_coupon entity of bundle new_user_coupon'.
   $permissions['view any commerce_coupon entity of bundle new_user_coupon'] = array(
     'name' => 'view any commerce_coupon entity of bundle new_user_coupon',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
@@ -768,6 +842,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view any commerce_order entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -777,6 +852,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view any commerce_order entity of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -786,6 +862,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view any commerce_product entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_product',
   );
@@ -793,6 +870,13 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'view any commerce_product entity of bundle delivery'.
   $permissions['view any commerce_product entity of bundle delivery'] = array(
     'name' => 'view any commerce_product entity of bundle delivery',
+    'roles' => array(),
+    'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'view any commerce_product entity of bundle fee'.
+  $permissions['view any commerce_product entity of bundle fee'] = array(
+    'name' => 'view any commerce_product entity of bundle fee',
     'roles' => array(),
     'module' => 'commerce_product',
   );
@@ -845,6 +929,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view own card data',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_cardonfile',
   );
@@ -862,21 +947,27 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'view own commerce_coupon entities of bundle commerce_coupon_fixed'.
   $permissions['view own commerce_coupon entities of bundle commerce_coupon_fixed'] = array(
     'name' => 'view own commerce_coupon entities of bundle commerce_coupon_fixed',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'view own commerce_coupon entities of bundle commerce_coupon_pct'.
   $permissions['view own commerce_coupon entities of bundle commerce_coupon_pct'] = array(
     'name' => 'view own commerce_coupon entities of bundle commerce_coupon_pct',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
   // Exported permission: 'view own commerce_coupon entities of bundle new_user_coupon'.
   $permissions['view own commerce_coupon entities of bundle new_user_coupon'] = array(
     'name' => 'view own commerce_coupon entities of bundle new_user_coupon',
-    'roles' => array(),
+    'roles' => array(
+      'manager' => 'manager',
+    ),
     'module' => 'commerce_coupon',
   );
 
@@ -885,7 +976,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view own commerce_customer_profile entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -896,6 +987,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -905,6 +997,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view own commerce_customer_profile entities of bundle shipping',
     'roles' => array(
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_customer',
   );
@@ -915,6 +1008,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -925,6 +1019,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_order',
   );
@@ -934,6 +1029,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view own commerce_product entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_product',
   );
@@ -941,6 +1037,13 @@ function ffvcoop_commerce_init_user_default_permissions() {
   // Exported permission: 'view own commerce_product entities of bundle delivery'.
   $permissions['view own commerce_product entities of bundle delivery'] = array(
     'name' => 'view own commerce_product entities of bundle delivery',
+    'roles' => array(),
+    'module' => 'commerce_product',
+  );
+
+  // Exported permission: 'view own commerce_product entities of bundle fee'.
+  $permissions['view own commerce_product entities of bundle fee'] = array(
+    'name' => 'view own commerce_product entities of bundle fee',
     'roles' => array(),
     'module' => 'commerce_product',
   );
@@ -993,6 +1096,7 @@ function ffvcoop_commerce_init_user_default_permissions() {
     'name' => 'view payments',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'commerce_payment',
   );

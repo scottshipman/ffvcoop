@@ -21,11 +21,17 @@ function ffvcoop_calendar_feature_default_fe_block_settings() {
     'pages' => 'configuration/calendar*',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -23,
+      ),
       'ffvcoop' => array(
         'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => -19,
+        'weight' => -23,
       ),
     ),
     'title' => '',
@@ -41,6 +47,12 @@ function ffvcoop_calendar_feature_default_fe_block_settings() {
     'pages' => 'configuration/calendar',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
       'ffvcoop' => array(
         'region' => 'content',
         'status' => 1,
@@ -63,11 +75,17 @@ configure/*
 admin/*',
     'roles' => array(),
     'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => -19,
+      ),
       'ffvcoop' => array(
         'region' => 'highlighted',
         'status' => 1,
         'theme' => 'ffvcoop',
-        'weight' => 0,
+        'weight' => -19,
       ),
     ),
     'title' => '<none>',
