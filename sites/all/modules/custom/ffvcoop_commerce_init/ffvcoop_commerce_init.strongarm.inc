@@ -142,27 +142,6 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'commerce_customer_profile_billing_profile_copy';
-  $strongarm->value = 0;
-  $export['commerce_customer_profile_billing_profile_copy'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'commerce_customer_profile_billing_profile_copy_default';
-  $strongarm->value = 1;
-  $export['commerce_customer_profile_billing_profile_copy_default'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'commerce_customer_profile_billing_profile_copy_source';
-  $strongarm->value = 'shipping';
-  $export['commerce_customer_profile_billing_profile_copy_source'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_customer_profile_shipping_addressbook';
   $strongarm->value = 1;
   $export['commerce_customer_profile_shipping_addressbook'] = $strongarm;
@@ -178,7 +157,7 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_customer_profile_shipping_profile_copy';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['commerce_customer_profile_shipping_profile_copy'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -236,20 +215,6 @@ function ffvcoop_commerce_init_strongarm() {
   $strongarm->name = 'commerce_order_simulate_checkout_link';
   $strongarm->value = 1;
   $export['commerce_order_simulate_checkout_link'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'commerce_payment_pane_require_method';
-  $strongarm->value = 0;
-  $export['commerce_payment_pane_require_method'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_first_day';
-  $strongarm->value = '6';
-  $export['date_first_day'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

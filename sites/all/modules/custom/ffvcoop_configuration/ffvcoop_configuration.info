@@ -14,7 +14,6 @@ dependencies[] = ffvcoop_new_user
 dependencies[] = formblock
 dependencies[] = honeypot
 dependencies[] = menu
-dependencies[] = options
 dependencies[] = phone
 dependencies[] = rules
 dependencies[] = strongarm

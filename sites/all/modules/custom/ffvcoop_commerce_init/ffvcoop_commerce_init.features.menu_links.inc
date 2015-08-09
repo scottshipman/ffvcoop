@@ -63,7 +63,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_customer-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_home:<front>
   $menu_links['main-menu_home:<front>'] = array(
@@ -81,6 +81,103 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
+  );
+  // Exported menu link: main-menu_how-it-works:node/7574
+  $menu_links['main-menu_how-it-works:node/7574'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/7574',
+    'router_path' => 'node/%',
+    'link_title' => 'How It Works',
+    'options' => array(
+      'identifier' => 'main-menu_how-it-works:node/7574',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_manage-coupons:admin/commerce/coupons
+  $menu_links['main-menu_manage-coupons:admin/commerce/coupons'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'admin/commerce/coupons',
+    'router_path' => 'admin/commerce/coupons',
+    'link_title' => 'Manage Coupons',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_manage-coupons:admin/commerce/coupons',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_manage-store:admin/commerce/products',
+  );
+  // Exported menu link: main-menu_manage-store:admin/commerce/products
+  $menu_links['main-menu_manage-store:admin/commerce/products'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'admin/commerce/products',
+    'router_path' => 'admin/commerce/products',
+    'link_title' => 'Manage Store',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_manage-store:admin/commerce/products',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 1,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_manage-users-new:manage/manage-users
+  $menu_links['main-menu_manage-users-new:manage/manage-users'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'manage/manage-users',
+    'router_path' => 'manage/manage-users',
+    'link_title' => 'Manage Users (new)',
+    'options' => array(
+      'identifier' => 'main-menu_manage-users-new:manage/manage-users',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_manage-store:admin/commerce/products',
+  );
+  // Exported menu link: main-menu_original-customer-list:customer-list
+  $menu_links['main-menu_original-customer-list:customer-list'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'customer-list',
+    'router_path' => 'customer-list',
+    'link_title' => 'Original Customer List',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_original-customer-list:customer-list',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_manage-store:admin/commerce/products',
   );
   // Exported menu link: main-menu_products:product-list
   $menu_links['main-menu_products:product-list'] = array(
@@ -138,7 +235,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_customer-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_weekly-calendar:configuration/calendar
   $menu_links['main-menu_weekly-calendar:configuration/calendar'] = array(
@@ -159,7 +256,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_products:admin/commerce/products',
+    'parent_identifier' => 'main-menu_manage-store:admin/commerce/products',
   );
   // Exported menu link: main-menu_weekly-order-summary:manage/weekly-product-report
   $menu_links['main-menu_weekly-order-summary:manage/weekly-product-report'] = array(
@@ -180,7 +277,7 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-    'parent_identifier' => 'main-menu_customer-orders:manage/commerce/orders/list',
+    'parent_identifier' => 'main-menu_current-orders:manage/commerce/orders/list',
   );
   // Exported menu link: main-menu_weekly-orders:weekly-customer-orders
   $menu_links['main-menu_weekly-orders:weekly-customer-orders'] = array(
@@ -208,6 +305,11 @@ function ffvcoop_commerce_init_menu_default_menu_links() {
   t('Customer List');
   t('Delivery Orders');
   t('Home');
+  t('How It Works');
+  t('Manage Coupons');
+  t('Manage Store');
+  t('Manage Users (new)');
+  t('Original Customer List');
   t('Products');
   t('Send Bulk Email');
   t('Shopping Carts');

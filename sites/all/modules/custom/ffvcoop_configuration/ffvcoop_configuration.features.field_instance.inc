@@ -679,7 +679,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -732,7 +732,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 13,
+      'weight' => 9,
     ),
   );
 
@@ -815,7 +815,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 
@@ -854,7 +854,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -979,7 +979,7 @@ function ffvcoop_configuration_field_default_field_instances() {
       'module' => 'phone',
       'settings' => array(),
       'type' => 'phone_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1032,7 +1032,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 15,
+      'weight' => 10,
     ),
   );
 
@@ -1075,7 +1075,7 @@ function ffvcoop_configuration_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 16,
+      'weight' => 11,
     ),
   );
 

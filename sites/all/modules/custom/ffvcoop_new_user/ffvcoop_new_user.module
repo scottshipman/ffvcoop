@@ -41,6 +41,10 @@ function ffvcoop_new_user_block_info() {
     'info' => t('Weekly Order Summary'), 
   );
 
+  $blocks['weekly_new_users'] = array(
+    'info' => t('New Users By Week'),
+  );
+
   return $blocks;
 }
  
@@ -56,6 +60,12 @@ function ffvcoop_new_user_block_view($delta='') {
 	  case 'weekly_order_summary':
           $block['subject'] = t("Weekly Order Summary"); 
           $block['content'] = ffvcoop_new_user_weekly_summary();
+          break;
+
+
+    case 'weekly_new_users':
+          $block['subject'] = t("New Users By Week");
+          $block['content'] = ffvcoop_new_user_count_report();
           break;
 	  }
      return $block;
@@ -785,4 +795,51 @@ function ffvcoop_unsubscribe_form_submit($form, &$form_state){
     } else {
         drupal_set_message("We couldnt find any customer records for this email. Please check your spelling and try again.", 'error');
     }
+}
+
+function ffvcoop_new_user_count_report() {
+
+  $output = '<div class="user_report view-content"><table class="views-table cols-2"><tr><th class="views-field">Pickup Date</th><th class="views-field">Count of New Users</th></tr><tbody>';
+
+  // get list of pickup dates
+  $ts = time();
+  $date_query = new EntityFieldQuery();
+  $date_query->entityCondition('entity_type', 'pickup_date')
+    ->fieldCondition('field_week_date','value', array('1424926800', $ts), 'BETWEEN')
+    ->fieldOrderBy('field_week_date', 'value', 'DESC');
+
+  $result = $date_query->execute();
+  if(isset($result['pickup_date'])){
+    $entity_ids = array_keys($result['pickup_date']);
+    if($entity_ids) {
+      $date_entities = entity_load('pickup_date', $entity_ids);
+
+      $odd = 'odd';
+      foreach($date_entities as $date_entity){
+        if($odd==='odd'){$odd='even';} else {$odd='odd';}
+        //get date and subtract one week
+        $wrapper = entity_metadata_wrapper('pickup_date', $date_entity);
+        $date = $wrapper->field_week_date->value();
+        $formatted_date = date('m/d/Y', $date);
+        $oneweek = strtotime('-7 days', $date);
+
+        // get a count of users in date range
+        $user_query = new EntityFieldQuery();
+        $user_query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'customer')
+        //$user_query->entityCondition('entity_type', 'user')
+          ->propertyCondition('created', array($oneweek, $date),'BETWEEN');
+        $user_result = $user_query->execute();
+
+        $count = isset($user_result['node']) ? count($user_result['node']) : 0;
+        $output .= "<tr class='$odd'><td class='views-field'>$formatted_date</td><td class='views-field'>$count</td></tr>";
+      }
+
+      $output .= '</tbody></table></div>';
+    }
+    else {
+      drupal_set_message('error', "A weird error occurred and no Pickup dates were found. Please contact the site administrator");
+    }
+  }
+  return $output;
 }

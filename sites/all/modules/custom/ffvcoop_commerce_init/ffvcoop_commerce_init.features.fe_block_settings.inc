@@ -12,6 +12,90 @@ function ffvcoop_commerce_init_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['block-authorize_verified'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'authorize_verified',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '<front>
+checkout
+checkout/*',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'ffvcoop' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
+  $export['block-creaqte_acct_msg'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'creaqte_acct_msg',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'user/current-user/login
+user/login
+user',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'ffvcoop' => array(
+        'region' => 'highlighted',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
+  $export['block-hgbmar_coupon_block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'hgbmar_coupon_block',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'product-list
+checkout/*
+cart/*',
+    'roles' => array(),
+    'themes' => array(
+      'adminimal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'adminimal',
+        'weight' => 0,
+      ),
+      'ffvcoop' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'ffvcoop',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
   $export['commerce_cart-cart'] = array(
     'cache' => -1,
     'custom' => 0,

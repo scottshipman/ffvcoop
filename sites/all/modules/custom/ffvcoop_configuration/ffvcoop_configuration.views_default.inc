@@ -1667,6 +1667,12 @@ function ffvcoop_configuration_views_default_views() {
   );
   $handler->display->display_options['filters']['field_annual_fee_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_annual_fee_value']['year_range'] = '-2:+1';
+  /* Filter criterion: Content: Email (field_customer_email) */
+  $handler->display->display_options['filters']['field_customer_email_email_1']['id'] = 'field_customer_email_email_1';
+  $handler->display->display_options['filters']['field_customer_email_email_1']['table'] = 'field_data_field_customer_email';
+  $handler->display->display_options['filters']['field_customer_email_email_1']['field'] = 'field_customer_email_email';
+  $handler->display->display_options['filters']['field_customer_email_email_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_customer_email_email_1']['value'] = '@ffvcoop.com';
   $export['weekly_email'] = $view;
 
   $view = new view();

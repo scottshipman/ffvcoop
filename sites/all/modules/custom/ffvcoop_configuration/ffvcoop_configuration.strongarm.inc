@@ -157,7 +157,10 @@ function ffvcoop_configuration_strongarm() {
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '7',
+        ),
+        'redirect' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(),
